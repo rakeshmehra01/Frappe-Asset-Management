@@ -1,0 +1,35 @@
+<!-- AssetsIQ employee dashboard, managed by assetsiq.setup.employee_dashboard -->
+<section class="aiq-dashboard aiq-employee" aria-labelledby="my-workspace-title">
+  <header class="ops-header">
+    <div><h1 id="my-workspace-title">My Workspace</h1><p>Your equipment, assignment requests and maintenance updates in one place.</p></div>
+    <div class="ops-header-actions"><button type="button" class="aiq-button" data-action="refresh">Refresh</button><button type="button" class="aiq-button aiq-button-primary" data-action="my-assets">My assets</button></div>
+  </header>
+  <div class="ops-dashboard-message" data-region="message" role="status" hidden></div>
+  <div class="ops-kpis" aria-label="Your asset summary" data-region="kpis" aria-busy="true">
+    <button type="button" class="aiq-card" data-action="filter" data-filter="all"><span>My assets &amp; requests</span><strong data-kpi="total">—</strong></button>
+    <button type="button" class="aiq-card" data-action="filter" data-filter="assigned"><span>Assigned to me</span><strong data-kpi="assigned">—</strong></button>
+    <button type="button" class="aiq-card" data-action="filter" data-filter="pending"><span>Awaiting my acceptance</span><strong data-kpi="pending">—</strong></button>
+    <button type="button" class="aiq-card" data-action="filter" data-filter="requested"><span>Maintenance requested</span><strong data-kpi="requested">—</strong></button>
+    <button type="button" class="aiq-card" data-action="filter" data-filter="maintenance"><span>Under maintenance</span><strong data-kpi="maintenance">—</strong></button>
+  </div>
+  <div class="ops-grid">
+    <section class="aiq-card ops-work" aria-labelledby="my-equipment-title">
+      <header class="ops-card-header"><div><h2 id="my-equipment-title">My equipment</h2><p>Review your assignments and track maintenance requests.</p></div><button type="button" class="aiq-button" data-action="my-assets">View all</button></header>
+      <form class="ops-search" role="search"><input type="search" aria-label="Search your equipment in the selected status" placeholder="Search your asset name, ID or serial number" maxlength="160" autocomplete="off"><button type="button" class="ops-search-clear" data-action="clear-search" aria-label="Clear search" hidden>×</button></form>
+      <div class="ops-tabs" data-region="tabs" role="group" aria-label="Filter your equipment by status"></div>
+      <div data-region="queue" role="region" aria-label="Your equipment" aria-busy="true"><p>Loading your equipment…</p></div>
+      <div class="ops-pagination" data-region="pagination"></div>
+    </section>
+    <aside class="ops-side" aria-label="Your tools and guidance">
+      <section class="aiq-card"><h2>Quick actions</h2><div class="ops-quick-links">
+        <button type="button" class="aiq-button aiq-button-primary" data-action="filter" data-filter="pending">Review assignment requests</button>
+        <button type="button" class="aiq-button" data-action="filter" data-filter="assigned">View assigned equipment</button>
+        <button type="button" class="aiq-button" data-action="maintenance-list">Track my maintenance</button>
+      </div></section>
+      <section class="aiq-card"><h2>My asset mix</h2><p>Equipment and requests by category</p><div data-region="mix" aria-busy="true"><p>Loading your categories…</p></div></section>
+      <section class="aiq-card"><h2>What to do next</h2><ol class="ops-help-list"><li><strong>Accept a device</strong><span>Open an assignment request, review its details, then choose Accept Assignment or Decline Assignment on the asset form.</span></li><li><strong>Request maintenance</strong><span>Open one of your assigned assets and choose Request Maintenance.</span></li></ol></section>
+    </aside>
+    <section class="aiq-card ops-recent" aria-labelledby="my-updates-title"><h2 id="my-updates-title">Recently updated</h2><p>Latest changes to your equipment, with its current status.</p><div data-region="recent" aria-busy="true"><p>Loading your updates…</p></div></section>
+  </div>
+  <footer class="ops-footer"><span>This workspace shows only equipment and requests assigned to your account.</span><span data-region="updated" role="status">Loading live data…</span></footer>
+</section>

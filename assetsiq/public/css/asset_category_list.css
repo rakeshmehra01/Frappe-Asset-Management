@@ -1,0 +1,81 @@
+/* AssetsIQ — Category introduction and native Precision filter alignment. */
+
+/* Match the Location State list canvas while preserving Precision rows. */
+.aiq-category-list .layout-main-section {
+    background-color: #F5F3FB; /* Use the shared pale violet canvas. */
+}
+
+/* Add the same compact introduction structure as Location State. */
+.aiq-category-list .aiq-category-list-intro {
+    padding: 12px 16px; /* Keep the introductory content compact. */
+    margin: 12px 14px 16px; /* Leave space above, beside and below the panel. */
+    background-color: #F0EBFF; /* Match the Location State lavender panel. */
+    border: 1px solid #E4DEF1; /* Use the common violet-grey outline. */
+    border-radius: 10px; /* Match the existing introduction corners. */
+}
+
+/* Identify the setup area above the heading. */
+.aiq-category-list .aiq-category-list-intro > span {
+    color: #5B2CE8; /* Use primary violet for the context label. */
+    font-size: 11px; /* Keep the context label secondary. */
+    font-weight: 600; /* Make the small label readable. */
+}
+
+/* Match the Location State title hierarchy. */
+.aiq-category-list .aiq-category-list-intro h2 {
+    margin: 4px 0; /* Balance the spacing around the title. */
+    color: #251C42; /* Use the shared dark violet text. */
+    font-size: 20px; /* Match the compact page title. */
+    font-weight: 600; /* Keep the title moderately bold. */
+    line-height: 1.3; /* Allow comfortable wrapping on phones. */
+}
+
+/* Explain this master list in one short sentence. */
+.aiq-category-list .aiq-category-list-intro p {
+    margin: 0; /* Avoid excess space under the explanation. */
+    color: #655C79; /* Match the shared supporting text color. */
+    font-size: 12px; /* Keep the introduction compact. */
+    line-height: 1.5; /* Preserve readable wrapped lines. */
+}
+
+/* Align the Category filter card with its new introduction. */
+.aiq-category-list .page-form {
+    display: flex; /* Keep native standard filters and actions in a row. */
+    flex-wrap: wrap; /* Allow wrapping instead of squeezing controls. */
+    gap: 10px; /* Match the Location State filter-group spacing. */
+    padding: 10px 14px; /* Keep the filter card compact. */
+    margin: 0 14px 14px; /* Align the card edges with the introduction. */
+    box-shadow: 0 3px 12px rgb(37 28 66 / 3%); /* Add the same restrained depth. */
+}
+
+/* Keep the native toolbar horizontal when Frappe adds its column utility. */
+.aiq-category-list .page-form.flex-column {
+    flex-direction: row !important; /* Override the native important column utility. */
+}
+
+/* Match the two requirement chips to the shared input height. */
+.aiq-category-list .standard-filter-section .checkbox > label {
+    min-height: 36px; /* Match the search and Filter controls. */
+    background-color: #FBFAFE; /* Use the shared lightly tinted control surface. */
+    border-color: #E4DEF1; /* Match the native search outline. */
+    transition: background-color 160ms ease, border-color 160ms ease; /* Smooth checkbox-chip feedback. */
+}
+
+/* Give hover and checked requirement filters clear, matching feedback. */
+.aiq-category-list .standard-filter-section .checkbox > label:hover,
+.aiq-category-list .standard-filter-section .checkbox > label:has(input:checked) {
+    background-color: #F0EBFF; /* Tint the chip when hovered or selected. */
+    border-color: #C4B5FD; /* Strengthen the outline without shifting content. */
+}
+
+/* Align the existing Precision table with its introduction and filters. */
+.aiq-category-list .frappe-list {
+    margin: 0 14px 14px; /* Keep consistent left and right page edges. */
+}
+
+/* Keep requirement-chip feedback immediate when reduced motion is requested. */
+@media (prefers-reduced-motion: reduce) {
+    .aiq-category-list .standard-filter-section .checkbox > label {
+        transition: none; /* Remove optional color animation. */
+    }
+}

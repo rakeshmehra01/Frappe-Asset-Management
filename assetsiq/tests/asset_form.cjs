@@ -1,0 +1,71 @@
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const vm = require('node:vm');
+const source = fs.readFileSync(process.env.ASSET_FORM_TEST_SOURCE || path.join(__dirname, '../public/js/asset_form.js'), 'utf8');
+const escape = value => String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+const frappe = {session: {user: 'recipient@example.test'}, utils: {escape_html: escape}};
+vm.runInNewContext(source, {frappe, __: value => value, $: () => ({addClass(){}})});
+const {presentation, render} = frappe.assetsiq_asset_form;
+const doc = {name: 'AST-00002', asset_name: 'Example laptop', asset_status: 'Assignment Requested', assigned_to: 'recipient@example.test', serial_number: 'ABC123'};
+let content = presentation(doc);
+assert.ok(content.summary.includes('Confirm your assignment'));
+assert.ok(content.summary.includes('Accept Assignment'));
+assert.ok(content.header.includes('Assignment Requested'));
+assert.ok(presentation({...doc, assigned_to: 'other@example.test'}).summary.includes('Awaiting recipient confirmation'));
+assert.ok(presentation({...doc, asset_status: 'Available', assigned_to: null}).summary.includes('Choose a recipient'));
+assert.ok(presentation({...doc, asset_status: 'Available'}).summary.includes('Ready for assignment'));
+for (const status of ['Assigned', 'Maintenance Requested', 'Under Maintenance', 'Retired']) {
+    content = presentation({...doc, asset_status: status});
+    assert.ok(content.header.includes(status));
+    assert.ok(content.summary.includes('Asset status is managed through workflow actions.'));
+}
+assert.ok(presentation({...doc, asset_name:'<img src=x onerror=alert(1)>'}).header.includes('&lt;img'));
+assert.ok(!presentation({...doc, serial_number:'<script>alert(1)</script>'}).summary.includes('<script>'));
+assert.ok(presentation(doc, true).header.includes('New Asset'));
+assert.ok(presentation({...doc, asset_category:'<img src=x>'}).header.includes('&lt;img'));
+assert.ok(presentation({...doc, asset_status:'<script>bad</script>'}).header.includes('aiq-asset-status--retired'));
+assert.ok(!presentation({...doc, asset_status:'<script>bad</script>'}).header.includes('<script>'));
+assert.ok(presentation({...doc, serial_number:null}).summary.includes('is-empty'));
+assert.ok(presentation(doc).summary.includes('aiq-asset-notice--requested'));
+assert.ok(presentation({...doc, asset_status:'Assigned'}).summary.includes('aiq-asset-notice--assigned'));
+frappe.utils.get_link_title = () => 'Recipient Full Name';
+assert.ok(presentation(doc).summary.includes('Recipient Full Name'));
+frappe.utils.get_link_title = () => '<img src=x>';
+assert.ok(presentation(doc).summary.includes('&lt;img'));
+delete frappe.utils.get_link_title;
+const sections = [];
+let summary = '';
+const frm = {doc, page: {wrapper:{}}, wrapper:{}, is_new: () => false,
+    dashboard: {parent: {find: () => ({remove: () => {sections.length = 0;}})}, add_section: html => sections.push(html), show() {}},
+    fields_dict: {asset_overview_summary: {$wrapper: {html: html => {summary=html;}}}},
+};
+const before = JSON.stringify(doc);
+render(frm); render(frm);
+assert.equal(sections.length, 1);
+assert.ok(summary.includes('ABC123'));
+assert.equal(JSON.stringify(doc), before); // Styling never changes the workflow or fields.
+const {guidance, render_guidance} = frappe.assetsiq_asset_form;
+assert.ok(guidance(doc).includes('Overview guide'));
+assert.ok(guidance(doc).includes('Confirm your assignment'));
+assert.ok(guidance(doc, 'asset_identification_tab').includes('Identification guide'));
+assert.ok(guidance({...doc,serial_number_required:1}, 'asset_identification_tab').includes('A serial number is required'));
+assert.ok(guidance({...doc,serial_number_required:0}, 'asset_identification_tab').includes('A serial number is optional'));
+assert.ok(guidance(doc, 'asset_notes_tab').includes('Employees cannot edit asset details'));
+frappe.user_roles = ['AssetsIQ IT'];
+assert.ok(guidance({...doc,asset_status:'Available'}, 'asset_notes_tab').includes('List included accessories'));
+assert.ok(guidance({...doc,asset_status:'Available'}).includes('Choose the recipient'));
+frappe.user_roles = [];
+const guides = [];
+const container = {length:1, children: () => ({remove(){guides.length=0;}}), append: html => guides.push(html), addClass(){}};
+frm.layout = {tabs_content: container};
+frm.get_active_tab = () => ({df:{fieldname:'asset_identification_tab'}});
+render_guidance(frm);render_guidance(frm);
+assert.equal(guides.length,1);
+assert.ok(guides[0].includes('Identification guide'));
+frm.get_active_tab = () => ({df:{fieldname:'asset_notes_tab'}});
+render_guidance(frm);
+assert.equal(guides.length,1);
+assert.ok(guides[0].includes('Notes guide'));
+assert.equal(JSON.stringify(doc),before);
+console.log('Asset presentation checks passed: all workflow states, recipient guidance, escaping, repeated refresh and unchanged document data.');

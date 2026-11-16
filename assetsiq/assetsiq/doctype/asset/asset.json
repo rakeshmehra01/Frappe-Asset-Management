@@ -1,0 +1,185 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "AST-.#####",
+ "creation": "2026-11-03 16:47:25.702764",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "asset_overview_tab",
+  "asset_overview_section",
+  "asset_name",
+  "asset_location",
+  "asset_overview_column",
+  "asset_category",
+  "assigned_to",
+  "asset_overview_context",
+  "asset_overview_summary",
+  "asset_identification_tab",
+  "asset_identification_section",
+  "serial_number",
+  "asset_identification_column",
+  "asset_status",
+  "serial_number_required",
+  "asset_notes_tab",
+  "asset_notes_section",
+  "description"
+ ],
+ "fields": [
+  {
+   "fieldname": "asset_overview_tab",
+   "fieldtype": "Tab Break",
+   "label": "Overview"
+  },
+  {
+   "fieldname": "asset_overview_section",
+   "fieldtype": "Section Break",
+   "label": "Basic information"
+  },
+  {
+   "fieldname": "asset_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Asset Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "asset_location",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Asset Location",
+   "options": "Asset Location",
+   "reqd": 1
+  },
+  {
+   "fieldname": "asset_overview_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "asset_category",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Asset Category",
+   "options": "Asset Category",
+   "reqd": 1
+  },
+  {
+   "fieldname": "assigned_to",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Assigned To",
+   "options": "User"
+  },
+  {
+   "fieldname": "asset_overview_context",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "asset_overview_summary",
+   "fieldtype": "HTML"
+  },
+  {
+   "fieldname": "asset_identification_tab",
+   "fieldtype": "Tab Break",
+   "label": "Identification"
+  },
+  {
+   "fieldname": "asset_identification_section",
+   "fieldtype": "Section Break",
+   "label": "Identification"
+  },
+  {
+   "fieldname": "serial_number",
+   "fieldtype": "Data",
+   "label": "Serial Number",
+   "mandatory_depends_on": "eval:doc.serial_number_required == 1",
+   "unique": 1
+  },
+  {
+   "fieldname": "asset_identification_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Available",
+   "fieldname": "asset_status",
+   "fieldtype": "Select",
+   "label": "Asset Status",
+   "options": "Available\nAssignment Requested\nAssigned\nMaintenance Requested\nUnder Maintenance\nRetired",
+   "reqd": 1,
+   "read_only": 1,
+   "description": "Updated through workflow actions."
+  },
+  {
+   "default": "0",
+   "fetch_from": "asset_category.serial_required",
+   "fieldname": "serial_number_required",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Serial Number Required",
+   "read_only": 1
+  },
+  {
+   "fieldname": "asset_notes_tab",
+   "fieldtype": "Tab Break",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "asset_notes_section",
+   "fieldtype": "Section Break",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-11-03 23:12:50.401103",
+ "modified_by": "Administrator",
+ "module": "AssetsIQ",
+ "name": "Asset",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "AssetsIQ IT",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "AssetsIQ Employee",
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "search_fields": "asset_name,serial_number",
+ "show_title_field_in_link": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "asset_name"
+}

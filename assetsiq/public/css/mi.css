@@ -1,0 +1,756 @@
+/* AssetsIQ Harbor / Executive — learning edition. */
+/* Each selector identifies the elements being styled; each declaration explains its effect. */
+/* Closing braces end a rule. Blank lines only separate groups for easier reading. */
+/* Edit this source file, then run bench build --app assetsiq and clear the site cache. */
+
+/* Reusable design values for AssetsIQ Executive pages; edit these first to change the theme. */
+.aiq-executive,
+body.aiq-assetsiq-shell {
+	--aiq-primary: #5B2CE8; /* Primary violet requested for the AssetsIQ brand and core accents. */
+	--aiq-primary-hover: #4820BF; /* Deeper violet for strong hover emphasis. */
+	--aiq-sidebar-bg: #1C1236; /* Deep violet used for the Executive navigation background. */
+	--aiq-line: #E4DEF1; /* Soft lavender borders separate cards without adding visual noise. */
+	--aiq-surface: #FFFFFF; /* White card surfaces keep forms clear and readable. */
+	--aiq-text: #251C42; /* Dark violet-grey gives headings and body text strong contrast. */
+	--aiq-muted: #655C79; /* Muted plum-grey keeps supporting instructions readable. */
+	--aiq-canvas: #F5F3FB; /* Use a very pale lavender page background. */
+	--aiq-tint: #F0EBFF; /* Use a light violet surface for selected items and guidance examples. */
+	--aiq-field: #FBFAFE; /* Keep input backgrounds almost white with a hint of violet. */
+	font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; /* Try these local fonts in order; no font download is needed. */
+	--aiq-radius-card: 14px; /* Shared 14px rounding for larger cards and panels. */
+	--aiq-radius-control: 10px; /* Shared 10px rounding for inputs, buttons and smaller boxes. */
+	--aiq-guide-width: clamp(340px, 30vw, 380px); /* Give guidance 30% of the window width, limited to a more readable 340–380px. */
+	--aiq-accent-ink: #5B2CE8; /* Readable violet for icons, links and small accent labels on light surfaces. */
+	--aiq-focus: #5B2CE8; /* Use a clearly visible violet keyboard focus indicator. */
+	--aiq-sidebar-hover: #342153; /* Use a lighter deep violet for navigation hover and selection. */
+	--aiq-sidebar-border: #493566; /* Separate the dark navigation area with a muted violet border. */
+	--aiq-sidebar-text: #EEE9FA; /* Use near-white lavender text on the dark sidebar. */
+	--aiq-sidebar-muted: #C7BCD9; /* Use softer lavender for supporting sidebar text. */
+	--aiq-sidebar-icon: #D7CDEF; /* Keep sidebar outlines readable against deep violet. */
+	--aiq-soft-accent: #BCA8FF; /* Light violet highlights selected navigation items and dark-surface focus. */
+	--aiq-button-bg: #F0EBFF; /* Give the Save action a light lavender surface. */
+	--aiq-button-border: #D7CBF5; /* Define the light action button with a subtle violet outline. */
+	--aiq-button-text: #4A1EC4; /* Keep the Save label strongly readable on the pale button. */
+	--aiq-button-hover-bg: #E5DCFF; /* Deepen the pale button surface slightly on hover. */
+	--aiq-button-hover-text: #3D18A8; /* Keep the action label readable during hover. */
+	--aiq-banner-start: #28144D; /* Start the banner gradient with rich deep violet. */
+	--aiq-banner-end: #442285; /* End the banner gradient with a complementary violet shade. */
+	--aiq-banner-accent: #D5C6FF; /* Use soft lilac for icons and small labels against the dark banner. */
+	--aiq-banner-text: #E5DBFA; /* Use light lavender for readable banner descriptions. */
+}
+
+/* Only on Asset Category form/list routes: style the matching native sidebar elements. */
+body:is([data-route^="Form/Asset Category/"], [data-route^="List/Asset Category/"]) .body-sidebar {
+	--sidebar-hover-color: var(--aiq-sidebar-hover); /* Background used by native sidebar hover states. */
+	--sidebar-active-color: var(--aiq-sidebar-hover); /* Background used by native sidebar selection states. */
+	--sidebar-border-color: var(--aiq-sidebar-border); /* Color of the native sidebar divider. */
+	--surface-menu-bar: var(--aiq-sidebar-bg); /* deep violet background token used by native sidebar elements. */
+	--ink-gray-6: var(--aiq-sidebar-text); /* Light text token for readable native sidebar labels. */
+	--ink-gray-7: var(--aiq-sidebar-text); /* Light text token for readable native sidebar icons. */
+	background: var(--aiq-sidebar-bg); /* Set the background color or gradient for this element. */
+	color: var(--aiq-sidebar-text); /* Set the text or inherited icon color. */
+	border-color: var(--aiq-sidebar-border); /* Set the color of the existing border. */
+}
+
+/* Only on Asset Category form/list routes: style the matching native sidebar elements. */
+body:is([data-route^="Form/Asset Category/"], [data-route^="List/Asset Category/"]) .body-sidebar :is(.item-anchor, .sidebar-header, .sidebar-item-label, .sidebar-user-button, .onboarding-sidebar) {
+	color: var(--aiq-sidebar-text); /* Set the text or inherited icon color. */
+}
+
+/* Only on Asset Category form/list routes: style the matching native sidebar elements. */
+body:is([data-route^="Form/Asset Category/"], [data-route^="List/Asset Category/"]) .body-sidebar :is(.header-subtitle, .avatar-name-email .text-secondary) {
+	color: var(--aiq-sidebar-muted) !important; /* Set the text or inherited icon color. This overrides a competing framework rule. */
+}
+
+/* Only on Asset Category form/list routes: style the matching native sidebar elements. */
+body:is([data-route^="Form/Asset Category/"], [data-route^="List/Asset Category/"]) .body-sidebar :is(.icon, .es-icon) {
+	--icon-stroke: var(--aiq-sidebar-icon); /* Stroke color for Frappe sidebar icons. */
+	--icon-fill: transparent; /* Leave icon interiors transparent. */
+	color: var(--aiq-sidebar-icon); /* Set the text or inherited icon color. */
+}
+
+/* Only on Asset Category form/list routes: style the matching native sidebar elements. */
+body:is([data-route^="Form/Asset Category/"], [data-route^="List/Asset Category/"]) .body-sidebar .standard-sidebar-item {
+	transition: background-color 160ms ease, box-shadow 160ms ease; /* Animate only the listed visual changes over the specified time. */
+	border-radius: 8px; /* Round the corners; larger values make a softer curve. */
+}
+
+/* Only on Asset Category form/list routes: style the matching native sidebar elements. */
+body:is([data-route^="Form/Asset Category/"], [data-route^="List/Asset Category/"]) .body-sidebar .standard-sidebar-item.active-sidebar {
+	background: var(--aiq-sidebar-hover); /* Set the background color or gradient for this element. */
+	box-shadow: inset 3px 0 var(--aiq-soft-accent); /* Set depth or an emphasis ring; none removes the shadow. */
+}
+
+/* Only on Asset Category form/list routes: style the matching native sidebar elements. */
+body:is([data-route^="Form/Asset Category/"], [data-route^="List/Asset Category/"]) .body-sidebar .active-sidebar .item-anchor {
+	color: var(--aiq-banner-accent); /* Set the text or inherited icon color. */
+}
+
+/* Only on Asset Category form/list routes: style the matching native sidebar elements. */
+body:is([data-route^="Form/Asset Category/"], [data-route^="List/Asset Category/"]) .body-sidebar a:focus-visible {
+	outline: 2px solid var(--aiq-soft-accent); /* Set the keyboard focus ring; 0 removes it where a replacement ring is supplied. */
+	outline-offset: -2px; /* Place the focus ring inside or outside the element edge. */
+	border-radius: 6px; /* Round the corners; larger values make a softer curve. */
+}
+
+/* Style the native page header. */
+.aiq-executive .page-head {
+	background: var(--aiq-surface); /* Set the background color or gradient for this element. */
+	border-bottom: 1px solid var(--aiq-line); /* Set the divider along the bottom edge. */
+}
+
+/* Make the page title clear and slightly more prominent. */
+.aiq-executive .page-title .title-text {
+	font-weight: 650; /* Set text thickness; larger numbers produce stronger emphasis. */
+	letter-spacing: -0.025em; /* Adjust the distance between letters. */
+}
+
+/* Give the page its background and bottom spacing. */
+.aiq-executive .page-body {
+	background: var(--aiq-canvas); /* Set the background color or gradient for this element. */
+	padding-bottom: 28px; /* Add inside spacing below the content. */
+}
+
+/* Style native page action buttons. */
+.aiq-executive .page-head .btn {
+	border-radius: var(--aiq-radius-control); /* Round the corners; larger values make a softer curve. */
+	transition: background-color 160ms ease, box-shadow 160ms ease; /* Animate only the listed visual changes over the specified time. */
+}
+
+/* Style the native primary action, such as Save. */
+/* Give the real Frappe Save action a soft violet surface, rather than a separate custom button. */
+.aiq-executive .page-head .btn-primary {
+	background: var(--aiq-button-bg); /* Use a light lavender surface that fits the deep-violet and lavender palette. */
+	border: 1px solid var(--aiq-button-border); /* Define the button with a subtle violet outline. */
+	color: var(--aiq-button-text); /* Keep the action label dark enough to read on the pale surface. */
+	min-height: 34px; /* Make the native action comfortable without adding excess height. */
+	padding: 7px 15px; /* Balance the space around the Save label. */
+	font-weight: 650; /* Give the primary action slightly stronger emphasis. */
+	box-shadow: 0 3px 9px rgb(91 44 232 / 8%); /* Add a restrained shadow below the button. */
+}
+
+/* Change the available Save action smoothly when hovered; disabled actions keep native behavior. */
+.aiq-executive .page-head .btn-primary:not(:disabled):hover {
+	background: var(--aiq-button-hover-bg); /* Deepen the lavender surface slightly to acknowledge hover. */
+	border-color: var(--aiq-soft-accent); /* Strengthen the outline on hover. */
+	color: var(--aiq-button-hover-text); /* Preserve clear label contrast during hover. */
+	box-shadow: 0 5px 12px rgb(91 44 232 / 14%); /* Increase depth slightly without shifting the layout. */
+}
+
+/* Give keyboard focus a clear visual indicator. */
+.aiq-executive .btn:focus-visible {
+	outline: 3px solid var(--aiq-focus); /* Set the keyboard focus ring; 0 removes it where a replacement ring is supplied. */
+	outline-offset: 3px; /* Place the focus ring inside or outside the element edge. */
+}
+
+/* Set breathing room around the form and guidance layout. */
+.aiq-harbor-form .form-layout,
+.aiq-harbor-form .std-form-layout > .form-layout > .form-page {
+	background: transparent; /* Set the background color or gradient for this element. */
+	border: 0; /* Set all borders: thickness, line style and color; 0 removes them. */
+	box-shadow: none; /* Set depth or an emphasis ring; none removes the shadow. */
+	overflow: visible; /* Allow content such as focus rings to extend beyond this box. */
+}
+
+/* Set breathing room around the form and guidance layout. */
+.aiq-harbor-form .std-form-layout {
+	padding: 24px; /* Set inside spacing: one value = all sides; two = vertical/horizontal; three = top/horizontal/bottom. */
+}
+
+/* Arrange the native form and its separate guidance panel without moving any fields. */
+.aiq-harbor-form .aiq-guided-layout {
+	display: grid; /* Choose layout behavior: grid creates columns; block uses normal full-width flow. */
+	grid-template-columns: minmax(0, 1fr) var(--aiq-guide-width); /* Define the columns; minmax(0, 1fr) lets the form shrink safely. */
+	gap: 24px; /* Set the empty space between grid columns or rows. */
+	align-items: start; /* Align grid children to the top of their own column. */
+}
+
+/* Arrange the native form and its separate guidance panel without moving any fields. */
+.aiq-guided-layout > .form-layout {
+	min-width: 0; /* Allow this grid child to shrink rather than forcing horizontal overflow. */
+}
+
+/* Style the right-side guidance panel or its paragraph and list text. */
+.aiq-user-guide {
+	position: sticky; /* Sticky follows scrolling within its parent; static returns to normal flow. */
+	top: 90px; /* Keep the sticky guide below the Desk header while scrolling. */
+	min-width: 0; /* Allow this grid child to shrink rather than forcing horizontal overflow. */
+	animation: aiq-executive-enter 220ms ease-out both; /* Run the named entrance motion, or disable motion when requested. */
+}
+
+/* Style the guidance card, its headings, example, list or informational note. */
+.aiq-guide-card {
+	padding: 28px; /* Set inside spacing: one value = all sides; two = vertical/horizontal; three = top/horizontal/bottom. */
+	border: 1px solid var(--aiq-line); /* Set all borders: thickness, line style and color; 0 removes them. */
+	border-radius: var(--aiq-radius-card); /* Round the corners; larger values make a softer curve. */
+	background: var(--aiq-surface); /* Set the background color or gradient for this element. */
+	box-shadow: 0 4px 18px rgb(28 18 54 / 4%); /* Set depth or an emphasis ring; none removes the shadow. */
+}
+
+/* Style the guidance card, its headings, example, list or informational note. */
+.aiq-guide-eyebrow {
+	display: block; /* Choose layout behavior: grid creates columns; block uses normal full-width flow. */
+	font-size: 10px; /* Set the size of the text. */
+	font-weight: 650; /* Set text thickness; larger numbers produce stronger emphasis. */
+	letter-spacing: 0.1em; /* Adjust the distance between letters. */
+	text-transform: uppercase; /* Display the label in uppercase without changing its stored text. */
+	color: var(--aiq-accent-ink); /* Set the text or inherited icon color. */
+}
+
+/* Style the guidance card, its headings, example, list or informational note. */
+.aiq-guide-card h2 {
+	margin: 14px 0 10px; /* Set outside spacing: one value = all sides; two = vertical/horizontal; three = top/horizontal/bottom. */
+	font-size: 21px; /* Set the size of the text. */
+	font-weight: 650; /* Set text thickness; larger numbers produce stronger emphasis. */
+	letter-spacing: -0.025em; /* Adjust the distance between letters. */
+	color: var(--aiq-text); /* Set the text or inherited icon color. */
+}
+
+/* Style the right-side guidance panel or its paragraph and list text. */
+.aiq-user-guide p,
+.aiq-user-guide li {
+	font-size: 13px; /* Set the size of the text. */
+	line-height: 1.85; /* Set line spacing as a multiple of text size for easier reading. */
+	color: var(--aiq-muted); /* Set the text or inherited icon color. */
+}
+
+/* Style the guidance card, its headings, example, list or informational note. */
+.aiq-guide-example {
+	margin-top: 20px; /* Set the space above this element. */
+	padding: 20px; /* Set inside spacing: one value = all sides; two = vertical/horizontal; three = top/horizontal/bottom. */
+	border: 1px solid var(--aiq-line); /* Set all borders: thickness, line style and color; 0 removes them. */
+	border-radius: var(--aiq-radius-control); /* Round the corners; larger values make a softer curve. */
+	background: var(--aiq-tint); /* Set the background color or gradient for this element. */
+}
+
+/* Style the guidance card, its headings, example, list or informational note. */
+.aiq-guide-example strong {
+	display: block; /* Choose layout behavior: grid creates columns; block uses normal full-width flow. */
+	margin: 8px 0; /* Set outside spacing: one value = all sides; two = vertical/horizontal; three = top/horizontal/bottom. */
+	font-size: 17px; /* Set the size of the text. */
+	color: var(--aiq-text); /* Set the text or inherited icon color. */
+}
+
+/* Style the guidance card, its headings, example, list or informational note. */
+.aiq-guide-example p,
+.aiq-guide-note p {
+	margin-bottom: 0; /* Set the space below this element. */
+}
+
+/* Style the guidance card, its headings, example, list or informational note. */
+.aiq-guide-card h3 {
+	margin: 24px 0 12px; /* Set outside spacing: one value = all sides; two = vertical/horizontal; three = top/horizontal/bottom. */
+	font-size: 13px; /* Set the size of the text. */
+	font-weight: 650; /* Set text thickness; larger numbers produce stronger emphasis. */
+	color: var(--aiq-text); /* Set the text or inherited icon color. */
+}
+
+/* Style the guidance card, its headings, example, list or informational note. */
+.aiq-guide-card ul {
+	padding-left: 17px; /* Add inside spacing on the left, including room for list bullets. */
+	margin-bottom: 0; /* Set the space below this element. */
+}
+
+/* Style the guidance card, its headings, example, list or informational note. */
+.aiq-guide-card li + li {
+	margin-top: 14px; /* Set the space above this element. */
+}
+
+/* Style the guidance card, its headings, example, list or informational note. */
+.aiq-guide-note {
+	margin-top: 18px; /* Set the space above this element. */
+	padding: 20px; /* Set inside spacing: one value = all sides; two = vertical/horizontal; three = top/horizontal/bottom. */
+	border: 1px solid var(--aiq-line); /* Draw a subtle border around the note before setting its violet left edge. */
+	border-left: 3px solid var(--aiq-primary); /* Set the colored line on the left edge. */
+	border-radius: var(--aiq-radius-card); /* Round the corners; larger values make a softer curve. */
+	background: var(--aiq-tint); /* Set the background color or gradient for this element. */
+}
+
+/* Style the guidance card, its headings, example, list or informational note. */
+.aiq-guide-note strong {
+	font-size: 12px; /* Set the size of the text. */
+	color: var(--aiq-text); /* Set the text or inherited icon color. */
+}
+
+/* Style native form sections, their headings and their content spacing. */
+.aiq-harbor-form .form-section.card-section:not(.empty-section) {
+	margin-bottom: 20px; /* Set the space below this element. */
+	padding: 0 24px 16px; /* Set inside spacing: one value = all sides; two = vertical/horizontal; three = top/horizontal/bottom. */
+	background: var(--aiq-surface); /* Set the background color or gradient for this element. */
+	border: 1px solid var(--aiq-line); /* Set all borders: thickness, line style and color; 0 removes them. */
+	border-radius: var(--aiq-radius-card); /* Round the corners; larger values make a softer curve. */
+	box-shadow: 0 4px 18px rgb(28 18 54 / 4%); /* Set depth or an emphasis ring; none removes the shadow. */
+}
+
+/* Style native form sections, their headings and their content spacing. */
+.aiq-harbor-form .form-section .section-head {
+	padding: 20px 0 15px; /* Set inside spacing: one value = all sides; two = vertical/horizontal; three = top/horizontal/bottom. */
+	font-size: 14px; /* Set the size of the text. */
+	font-weight: 650; /* Set text thickness; larger numbers produce stronger emphasis. */
+	letter-spacing: 0.01em; /* Adjust the distance between letters. */
+	color: var(--aiq-text); /* Set the text or inherited icon color. */
+	border-bottom: 1px solid var(--aiq-line); /* Set the divider along the bottom edge. */
+}
+
+/* Style native form sections, their headings and their content spacing. */
+.aiq-harbor-form .form-section :is(.section-head, .section-body) {
+	max-width: 100% !important; /* Limit the content width; 100% lets it use the full available card width. This overrides a competing framework rule. */
+}
+
+/* Style native form sections, their headings and their content spacing. */
+.aiq-harbor-form .form-section .section-body {
+	padding-top: 20px; /* Add inside spacing above the content. */
+}
+
+/* Style the labels above native input fields. */
+.aiq-harbor-form .control-label {
+	font-size: 12px; /* Set the size of the text. */
+	font-weight: 550; /* Set text thickness; larger numbers produce stronger emphasis. */
+}
+
+/* Style native text inputs and description text areas. */
+.aiq-harbor-form :is(input.form-control, textarea.form-control) {
+	background: var(--aiq-field); /* Set the background color or gradient for this element. */
+	border: 1px solid var(--aiq-line); /* Set all borders: thickness, line style and color; 0 removes them. */
+	border-radius: var(--aiq-radius-control); /* Round the corners; larger values make a softer curve. */
+	padding: 7px 10px; /* Use slightly smaller vertical and horizontal padding to keep fields compact. */
+	transition: background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease; /* Animate only the listed visual changes over the specified time. */
+}
+
+/* Style native text inputs and description text areas. */
+.aiq-harbor-form input.form-control {
+	min-height: 36px; /* Keep text inputs compact while leaving enough room to read and click. */
+}
+
+/* Style native text inputs and description text areas. */
+.aiq-harbor-form textarea.form-control {
+	min-height: 96px; /* Give descriptions a smaller starting area while allowing longer text. */
+}
+
+/* Give keyboard focus a clear visual indicator. */
+.aiq-harbor-form :is(input.form-control, textarea.form-control):focus {
+	background: var(--aiq-surface); /* Set the background color or gradient for this element. */
+	border-color: var(--aiq-focus); /* Set the color of the existing border. */
+	box-shadow: 0 0 0 3px rgb(91 44 232 / 15%); /* Set depth or an emphasis ring; none removes the shadow. */
+	outline: 0; /* Set the keyboard focus ring; 0 removes it where a replacement ring is supplied. */
+}
+
+/* Style the native checkbox panels without replacing their controls. */
+.aiq-harbor-form .frappe-control[data-fieldtype="Check"] {
+	margin-bottom: 14px; /* Set the space below this element. */
+	padding: 12px 14px; /* Reduce checkbox panel height while keeping the label comfortable to click. */
+	border: 1px solid var(--aiq-line); /* Set all borders: thickness, line style and color; 0 removes them. */
+	border-radius: var(--aiq-radius-control); /* Round the corners; larger values make a softer curve. */
+	background: var(--aiq-field); /* Set the background color or gradient for this element. */
+	transition: background-color 160ms ease, border-color 160ms ease; /* Animate only the listed visual changes over the specified time. */
+}
+
+/* Give keyboard focus a clear visual indicator. */
+.aiq-harbor-form .frappe-control[data-fieldtype="Check"]:hover,
+.aiq-harbor-form .frappe-control[data-fieldtype="Check"]:focus-within {
+	border-color: var(--aiq-focus); /* Set the color of the existing border. */
+}
+
+/* Highlight the checkbox panel when its checkbox is selected. */
+.aiq-harbor-form .frappe-control[data-fieldtype="Check"]:has(input:checked) {
+	background: var(--aiq-tint); /* Set the background color or gradient for this element. */
+	border-color: var(--aiq-focus); /* Set the color of the existing border. */
+}
+
+/* Style the native checkbox color. */
+.aiq-harbor-form input[type="checkbox"] {
+	accent-color: var(--aiq-primary); /* Set the native checkbox accent color. */
+}
+
+/* Remove extra native dashboard spacing around the custom introduction. */
+.aiq-harbor-form .aiq-category-intro {
+	padding: 0; /* Set inside spacing: one value = all sides; two = vertical/horizontal; three = top/horizontal/bottom. */
+	margin-bottom: 18px; /* Set the space below this element. */
+	border: 0; /* Set all borders: thickness, line style and color; 0 removes them. */
+	border-radius: var(--aiq-radius-card); /* Round the corners; larger values make a softer curve. */
+	background: transparent; /* Set the background color or gradient for this element. */
+	box-shadow: none; /* Set depth or an emphasis ring; none removes the shadow. */
+}
+
+/* Remove extra native dashboard spacing around the custom introduction. */
+.aiq-harbor-form .aiq-category-intro .section-body {
+	max-width: 100% !important; /* Limit the content width; 100% lets it use the full available card width. This overrides a competing framework rule. */
+	padding: 0; /* Set inside spacing: one value = all sides; two = vertical/horizontal; three = top/horizontal/bottom. */
+	margin: 0 !important; /* Set outside spacing: one value = all sides; two = vertical/horizontal; three = top/horizontal/bottom. This overrides a competing framework rule. */
+}
+
+/* Style the deep violet introduction panel and its text. */
+.aiq-executive-banner {
+	display: grid; /* Place the introduction icon beside the existing text. */
+	grid-template-columns: 52px minmax(0, 1fr); /* Reserve one small icon column and let text use the rest. */
+	gap: 20px; /* Separate the icon from the heading and description. */
+	align-items: start; /* Keep the icon aligned with the start of the text. */
+	padding: 28px; /* Set inside spacing: one value = all sides; two = vertical/horizontal; three = top/horizontal/bottom. */
+	border-radius: var(--aiq-radius-card); /* Round the corners; larger values make a softer curve. */
+	background: linear-gradient(115deg, var(--aiq-banner-start), var(--aiq-banner-end)); /* Set the background color or gradient for this element. */
+	color: #fff; /* Set the text or inherited icon color. */
+	animation: aiq-executive-enter 220ms ease-out both; /* Run the named entrance motion, or disable motion when requested. */
+}
+
+/* Style the small uppercase label above the introduction heading. */
+.aiq-executive-eyebrow {
+	display: block; /* Choose layout behavior: grid creates columns; block uses normal full-width flow. */
+	font-size: 10px; /* Set the size of the text. */
+	font-weight: 650; /* Set text thickness; larger numbers produce stronger emphasis. */
+	letter-spacing: 0.12em; /* Adjust the distance between letters. */
+	text-transform: uppercase; /* Display the label in uppercase without changing its stored text. */
+	color: var(--aiq-banner-accent); /* Set the text or inherited icon color. */
+}
+
+/* Style the deep violet introduction panel and its text. */
+.aiq-executive-banner h2 {
+	margin: 10px 0; /* Set outside spacing: one value = all sides; two = vertical/horizontal; three = top/horizontal/bottom. */
+	color: #fff; /* Set the text or inherited icon color. */
+	font-size: clamp(20px, 2vw, 27px); /* Set the size of the text. */
+	font-weight: 650; /* Set text thickness; larger numbers produce stronger emphasis. */
+	letter-spacing: -0.025em; /* Adjust the distance between letters. */
+}
+
+/* Style the deep violet introduction panel and its text. */
+.aiq-executive-banner p {
+	margin: 0; /* Set outside spacing: one value = all sides; two = vertical/horizontal; three = top/horizontal/bottom. */
+	font-size: 12px; /* Set the size of the text. */
+	line-height: 1.75; /* Set line spacing as a multiple of text size for easier reading. */
+	color: var(--aiq-banner-text); /* Set the text or inherited icon color. */
+}
+
+/* Style the native Asset Category list while preserving its filters and actions. */
+.aiq-harbor-list .frappe-list {
+	border: 1px solid var(--aiq-line); /* Set all borders: thickness, line style and color; 0 removes them. */
+	border-radius: var(--aiq-radius-card); /* Round the corners; larger values make a softer curve. */
+	box-shadow: 0 4px 18px rgb(28 18 54 / 4%); /* Set depth or an emphasis ring; none removes the shadow. */
+}
+
+/* Style the native Asset Category list while preserving its filters and actions. */
+.aiq-harbor-list .list-row-head {
+	background: var(--aiq-field); /* Set the background color or gradient for this element. */
+	font-size: 12px; /* Set the size of the text. */
+	font-weight: 600; /* Set text thickness; larger numbers produce stronger emphasis. */
+}
+
+/* Style the native Asset Category list while preserving its filters and actions. */
+.aiq-harbor-list .list-row-container {
+	transition: background-color 160ms ease; /* Animate only the listed visual changes over the specified time. */
+}
+
+/* Style the native Asset Category list while preserving its filters and actions. */
+.aiq-harbor-list .list-row-container:hover {
+	background: var(--aiq-tint); /* Set the background color or gradient for this element. */
+}
+
+/* Define a gentle fade and upward entrance for informational panels. */
+@keyframes aiq-executive-enter {
+	/* Starting state of the entrance animation. */
+	from {
+		opacity: 0; /* Set visibility: 0 is transparent and 1 is fully visible. */
+		transform: translateY(6px); /* Move the panel slightly for the entrance animation; 0 is its final position. */
+	}
+
+	/* Final state of the entrance animation. */
+	to {
+		opacity: 1; /* Set visibility: 0 is transparent and 1 is fully visible. */
+		transform: translateY(0); /* Move the panel slightly for the entrance animation; 0 is its final position. */
+	}
+
+}
+
+/* Use the native dark-theme colors for the page, fields and selected panels. */
+[data-theme="dark"] .aiq-executive,
+[data-theme="dark"] body.aiq-assetsiq-shell {
+	--aiq-canvas: #17121F; /* Use a deep violet-grey page surface in dark mode. */
+	--aiq-field: #251D32; /* Use a slightly lighter dark surface behind inputs. */
+	--aiq-tint: #30234B; /* Use a muted violet surface for dark-mode selections and examples. */
+	--aiq-surface: #211A2D; /* Keep dark cards distinct from the page canvas. */
+	--aiq-text: #F3EFFB; /* Use near-white lavender for readable headings in dark mode. */
+	--aiq-muted: #C5BAD8; /* Keep supporting instructions legible against dark cards. */
+	--aiq-line: #4A3B60; /* Use a muted violet border on dark cards and controls. */
+	--aiq-accent-ink: #C7B8FF; /* Lighten icons and small violet labels on dark surfaces. */
+	--aiq-focus: #BCA8FF; /* Keep focus rings visible against dark inputs. */
+}
+
+/* At 1160px and below, give the form full width and place guidance underneath. */
+@media (max-width: 1160px) {
+	/* Arrange the native form and its separate guidance panel without moving any fields. */
+	.aiq-harbor-form .aiq-guided-layout {
+		grid-template-columns: minmax(0, 1fr); /* Define the columns; minmax(0, 1fr) lets the form shrink safely. */
+	}
+
+	/* Style the right-side guidance panel or its paragraph and list text. */
+	.aiq-user-guide {
+		position: static; /* Sticky follows scrolling within its parent; static returns to normal flow. */
+	}
+
+}
+
+/* On phones, reduce outer padding while retaining comfortable card spacing. */
+@media (max-width: 767px) {
+	/* Set breathing room around the form and guidance layout. */
+	.aiq-harbor-form .std-form-layout {
+		padding: 12px; /* Set inside spacing: one value = all sides; two = vertical/horizontal; three = top/horizontal/bottom. */
+	}
+
+	/* Style native form sections, their headings and their content spacing. */
+	.aiq-harbor-form .form-section.card-section:not(.empty-section) {
+		padding: 0 18px 12px; /* Set inside spacing: one value = all sides; two = vertical/horizontal; three = top/horizontal/bottom. */
+	}
+
+	/* Style the deep violet introduction panel and its text. */
+	.aiq-executive-banner {
+		padding: 22px; /* Set inside spacing: one value = all sides; two = vertical/horizontal; three = top/horizontal/bottom. */
+	}
+
+}
+
+/* Accessibility: disable decorative animation when reduced motion is enabled. */
+@media (prefers-reduced-motion: reduce) {
+	/* Disable decorative movement for users who prefer reduced motion. */
+	.aiq-executive *,
+		body:is([data-route^="Form/Asset Category/"], [data-route^="List/Asset Category/"]) .body-sidebar * {
+		animation: none !important; /* Run the named entrance motion, or disable motion when requested. This overrides a competing framework rule. */
+		transition: none !important; /* Animate only the listed visual changes over the specified time. This overrides a competing framework rule. */
+	}
+
+}
+
+/* The logo is decorative beside the native brand label; hide it outside AssetsIQ. */
+.aiq-brand-logo {
+	display: none; /* Native branding remains visible outside the app routes. */
+}
+
+/* Keep the same deep violet navigation on the two AssetsIQ Workspace screens as on the form. */
+body.aiq-assetsiq-shell .body-sidebar {
+	--sidebar-hover-color: var(--aiq-sidebar-hover); /* Match native menu hover backgrounds to the deep violet palette. */
+	--sidebar-active-color: var(--aiq-sidebar-hover); /* Match native selected menu backgrounds to the deep violet palette. */
+	--sidebar-border-color: var(--aiq-sidebar-border); /* Give the sidebar a muted deep violet divider. */
+	--ink-gray-6: var(--aiq-sidebar-text); /* Supply readable light text to native sidebar items. */
+	--ink-gray-7: var(--aiq-sidebar-text); /* Supply readable light icon colors. */
+	background: var(--aiq-sidebar-bg); /* Preserve the existing deep deep violet sidebar chosen for this app. */
+	color: var(--aiq-sidebar-text); /* Use light text against the dark sidebar. */
+}
+
+/* Style only the existing native brand link; its menu and click actions stay unchanged. */
+body.aiq-assetsiq-shell .sidebar-header {
+	display: flex; /* Align the mark, wordmark and native dropdown in a row. */
+	align-items: center; /* Center the brand elements vertically. */
+	gap: 10px; /* Separate the logo from the wordmark. */
+	padding: 10px 2px; /* Give the brand a little more breathing room. */
+	margin-bottom: 8px; /* Separate the brand from Search and navigation. */
+}
+
+/* Preserve the native logo element for restoration when leaving AssetsIQ. */
+body.aiq-assetsiq-shell .sidebar-header .header-logo {
+	display: none; /* Show the AssetsIQ mark instead of the native initial tile on app routes. */
+}
+
+/* Fit the custom mark into the native sidebar icon container. */
+body.aiq-assetsiq-shell .sidebar-header > .sidebar-item-icon {
+	background: transparent !important; /* Override the native inline tile background behind our SVG. */
+	width: 32px; /* Fit the logo in the native collapsed sidebar. */
+	min-width: 32px; /* Prevent the logo from being squeezed by the title. */
+	height: 32px; /* Keep the collapsed logo square. */
+	padding: 0; /* Remove spacing already supplied by the SVG artwork. */
+}
+
+/* Display the crisp vector mark only on app screens. */
+body.aiq-assetsiq-shell .aiq-brand-logo {
+	display: block; /* Show the app's logo image. */
+	width: 100%; /* Fill the native icon container. */
+	height: 100%; /* Preserve the square mark's height. */
+	border-radius: 10px; /* Match the softened corners used across the interface. */
+	box-shadow: 0 4px 12px rgb(0 0 0 / 12%); /* Lift the mark gently from the dark sidebar. */
+}
+
+/* Give the logo more presence when the native sidebar is expanded. */
+body.aiq-assetsiq-shell .body-sidebar-container.expanded .sidebar-header > .sidebar-item-icon {
+	width: 40px; /* Enlarge the mark where the sidebar has enough room. */
+	min-width: 40px; /* Preserve its size beside the wordmark. */
+	height: 40px; /* Keep the expanded mark square. */
+}
+
+/* Make the brand name easier to recognize without changing document names. */
+body.aiq-assetsiq-shell .sidebar-header .header-title {
+	font-size: 19px; /* Give AssetsIQ more visual presence than menu items. */
+	font-weight: 700; /* Use a strong wordmark weight. */
+	letter-spacing: -0.025em; /* Tighten the wordmark slightly for a polished shape. */
+	color: var(--aiq-sidebar-text); /* Keep the brand highly readable against deep violet. */
+}
+
+/* Keep the supporting brand label quiet and readable. */
+body.aiq-assetsiq-shell .sidebar-header .header-subtitle {
+	font-size: 10px; /* Make the subtitle smaller than the wordmark. */
+	color: var(--aiq-sidebar-muted); /* Use muted light lavender for secondary navigation text. */
+}
+
+/* Keep native labels readable on app Workspace routes as well as form routes. */
+body.aiq-assetsiq-shell .body-sidebar :is(.item-anchor, .sidebar-item-label, .sidebar-user-button) {
+	color: var(--aiq-sidebar-text); /* Use a consistent light label color on deep violet. */
+}
+
+/* Support the small outline icons used in the banner and guidance. */
+.aiq-executive .aiq-line-icon {
+	width: 20px; /* Use a consistent icon width across components. */
+	height: 20px; /* Keep icons square and visually aligned. */
+	flex-shrink: 0; /* Stop icon shapes being compressed by long text. */
+	vertical-align: middle; /* Align inline icons with adjacent labels. */
+}
+
+/* Anchor the banner's decorative pattern without covering text or controls. */
+.aiq-executive-banner {
+	position: relative; /* Position its decorative background relative to this panel. */
+	isolation: isolate; /* Keep the pattern behind the banner's real content. */
+}
+
+/* Use a restrained dot pattern as decoration, with no movement or interaction. */
+.aiq-executive-banner::before {
+	content: ""; /* Create a decorative layer without adding meaningful text. */
+	position: absolute; /* Cover the banner without taking up layout space. */
+	inset: 0; /* Stretch the pattern to every edge of the banner. */
+	border-radius: inherit; /* Match the existing rounded banner corners. */
+	background-image: radial-gradient(rgb(213 198 255 / 13%) 1px, transparent 1px); /* Draw subtle violet dots over deep violet. */
+	background-size: 18px 18px; /* Space dots evenly so the pattern stays quiet. */
+	mask-image: linear-gradient(100deg, transparent 25%, #000); /* Fade the pattern away behind the heading. */
+	pointer-events: none; /* Keep the decorative layer from blocking text selection or clicks. */
+	z-index: -1; /* Keep decoration behind the banner's icon and text. */
+}
+
+/* Give the introduction a clear visual marker. */
+.aiq-banner-symbol {
+	display: grid; /* Center the outline icon inside its tile. */
+	place-items: center; /* Align the icon in both directions. */
+	width: 52px; /* Match the banner's reserved icon column. */
+	height: 52px; /* Keep the icon tile square. */
+	border: 1px solid rgb(213 198 255 / 28%); /* Outline the tile with translucent violet. */
+	border-radius: 14px; /* Match the main card rounding. */
+	background: rgb(213 198 255 / 9%); /* Add a soft translucent surface behind the icon. */
+	color: var(--aiq-banner-accent); /* Use the same light violet as the banner label. */
+}
+
+/* Let the main introduction icon carry more visual weight than smaller icons. */
+.aiq-banner-symbol .aiq-line-icon {
+	width: 28px; /* Enlarge the layered category icon. */
+	height: 28px; /* Preserve its square shape. */
+}
+
+/* Keep supporting banner labels aligned and allow them to wrap on small screens. */
+.aiq-banner-caption {
+	display: flex; /* Place the two descriptive labels next to each other. */
+	flex-wrap: wrap; /* Wrap labels rather than overflowing narrow screens. */
+	gap: 10px 20px; /* Add comfortable vertical and horizontal separation. */
+	margin-top: 18px; /* Separate these labels from the banner description. */
+}
+
+/* Pair each short supporting label with its icon. */
+.aiq-banner-caption span {
+	display: inline-flex; /* Keep icon and text together. */
+	align-items: center; /* Align the icon with the middle of the label. */
+	gap: 7px; /* Separate the icon from its label. */
+	font-size: 11px; /* Keep these labels secondary to the heading. */
+	color: var(--aiq-banner-text); /* Keep supporting text readable over the deep violet pattern. */
+}
+
+/* Keep small supporting icons proportionate to their captions. */
+.aiq-banner-caption .aiq-line-icon {
+	width: 15px; /* Use smaller icons beside the short banner labels. */
+	height: 15px; /* Keep the caption icons square. */
+}
+
+/* Give user guidance its own recognizable heading treatment. */
+.aiq-guide-heading {
+	display: flex; /* Place the guidance symbol next to its label. */
+	align-items: center; /* Align the label and icon vertically. */
+	gap: 10px; /* Leave space between the icon tile and the label. */
+}
+
+/* Use a light violet tile for the guidance symbol. */
+.aiq-guide-heading-icon {
+	display: grid; /* Center the lightbulb symbol in the tile. */
+	place-items: center; /* Align the symbol in both directions. */
+	width: 36px; /* Make the guidance marker easy to recognize. */
+	height: 36px; /* Keep the marker square. */
+	border-radius: var(--aiq-radius-control); /* Match the interface's smaller rounded corners. */
+	background: var(--aiq-tint); /* Use the existing pale violet surface. */
+	color: var(--aiq-accent-ink); /* Use the existing violet icon color. */
+}
+
+/* Pair the Laptop example with its device icon. */
+.aiq-guide-example strong,
+.aiq-guide-note strong {
+	display: flex; /* Align the supporting icon and heading in a row. */
+	align-items: center; /* Center the icon beside the text. */
+	gap: 9px; /* Leave a clear gap between icon and label. */
+}
+
+/* Replace plain bullets with a list of separate, readable guidance cards. */
+.aiq-guide-card .aiq-guidance-steps {
+	list-style: none; /* Hide browser numbering because each step has its own visual icon. */
+	padding: 0; /* Remove native list indentation to recover reading space. */
+	margin: 0; /* Let the surrounding heading control outside spacing. */
+	display: grid; /* Stack the guidance cards with consistent gaps. */
+	gap: 12px; /* Separate instructions without adding large empty areas. */
+}
+
+/* Style each guidance instruction as a small, non-clickable information card. */
+.aiq-guide-card .aiq-guidance-steps > li {
+	display: grid; /* Place a fixed icon beside flexible instruction text. */
+	grid-template-columns: 28px minmax(0, 1fr); /* Leave most of the card width for reading. */
+	gap: 10px; /* Separate the icon from the instruction. */
+	padding: 14px 12px; /* Add enough space inside each instruction card. */
+	margin: 0; /* Override the old gap between plain bullet items. */
+	border: 1px solid var(--aiq-line); /* Separate each instruction with a quiet border. */
+	border-radius: var(--aiq-radius-control); /* Apply the same softened corners as the fields. */
+	background: var(--aiq-surface); /* Respect the native light or dark card background. */
+	transition: border-color 160ms ease, background-color 160ms ease; /* Make pointer feedback subtle without shifting text. */
+}
+
+/* Quietly emphasize an instruction when a user points at it; it remains informational. */
+.aiq-guide-card .aiq-guidance-steps > li:hover {
+	border-color: var(--aiq-soft-accent); /* Use a soft violet border for hover feedback. */
+	background: var(--aiq-tint); /* Add a pale background while keeping text readable. */
+}
+
+/* Use a restrained icon tile at the start of each instruction. */
+.aiq-step-icon {
+	display: grid; /* Center the icon in its small tile. */
+	place-items: center; /* Align the icon in both directions. */
+	width: 28px; /* Fit the guidance card's reserved icon column. */
+	height: 30px; /* Give the small symbol a little vertical breathing room. */
+	border-radius: 7px; /* Round the tile slightly without making it circular. */
+	background: var(--aiq-tint); /* Use the existing soft violet surface. */
+	color: var(--aiq-accent-ink); /* Keep icons consistent with the app accent. */
+}
+
+/* Make each instruction's main point easy to scan. */
+.aiq-guidance-steps strong {
+	display: block; /* Keep the title above its supporting explanation. */
+	font-size: 12px; /* Keep the instruction heading compact and legible. */
+	font-weight: 650; /* Give it more emphasis than the paragraph below. */
+	line-height: 1.6; /* Leave enough space for headings that wrap. */
+	color: var(--aiq-text); /* Follow the native theme's heading color. */
+}
+
+/* Keep explanations close to their headings without crowding the next card. */
+.aiq-guidance-steps p {
+	margin: 5px 0 0; /* Add a little space above the explanation and none below. */
+	font-size: 12px; /* Fit comfortable text into the guidance column. */
+	line-height: 1.8; /* Keep multiline instructions easy to read. */
+}
+
+/* Simplify the introduction on phones so the heading keeps enough width. */
+@media (max-width: 767px) {
+	.aiq-executive-banner {
+		grid-template-columns: minmax(0, 1fr); /* Stack the icon above the text instead of squeezing the heading. */
+		gap: 16px; /* Keep a balanced gap between the stacked elements. */
+	}
+}
+
+/* Keep newly added decorative motion disabled for reduced-motion users too. */
+@media (prefers-reduced-motion: reduce) {
+	.aiq-executive .aiq-guidance-steps > li {
+		transition: none; /* Disable the optional hover transition when reduced motion is requested. */
+	}
+}

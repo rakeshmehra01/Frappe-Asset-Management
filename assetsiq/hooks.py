@@ -4,6 +4,30 @@ app_publisher = "Rakesh Mehra"
 app_description = "Hardware and software asset lifecycle management"
 app_email = "rmehra@vincular.in"
 app_license = "mit"
+# Content-hashed Harbor styles, built with: bench build --app assetsiq
+app_include_css = ["assetsiq_harbor.bundle.css"]
+# Keep navigation branding in a versioned bundle, without changing Frappe core.
+app_include_js = ["assetsiq_harbor.bundle.js"]
+# Discover this app's screens for one shared native Desk sidebar theme.
+extend_bootinfo = "assetsiq.boot.extend_bootinfo"
+# Keep the app's two operational roles reproducible on other sites.
+fixtures = [
+	{
+		"dt": "Role",
+		"filters": [["name", "in", ["AssetsIQ Employee", "AssetsIQ IT"]]],
+	}
+]
+
+# Show the common Home entry on the app launcher.
+add_to_apps_screen = [
+    {
+        "name": "assetsiq",
+        "logo": "/assets/assetsiq/images/assetsiq-mark.svg",
+        "title": "AssetsIQ Home",
+        "route": "/desk/assetsiq-home",
+        "has_permission": "assetsiq.setup.launcher.has_access",
+    }
+]
 
 # Apps
 # ------------------
@@ -262,3 +286,21 @@ app_license = "mit"
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
 
+permission_query_conditions = {
+    "Asset": "assetsiq.asset_permissions.asset_query_conditions",
+    "Asset Location": "assetsiq.asset_permissions.location_query_conditions",
+    "Asset Maintenance": "assetsiq.assetsiq.doctype.asset_maintenance.asset_maintenance.query_conditions",
+}
+
+has_permission = {
+    "Asset": "assetsiq.asset_permissions.asset_has_permission",
+    "Asset Location": "assetsiq.asset_permissions.location_has_permission",
+    "Asset Maintenance": "assetsiq.assetsiq.doctype.asset_maintenance.asset_maintenance.has_permission",
+}
+
+# Check employee workflow changes before Asset validation can clear assignment.
+doc_events = {
+    "Asset": {
+        "before_validate": "assetsiq.asset_permissions.validate_employee_asset_changes",
+    },
+}

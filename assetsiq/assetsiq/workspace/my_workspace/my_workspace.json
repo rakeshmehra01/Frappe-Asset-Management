@@ -1,0 +1,64 @@
+{
+ "app": "assetsiq",
+ "charts": [],
+ "content": "[{\"id\": \"aiq-employee-dashboard\", \"type\": \"custom_block\", \"data\": {\"custom_block_name\": \"AssetsIQ My Workspace Dashboard\", \"col\": 12}}]",
+ "creation": "2026-10-26 15:46:20.890009",
+ "custom_blocks": [
+  {
+   "custom_block_name": "AssetsIQ My Workspace Dashboard",
+   "label": "AssetsIQ My Workspace Dashboard"
+  }
+ ],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "hide_custom": 0,
+ "icon": "grid",
+ "idx": 0,
+ "indicator_color": "cyan",
+ "is_hidden": 0,
+ "label": "My Workspace",
+ "link_type": "DocType",
+ "links": [],
+ "modified": "2026-11-06 11:20:23.134199",
+ "modified_by": "Administrator",
+ "module": "AssetsIQ",
+ "name": "My Workspace",
+ "number_cards": [],
+ "owner": "Administrator",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [
+  {
+   "role": "AssetsIQ IT"
+  },
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "AssetsIQ Employee"
+  }
+ ],
+ "sequence_id": 0.0,
+ "shortcuts": [
+  {
+   "color": "Violet",
+   "doc_view": "List",
+   "icon": "list",
+   "label": "My Assets",
+   "link_to": "Asset",
+   "stats_filter": "[[\"Asset\",\"assigned_to\",\"=\",frappe.session.user]]",
+   "type": "DocType"
+  },
+  {
+   "color": "Violet",
+   "doc_view": "List",
+   "icon": "list",
+   "label": "Assignment Requests",
+   "link_to": "Asset",
+   "stats_filter": "[[\"Asset\",\"assigned_to\",\"=\",frappe.session.user],[\"Asset\",\"asset_status\",\"=\",\"Assignment Requested\"]]",
+   "type": "DocType"
+  }
+ ],
+ "title": "My Workspace",
+ "type": "Workspace"
+}

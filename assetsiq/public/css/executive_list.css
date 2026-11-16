@@ -1,0 +1,214 @@
+/* AssetsIQ — shared Executive list actions and filters. Native behavior is preserved. */
+
+/* Keep the State Name and Country filters together. */
+
+.aqi-executive-list .standard-filter-section {
+    display: flex; /* Place the native input wrappers in a row. */
+    flex-wrap: wrap; /* Allow inputs to wrap when space is limited. */
+    align-items: center; /* Align both fields vertically. */
+    gap: 8px; /* Leave a small gap between inputs. */
+    flex: 1 1 400px; /* Let this group share space with the action buttons. */
+    min-width: 0; /* Allow the group to shrink safely. */
+}
+
+/* Remove native grid sizing from each filter wrapper. */
+
+.aqi-executive-list .standard-filter-section .form-group {
+   margin: 0; /* Remove the default spacing around each filter. */
+   padding : 0; /* Remove the default padding around each filter. */
+   width: auto; /* Allow each filter to size naturally. */
+   max-width: 240px; /* Prevent filters from exceeding the available space. */
+   flex : 1 1 170px; /* Allow each filter to share space with the other filters. */
+
+}
+
+/* Give native toolbar inputs the same comfortable Executive proportions. */
+
+.aqi-executive-list .standard-filter-section input.form-control {
+    height: 36px; /* Match the height of the toolbar actions. */
+    background-color: #FBFAFE; /* Replace default grey with a light violet surface. */
+    border: 1px solid #E4DEF1; /* Give each editable field a soft outline. */
+    border-radius: 8px; /* Match the shared control shape. */
+    color: #251C42; /* Keep selected values readable. */
+    font-size: 12px; /* Keep filter text compact. */
+    transition: background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease; /* Smooth color feedback without moving controls. */
+}
+
+/* Show subtle hover feedback on editable toolbar fields. */
+
+.aqi-executive-list .standard-filter-section input.form-control:not([readonly]):not(:disabled):hover {
+    background-color: #F5F0FF; /* Add a soft lavender tint under the pointer. */
+    border-color: #B6A0F0; /* Strengthen the outline with matching violet. */
+}
+
+/* Show which editable filter currently has keyboard focus. */
+
+.aqi-executive-list .standard-filter-section input.form-control:not([readonly]):not(:disabled):focus {
+    background-color: #FFFFFF; /* Keep the active typing area white. */
+    border-color: #5B2CE8; /* Use the primary violet for focus. */
+    box-shadow: 0 0 0 3px rgb(91 44 232 / 10%); /* Add a clear, soft focus ring. */
+}
+
+/* Let the search input and its native match-type button share one outline. */
+
+.aqi-executive-list .standard-filter-section .input-group {
+    background-color: #FBFAFE; /* Match the Country input surface. */
+    border: 1px solid #E4DEF1; /* Outline the complete search control. */
+    border-radius: 8px; /* Round the outside of the combined control. */
+    transition: border-color 160ms ease, box-shadow 160ms ease; /* Smooth the group focus feedback. */
+}
+
+/* Avoid a second border inside the combined search control. */
+
+.aqi-executive-list .standard-filter-section .input-group input.form-control,
+.aqi-executive-list .standard-filter-section .input-group input.form-control:not([readonly]):not(:disabled):focus {
+    height: 34px; /* Allow for the group's top and bottom borders. */
+    border: 0; /* Use the surrounding group's outline instead. */
+    background-color: transparent; /* Let the combined control show one surface. */
+    box-shadow: none; /* Place the focus ring on the whole search group. */
+}
+
+/* Highlight the complete search control on hover. */
+
+.aqi-executive-list .standard-filter-section .input-group:hover {
+    border-color: #B6A0F0; /* Match the Country hover border. */
+}
+
+/* Keep keyboard focus visible across both parts of the search control. */
+
+.aqi-executive-list .standard-filter-section .input-group:focus-within {
+    border-color: #5B2CE8; /* Match the Country focus accent. */
+    box-shadow: 0 0 0 3px rgb(91 44 232 / 10%); /* Mark the entire focused group. */
+}
+
+/* Keep the native match-type menu button aligned with the search input. */
+
+.aqi-executive-list .standard-filter-section .match-type-dropdown-btn {
+    height: 34px; /* Fit the button inside the group's 36-pixel outline. */
+    background-color: transparent; /* Keep the combined control visually consistent. */
+    border: 0; /* Avoid a second outer border. */
+    border-left: 1px solid #E4DEF1; /* Separate the native match-type menu from the text. */
+    color: #655C79; /* Keep the secondary menu icon quiet. */
+}
+
+/* Match native Filter, clear and sorting actions to the refined fields. */
+
+.aqi-executive-list .filter-section .btn {
+    min-height: 36px; /* Align actions with the input height. */
+    padding: 7px 10px; /* Balance the icon and text spacing. */
+    background-color: #FBFAFE; /* Use the same light violet surface. */
+    border: 1px solid #E4DEF1; /* Match the input outlines. */
+    color: #251C42; /* Keep action labels readable. */
+    font-size: 12px; /* Match the filter text size. */
+    transition: background-color 160ms ease, border-color 160ms ease; /* Add smooth color feedback. */
+}
+
+/* Make available toolbar actions respond clearly on hover. */
+
+.aqi-executive-list .filter-section .btn:not(:disabled):hover {
+    background-color: #F0EBFF; /* Use the coordinated lavender hover surface. */
+    border-color: #C4B5FD; /* Strengthen the outline subtly. */
+    color: #4820BF; /* Use a darker violet for the active action. */
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .aqi-executive-list .standard-filter-section input.form-control,
+    .aqi-executive-list .standard-filter-section .input-group,
+    .aqi-executive-list .filter-section .btn {
+        transition: none; /* Remove optional color animation. */
+    }
+}
+
+/* Refine the shared native top action bar for AssetsIQ lists. */
+
+.aqi-executive-list .page-head {
+    background-color: #FFFFFF; /* Keep navigation and actions on a clean surface. */
+    border-bottom: 1px solid #E4DEF1; /* Separate the header from the list with a soft violet line. */
+    box-shadow: 0 2px 8px rgb(37 28 66 / 3%); /* Add restrained depth below the top bar. */
+}
+
+/* Give List View, Saved Filters, refresh and menu buttons matching proportions. */
+
+.aqi-executive-list .page-head .page-actions .btn {
+    min-height: 34px; /* Keep native actions compact but comfortable. */
+    padding: 6px 10px; /* Balance space around action labels and icons. */
+    border: 1px solid #E4DEF1; /* Use a consistent outline across the action bar. */
+    border-radius: 8px; /* Match the filter controls below. */
+    background-color: #FBFAFE; /* Replace the default grey with a quiet violet-tinted surface. */
+    color: #655C79; /* Keep secondary action text readable and restrained. */
+    font-size: 12px; /* Match the compact toolbar typography. */
+    font-weight: 500; /* Keep secondary actions lighter than the Add action. */
+    transition: background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease; /* Smooth emphasis without moving controls. */
+}
+
+/* Give available secondary actions matching hover feedback. */
+
+.aqi-executive-list .page-head .page-actions .btn:not(.btn-primary):not(:disabled):hover {
+    background-color: #F0EBFF; /* Use the shared pale lavender hover surface. */
+    border-color: #C4B5FD; /* Strengthen the violet outline slightly. */
+    color: #4820BF; /* Make the active label easier to identify. */
+}
+
+/* Make the real Add button the clear primary action. */
+
+.aqi-executive-list .page-head .page-actions .btn-primary {
+    padding: 6px 14px; /* Give the main action a little more horizontal space. */
+    background-color: #5B2CE8; /* Use the AssetsIQ primary violet. */
+    border-color: #5B2CE8; /* Match the primary button's background. */
+    color: #FFFFFF; /* Keep the action label readable on violet. */
+    font-weight: 600; /* Give the main action moderate emphasis. */
+    box-shadow: 0 3px 8px rgb(91 44 232 / 14%); /* Add a subtle primary-action shadow. */
+}
+
+/* Refine the enabled Add action on hover. */
+
+.aqi-executive-list .page-head .page-actions .btn-primary:not(:disabled):is(:hover, :focus-visible, :active) {
+    background-color: #4820BF; /* Deepen violet slightly under the pointer. */
+    color: #FFFFFF; /* Override the shared pale-button hover label on this dark surface. */
+    --icon-stroke: #FFFFFF;
+    border-color: #4820BF; /* Keep the outline coordinated. */
+    box-shadow: 0 4px 10px rgb(91 44 232 / 20%); /* Add restrained hover emphasis. */
+}
+
+/* Keep native button icons consistent with their surrounding text. */
+
+.aqi-executive-list .page-head .page-actions .btn .icon,
+.aqi-executive-list .page-head .page-actions .btn .es-icon {
+    --icon-stroke: currentColor; /* Let native outline icons follow the button text color. */
+}
+
+/* Keep keyboard focus visible on the top actions. */
+
+.aqi-executive-list .page-head .page-actions .btn:focus-visible {
+    outline: 2px solid #5B2CE8; /* Clearly mark the action reached by keyboard. */
+    outline-offset: 3px; /* Separate the focus outline from the button border. */
+}
+
+/* Match the native action dropdown menus to the app's cards. */
+
+.aqi-executive-list .page-head .page-actions .dropdown-menu {
+    padding: 6px; /* Leave a compact inset around menu items. */
+    border: 1px solid #E4DEF1; /* Match the surrounding violet-grey outlines. */
+    border-radius: 10px; /* Soften the dropdown corners. */
+    box-shadow: 0 10px 28px rgb(37 28 66 / 12%); /* Lift the menu clearly above the list. */
+}
+
+/* Give menu items the same restrained rounded shape. */
+
+.aqi-executive-list .page-head .page-actions .dropdown-menu .dropdown-item {
+    border-radius: 6px; /* Keep item highlights inside the rounded menu. */
+}
+
+/* Refine pointer and keyboard feedback without changing menu actions. */
+
+.aqi-executive-list .page-head .page-actions .dropdown-menu .dropdown-item:not(.disabled):not(:disabled):hover,
+.aqi-executive-list .page-head .page-actions .dropdown-menu .dropdown-item:not(.disabled):not(:disabled):focus {
+    background-color: #F0EBFF; /* Highlight the available item with lavender. */
+    color: #4820BF; /* Use readable darker violet for its label. */
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .aqi-executive-list .page-head .page-actions .btn {
+        transition: none; /* Apply action feedback immediately. */
+    }
+}

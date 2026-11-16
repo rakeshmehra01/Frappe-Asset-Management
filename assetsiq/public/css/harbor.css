@@ -1,0 +1,56 @@
+/* Shared AssetsIQ design tokens. Scoped to the Harbor interface. */
+.assetsiq {
+	--aiq-navy: #142d4e;
+	--aiq-teal: #087f8c;
+	--aiq-canvas: #f3f6fa;
+	--aiq-surface: #ffffff;
+	--aiq-text: #172c43;
+	--aiq-muted: #5b6b7e;
+	--aiq-border: #dce3eb;
+	--aiq-radius: 12px;
+
+	margin: 0;
+	background: var(--aiq-canvas);
+	color: var(--aiq-text);
+	font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+	font-size: 14px;
+	line-height: 1.6;
+}
+
+.assetsiq,
+.assetsiq * {
+	box-sizing: border-box;
+}
+
+.assetsiq .aiq-stage {
+	min-height: 100vh;
+	display: grid;
+	place-items: center;
+	padding: 24px;
+}
+
+.assetsiq .aiq-card {
+	width: 100%;
+	max-width: 680px;
+	padding: 32px;
+	background: var(--aiq-surface);
+	border: 1px solid var(--aiq-border);
+	border-top: 4px solid var(--aiq-teal);
+	border-radius: var(--aiq-radius);
+}
+
+.assetsiq h1 {
+	margin: 0 0 16px;
+	color: var(--aiq-navy);
+	font-size: 30px;
+	line-height: 1.2;
+}
+
+.assetsiq h2 {
+	margin: 24px 0 8px;
+	font-size: 18px;
+}
+
+.assetsiq p {
+	color: var(--aiq-muted);
+}

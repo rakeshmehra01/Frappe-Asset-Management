@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+<title>AssetsIQ</title>
+<defs><linearGradient id="tile" x1="6" y1="4" x2="58" y2="60" gradientUnits="userSpaceOnUse"><stop stop-color="#F2EBFF"/><stop offset="1" stop-color="#C3ACFF"/></linearGradient></defs>
+<rect x="2" y="2" width="60" height="60" rx="17" fill="url(#tile)"/>
+<path d="M17 43 29 17h6l12 26h-8l-2-5H27l-2 5h-8Zm13-12h4l-2-6-2 6Z" fill="#2B184D"/>
+<circle cx="46" cy="46" r="9" fill="#5B2CE8" stroke="#EDE5FF" stroke-width="3"/>
+<path d="m42.5 46 2.3 2.3 4.5-4.6" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

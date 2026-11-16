@@ -1,0 +1,448 @@
+/*
+ * AssetsIQ — Location State
+ * Executive design
+ * Primary color: #5B2CE8
+ */
+ /* Target field labels only inside our Location State container. and its for location.state.js */
+ .aqi-location-state .control-label{
+    color: #251C42; /* Give the label a readable dark violet color. */
+    font-weight: 600; /* Make the label Slightly bolder */
+    font-size: 12px; /* Keep the label compact. */
+
+ }
+
+ .aqi-location-state .form-layout{
+    background-color: #FFFFFF; /* Keep the compact native form surface white. */
+    border: 1px solid #E4DEF1; /* Add a subtle border to the form. */
+    border-radius: 14px;    /* Round the corners of the form. */
+    padding: 14px 16px; /* Reduce empty space around the header and fields. */
+ }
+
+ /* Create a compact Executive header inside the full form. */
+.aqi-location-state .aqi-state-banner{
+    padding: 14px 16px; /* Keep the introduction compact and balanced. */
+    margin-bottom: 14px; /* Separate the introduction from the field section. */
+    background: linear-gradient(110deg, #FFFFFF, #F0EBFF); /* Blend white into lavender. */
+    border-radius: 16px; /* Round the corners of the introduction. */
+    border: 1px solid #E4DEF1; /* Add a subtle border to the introduction. */
+}
+
+/* Style the small context label above the heading. */
+.aqi-location-state .aqi-state-banner__label{
+    color: #5B2CE8; /* Use the AssetsIQ primary violet. */
+    font-size: 12px; /* Keep the label compact. */
+    font-weight: 600; /* Give the label moderate emphasis. */
+    letter-spacing: 0.5px; /* Slightly space out the letters for clarity. */
+}
+/* Give the introduction a clear heading. */
+.aqi-location-state .aqi-state-banner h2{
+    margin: 8px 0;/* Separate the heading from the surrounding text. */
+    color: #251c42; /* Use a readable dark violet for the heading. */
+    font-size: 20px; /* Keep the heading clear without excess height. */
+    font-weight: 600; /* Keep the heading professional and balanced. */
+}
+/* Keep the supporting explanation compact. */
+.aqi-location-state .aqi-state-banner p{
+    margin: 0; /* Remove default spacing around the paragraph. */
+    color: #655C79; /* Use a readable dark violet for the text. */
+    font-size: 13px; /* Keep the text clear and compact. */
+    line-height: 1.6; /* Give wrapped text comfortable line spacing. */
+}
+
+/* Refine editable fields in the full Location State form. */
+ .aqi-location-state 
+ input.form-control:not([readonly]):not(:disabled){
+    min-height: 38px; /* Ensure fields are tall enough for easy interaction. */
+    background-color: #FBFAFE; /* Use a very light violet background. */
+    border: 1px solid #E4DEF1; /* Add a subtle border for clarity. */
+    border-radius: 8px; /* Soften the field corners. */
+    color: #251C42; /* Use a readable dark violet for the text. */
+    transition: border-color 160ms ease, box-shadow 160ms ease; /* Smooth changes without moving the field. */
+
+ }
+
+ /* Highlight editable field When Hovered */
+ .aqi-location-state
+ input.form-control:not([readonly]):not(:disabled):hover{
+    border-color: #8970ca ;/* Strengthen the outline with soft violet. */
+ }
+
+ /* Clearly show which field is been edited */
+ .aqi-location-state
+ input.form-control:not([readonly]):not(:disabled):focus{
+    background-color: #FFFFFF; /* Keep the field background white while editing. */
+    border-color: #5B2CE8; /* Use the AssetsIQ primary violet for the outline. */
+    box-shadow: 0 0 0 3px rgb(91 44 232 /12%); /* Add a subtle violet glow around the field. */
+
+ }
+ /* Prepare Country dropdown options without shifting their size on hover. */
+.aqi-location-state [data-fieldname="country"] .awesomplete [role="option"] {
+    border: 1px solid transparent; /* Reserve space for the hover border. */
+    border-radius: 7px; /* Give each option gently rounded corners. */
+    transition: background-color 160ms ease, border-color 160ms ease; /* Smooth the color changes. */
+}
+
+/* Highlight the hovered option and the option selected using arrow keys. */
+.aqi-location-state [data-fieldname="country"] .awesomplete [role="option"]:hover,
+.aqi-location-state [data-fieldname="country"] .awesomplete [role="option"][aria-selected="true"] {
+    background-color: #F0EBFF; /* Replace grey with a subtle lavender background. */
+    border-color: #C4B5FD; /* Add a matching soft violet border. */
+    color: #251C42; /* Keep the country name dark and readable. */
+}
+
+/* Respect the user's reduced-motion preference. */
+@media (prefers-reduced-motion: reduce) {
+    .aqi-location-state [data-fieldname="country"] .awesomplete [role="option"] {
+        transition: none; /* Change colors immediately without animation. */
+    }
+}
+
+/* Respect users who prefer reduced motion. */
+
+@media(prefers-reduced-motion: reduce){.aqi-location-state
+input.form-control{transition:none;/* Apply field feedback immediately without animation. */
+}}
+ 
+
+/* Measure available form width so the layout also fits beside native record tools. */
+.aqi-location-state {
+    container-type: inline-size; /* Let responsive rules use this form's width. */
+    container-name: aqi-state-form; /* Identify the container for the rule below. */
+}
+
+/* Keep a real gap even when the form and guide are stacked. */
+.aqi-location-state .aqi-state-guided-layout {
+    --page-max-width: 100%; /* Remove the large native centered gutters inside this form only. */
+    display: grid; /* Arrange native form and guidance without moving fields. */
+    grid-template-columns: minmax(0, 1fr); /* Start with a safe single-column layout. */
+    gap: 18px; /* Separate the cards vertically and horizontally. */
+    padding: 16px; /* Leave a compact margin around the pair of cards. */
+    align-items: start; /* Keep cards aligned at the top instead of stretching them. */
+}
+
+/* Fit the native form to its available column. */
+.aqi-location-state .aqi-state-guided-layout > .form-layout {
+    min-width: 0; /* Allow the form to shrink without horizontal overflow. */
+    margin: 0; /* Let the grid control all spacing between the cards. */
+}
+
+/* Remove the extra native padding around our introduction only. */
+.aqi-location-state .aqi-state-intro {
+    padding: 0; /* Align the header with the fields below. */
+    border-bottom: 0; /* Avoid an additional divider under the banner. */
+}
+
+/* Remove the second layer of native dashboard padding around our banner. */
+.aqi-location-state .aqi-state-intro > .section-body {
+    padding: 0; /* The banner already supplies its own internal spacing. */
+}
+
+/* Make the field section compact without hiding validation or dropdown content. */
+.aqi-location-state .form-section {
+    padding: 0; /* Use the outer form card for horizontal spacing. */
+}
+
+/* Trim excess space above the first native field. */
+.aqi-location-state .form-section > .section-body:first-child {
+    padding-top: 0; /* Keep the first field close to the banner. */
+}
+
+/* Give the two native fields a useful width instead of the default half-column. */
+.aqi-location-state .form-column.col-sm-12 > form > .input-max-width {
+    width: 100%; /* Let fields use the available form column. */
+    max-width: 520px; /* Avoid excessively long inputs on wide screens. */
+    padding-right: 0; /* Align the right edges of both controls. */
+}
+
+/* Keep the last field from adding unnecessary space below the form. */
+.aqi-location-state [data-fieldname="description"] {
+    margin-bottom: 0; /* Finish the card directly after its normal field content. */
+}
+
+/* Match the optional description to the other editable fields. */
+.aqi-location-state [data-fieldname="description"] textarea.form-control {
+    min-height: 88px; /* Give short notes a compact starting area. */
+    background-color: #FBFAFE; /* Match the other field surfaces. */
+    border: 1px solid #E4DEF1; /* Match the standard violet-grey outline. */
+    border-radius: 8px; /* Keep all field corners consistent. */
+    color: #251C42; /* Keep typed notes readable. */
+    resize: vertical; /* Allow longer notes without horizontal overflow. */
+    transition: border-color 160ms ease, box-shadow 160ms ease; /* Smooth the field feedback. */
+}
+
+/* Give the description the same hover feedback as the inputs. */
+.aqi-location-state [data-fieldname="description"] textarea.form-control:not([readonly]):not(:disabled):hover {
+    border-color: #8970CA; /* Strengthen the outline with soft violet. */
+}
+
+/* Clearly identify the description while it is being edited. */
+.aqi-location-state [data-fieldname="description"] textarea.form-control:not([readonly]):not(:disabled):focus {
+    background-color: #FFFFFF; /* Keep the active typing surface white. */
+    border-color: #5B2CE8; /* Match the primary focus accent. */
+    box-shadow: 0 0 0 3px rgb(91 44 232 / 12%); /* Provide a visible focus ring. */
+}
+
+/* Keep field instructions compact and readable. */
+.aqi-location-state .frappe-control .help-box {
+    margin-top: 5px; /* Separate helper text from its field. */
+    color: #655C79; /* Match the supporting text palette. */
+    font-size: 11px; /* Keep instructions secondary to field labels. */
+    line-height: 1.5; /* Give wrapped help text comfortable spacing. */
+}
+
+/* Avoid optional textarea animation when reduced motion is requested. */
+@media (prefers-reduced-motion: reduce) {
+    .aqi-location-state [data-fieldname="description"] textarea.form-control {
+        transition: none; /* Apply feedback immediately. */
+    }
+}
+
+/* Create a compact guidance card with a quiet lavender accent. */
+.aqi-location-state .aqi-state-guide {
+    min-width: 0; /* Let long translated text wrap safely. */
+    padding: 16px; /* Keep the instructions readable without a large empty box. */
+    background: linear-gradient(145deg, #FFFFFF, #FBFAFE); /* Add a subtle surface variation. */
+    border: 1px solid #E4DEF1; /* Match the form's violet-grey outline. */
+    border-radius: 14px; /* Match the rounded form card. */
+}
+
+/* Align the guidance icon with its title. */
+.aqi-location-state .aqi-state-guide__header {
+    display: flex; /* Place the symbol beside the title. */
+    align-items: flex-start; /* Align the icon with the first heading line. */
+    gap: 10px; /* Separate the icon from its text. */
+    margin-bottom: 14px; /* Separate the heading from the instruction cards. */
+}
+
+/* Give the guidance symbol a soft violet tile. */
+.aqi-location-state .aqi-state-guide__symbol {
+    display: grid; /* Center the symbol inside its tile. */
+    place-items: center; /* Center the icon vertically and horizontally. */
+    flex: 0 0 34px; /* Keep the icon tile from shrinking beside long text. */
+    height: 34px; /* Keep the tile compact and square. */
+    color: #5B2CE8; /* Use the AssetsIQ primary violet. */
+    background-color: #F0EBFF; /* Use a pale lavender tile. */
+    border-radius: 10px; /* Soften the symbol tile corners. */
+}
+
+/* Use one consistent size for the decorative vector icons. */
+.aqi-location-state .aqi-state-icon {
+    width: 18px; /* Keep each icon compact. */
+    height: 18px; /* Preserve the square icon proportions. */
+    flex-shrink: 0; /* Prevent icons shrinking beside text. */
+}
+
+/* Style the guidance context label rather than a native field label. */
+.aqi-location-state .aqi-state-guide__label {
+    color: #5B2CE8; /* Use primary violet for the small context label. */
+    font-size: 10px; /* Keep the label secondary to the title. */
+    font-weight: 600; /* Give the label enough emphasis. */
+    letter-spacing: 0.4px; /* Open the small text slightly for readability. */
+}
+
+/* Keep the supporting heading smaller than the main banner. */
+.aqi-location-state .aqi-state-guide h2 {
+    margin: 4px 0 0; /* Leave a small gap below the context label. */
+    color: #251C42; /* Use readable dark violet. */
+    font-size: 16px; /* Keep the guidance heading compact. */
+    line-height: 1.4; /* Allow comfortable wrapping. */
+    font-weight: 600; /* Match the Executive heading weight. */
+}
+
+/* Replace plain numbered bullets with compact icon cards. */
+.aqi-location-state .aqi-state-guide__steps {
+    display: grid; /* Arrange instructions with consistent separation. */
+    gap: 8px; /* Keep small visible gaps between instruction cards. */
+    margin: 0; /* Remove default list outer spacing. */
+    padding: 0; /* Remove default list indentation. */
+    list-style: none; /* Icons supply the visual markers. */
+}
+
+/* Lay out each instruction without animating its position. */
+.aqi-location-state .aqi-state-guide__steps > li {
+    display: flex; /* Put the icon beside the instruction text. */
+    align-items: flex-start; /* Align icons with the first line of text. */
+    gap: 9px; /* Separate icons from their explanations. */
+    padding: 10px; /* Keep each instruction compact. */
+    background-color: #FFFFFF; /* Keep the instructions distinct from their parent card. */
+    border: 1px solid #EEE8FA; /* Give each instruction a soft outline. */
+    border-radius: 9px; /* Match the slightly rounded controls. */
+    transition: border-color 160ms ease, background-color 160ms ease; /* Smooth the optional hover feedback. */
+}
+
+/* Add restrained hover feedback without moving instruction text. */
+.aqi-location-state .aqi-state-guide__steps > li:hover {
+    background-color: #FBFAFE; /* Tint the instruction very slightly. */
+    border-color: #C4B5FD; /* Use a matching soft violet outline. */
+}
+
+/* Keep the instruction symbols visually consistent. */
+.aqi-location-state .aqi-state-guide__step-icon {
+    display: grid; /* Center each decorative icon. */
+    place-items: center; /* Align the icon within its tile. */
+    flex: 0 0 28px; /* Reserve a compact, non-shrinking icon column. */
+    height: 28px; /* Keep each tile square. */
+    color: #5B2CE8; /* Match the shared primary accent. */
+    background-color: #F0EBFF; /* Match the guidance header symbol. */
+    border-radius: 7px; /* Keep the small tiles softly rounded. */
+}
+
+/* Make instruction titles easy to scan. */
+.aqi-location-state .aqi-state-guide__steps strong {
+    display: block; /* Place the explanation below its title. */
+    color: #251C42; /* Use the readable heading color. */
+    font-size: 12px; /* Keep titles compact. */
+    line-height: 1.5; /* Preserve readable line spacing. */
+    font-weight: 600; /* Distinguish the title from its explanation. */
+}
+
+/* Keep instruction explanations short and readable. */
+.aqi-location-state .aqi-state-guide__steps p {
+    margin: 3px 0 0; /* Separate each explanation from its title. */
+    color: #655C79; /* Use the supporting text color. */
+    font-size: 12px; /* Keep the guidance compact. */
+    line-height: 1.5; /* Give wrapped lines enough space. */
+}
+
+/* Use side-by-side cards only when this form has enough actual space. */
+@container aqi-state-form (min-width: 960px) {
+    .aqi-location-state .aqi-state-guided-layout {
+        grid-template-columns: minmax(0, 1fr) 310px; /* Keep the guide readable beside the flexible form. */
+    }
+}
+
+/* Keep narrow mobile screens comfortable. */
+@media (max-width: 575px) {
+    .aqi-location-state .aqi-state-guided-layout {
+        padding: 10px; /* Preserve more usable width on phones. */
+        gap: 14px; /* Keep a visible gap without excess empty space. */
+    }
+}
+
+/* Respect reduced-motion preferences for instruction hover effects. */
+@media (prefers-reduced-motion: reduce) {
+    .aqi-location-state .aqi-state-guide__steps > li {
+        transition: none; /* Apply feedback immediately when motion is reduced. */
+    }
+}
+
+/* ---------------------------------------------------------------------------------- */
+/* Style the Location State popup surface.: sepreate from main form view */
+
+
+.aiq-location-state-dialog .modal-content {
+    background-color: #FFFFFF; /* Keep the popup surface white. */
+    border: 1px solid #E4DEF1; /* Add a subtle violet-grey outline. */
+    border-radius: 16px; /* Soften the outer corners. */
+    box-shadow: 0 20px 60px rgb(18 37 60 / 18%); /* Add gentle depth. */
+}
+
+/* Give the popup header a visible lavender background. */
+.aiq-location-state-dialog .modal-header {
+    background: linear-gradient(110deg, #FFFFFF, #F0EBFF); /* Blend white into lavender. */
+    border-radius: 16px 16px 0 0; /* Round the upper corners. */
+    padding: 18px 22px; /* Balance the heading spacing. */
+    border-bottom: 1px solid #E4DEF1; /* Separate the header from the fields. */
+}
+
+/* Refine the popup title. */
+.aiq-location-state-dialog .modal-title {
+    color: #251C42; /* Use readable dark violet text. */
+    font-size: 18px; /* Keep the title clear and compact. */
+    font-weight: 600; /* Give the title moderate emphasis. */
+}
+
+/* Balance the space around the popup fields. */
+.aiq-location-state-dialog .model-body{
+    padding: 20px 22px; /* Give the fields comfortable internal spacing. */
+}
+
+/* Make field labels clear and consistent. */
+.aiq-location-state-dialog .control-label{
+    color: #251c42;  /* Use dark violet for readable labels. */
+    font-size: 12px; /* Keep labels compact. */
+    font-weight: 600; /* Give labels moderate emphasis. */
+
+}
+
+/* Refine editable text and Link controls. */
+.aiq-location-state-dialog input.form-control:not([readonly]):not([disabled]){
+    min-height: 38px; /* Ensure fields are tall enough for easy interaction. */
+    background-color: #FBFAFE; /* Use a very light*/
+    border: 1px solid #E4DEF1; /* Add a subtle border for clarity. */
+    border-radius: 8px; /* Soften the field corners. */
+    transition: border-color 160ms ease, box-shadow 160ms ease; /* Smooth changes without moving the field. */
+}
+
+/* Show gentle feedback when the pointer enters an editable field. */
+.aiq-location-state-dialog .modal-footer{
+    padding: 14px 22px; /* Balance the footer spacing. */
+    background-color: #FBFAFE; /* Separate actions with a subtle surface change. */
+    border-top: 1px solid #E4DEF1; /* Add a light divider above the actions. */
+    border-radius: 0 0 16px 16px; /* Match the popup's lower corners. */
+}
+
+/* Give the footer buttons consistent proportions. */
+.aiq-location-state-dialog .modal-footer .btn{
+    min-height: 36px; /* Give both actions a consistent minimum height. */
+    max-width: 150px; 
+    padding: 7px 14px; /* Balance space around the button text. */
+    border-radius: 8px; /* Match the field corner style. */
+    font-weight: 600; /* Keep action labels easy to scan. */
+    transition: background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease; /* Animate visual feedback smoothly. */
+}
+
+/* Refine the available Save button on hover. */
+.aiq-location-state-dialog .modal-footer .btn-primary:not(:disabled):hover {
+
+    background-color: #4820BF; /* Deepen the violet slightly. */
+    border-color: #4820BF; /* Match the darker background. */
+    box-shadow: 0 4px 10px rgb(91 44 232 / 18%); /* Add restrained emphasis. */
+}
+/* Keep keyboard navigation visible on action buttons. */
+.aiq-location-state-dialog .modal-footer .btn:focus-visible {
+    outline: 2px solid #5B2CE8; /* Show which button has keyboard focus. */
+    outline-offset: 3px; /* Separate the focus outline from the button. */
+}
+
+
+/* Refine Frappe's existing popup entrance transition. */
+.aiq-location-state-dialog.modal.fade .modal-dialog {
+    transition: transform 180ms ease-out; /* Keep the native entrance motion brief. */
+}
+
+/* Respect users who request reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+    .aiq-location-state-dialog.modal.fade .modal-dialog {
+        transition: none; /* Remove the optional sliding transition. */
+        transform: none; /* Prevent the dialog from sliding during opening. */
+    }
+
+    .aiq-location-state-dialog input.form-control,
+    .aiq-location-state-dialog .modal-footer .btn {
+        transition: none; /* Apply field and button feedback immediately. */
+    }
+}
+
+
+/* Prepare Country dropdown options without shifting their size on hover. */
+.aiq-location-state-dialog [data-fieldname="country"] .awesomplete [role="option"] {
+    border: 1px solid transparent; /* Reserve space for the hover border. */
+    border-radius: 7px; /* Give each option gently rounded corners. */
+    transition: background-color 160ms ease, border-color 160ms ease; /* Smooth the color changes. */
+}
+
+/* Highlight the hovered option and the option selected using arrow keys. */
+.aiq-location-state-dialog [data-fieldname="country"] .awesomplete [role="option"]:hover,
+.aiq-location-state-dialog [data-fieldname="country"] .awesomplete [role="option"][aria-selected="true"] {
+    background-color: #F0EBFF; /* Replace grey with a subtle lavender background. */
+    border-color: #C4B5FD; /* Add a matching soft violet border. */
+    color: #251C42; /* Keep the country name dark and readable. */
+}
+
+/* Respect the user's reduced-motion preference. */
+@media (prefers-reduced-motion: reduce) {
+    .aiq-location-state-dialog [data-fieldname="country"] .awesomplete [role="option"] {
+        transition: none; /* Change colors immediately without animation. */
+    }
+}

@@ -1,0 +1,496 @@
+/* AssetsIQ — Asset Location. Native fields, queries and actions remain intact. */
+
+/* Share the existing palette with both Location views. */
+:is(.aiq-location-form, .aiq-location-list) .layout-main-section {
+    background-color: #F5F3FB; /* Match the AssetsIQ page canvas. */
+}
+
+/* Measure the form's real content width, including native record-tool changes. */
+.aiq-location-form .layout-main-section {
+    container-type: inline-size; /* Base responsive columns on available form space. */
+    container-name: aiq-asset-location; /* Name the container for the rule below. */
+}
+
+/* Keep form content and its guidance separated on every screen size. */
+.aiq-location-fields .aiq-location-guided-layout {
+    --page-max-width: 100%; /* Avoid the native large centered field gutter. */
+    display: grid; /* Arrange the native form and custom guidance. */
+    grid-template-columns: minmax(0, 1fr); /* Start with a safe stacked layout. */
+    gap: 18px; /* Leave a clear gap between the form and guidance. */
+    padding: 16px; /* Keep the overall layout compact. */
+    align-items: start; /* Avoid stretching shorter cards to unnecessary heights. */
+}
+
+/* Let the native form column fit beside the guide. */
+.aiq-location-fields .aiq-location-guided-layout > .form-layout {
+    min-width: 0; /* Prevent long values from forcing horizontal overflow. */
+    background-color: transparent; /* Let the individual section cards define the surface. */
+    border: 0; /* Avoid an extra outline around all form cards. */
+    box-shadow: none; /* Keep depth restrained. */
+}
+
+/* Remove the default solid page surface behind our individual cards. */
+.aiq-location-fields .std-form-layout > .form-layout > .form-page {
+    background-color: transparent; /* Show the common pale canvas between sections. */
+}
+
+/* Remove extra dashboard spacing around our introductory banner only. */
+.aiq-location-fields .aiq-location-intro,
+.aiq-location-fields .aiq-location-intro > .section-body {
+    padding: 0; /* Let the banner supply its own spacing. */
+    border: 0; /* Avoid a second line under the introductory card. */
+}
+
+/* Build a compact lavender introduction for the full form. */
+.aiq-location-fields .aiq-location-banner {
+    display: flex; /* Position the location symbol beside the introduction. */
+    align-items: flex-start; /* Align the symbol with the first text line. */
+    gap: 14px; /* Keep the icon separate from the text. */
+    padding: 16px 18px; /* Balance the banner's internal spacing. */
+    margin-bottom: 14px; /* Separate the banner from Geography. */
+    background: linear-gradient(115deg, #FFFFFF, #F0EBFF); /* Use the selected Executive lavender surface. */
+    border: 1px solid #E4DEF1; /* Match the native field cards. */
+    border-radius: 12px; /* Use the shared slightly rounded shape. */
+}
+
+/* Reuse the local location-pin image in a small violet tile. */
+.aiq-location-fields .aiq-location-banner__icon {
+    flex: 0 0 38px; /* Keep the symbol tile a consistent width. */
+    height: 38px; /* Make the tile square. */
+    background: #F0EBFF url("/assets/assetsiq/images/location-pin.svg") center / 22px no-repeat; /* Load the app's decorative local pin. */
+    border-radius: 11px; /* Soften the symbol tile. */
+}
+
+/* Keep the small context labels consistent across form, list and guide. */
+:is(.aiq-location-form, .aiq-location-list) .aiq-location-eyebrow {
+    color: #5B2CE8; /* Use AssetsIQ's primary violet. */
+    font-size: 10px; /* Keep the label secondary to the heading. */
+    font-weight: 600; /* Give small labels moderate emphasis. */
+    letter-spacing: 0.4px; /* Open small lettering slightly for readability. */
+}
+
+/* Establish a clear but compact form title. */
+.aiq-location-fields .aiq-location-banner h2 {
+    margin: 5px 0 6px; /* Separate the title from the context and explanation. */
+    color: #251C42; /* Use readable dark violet. */
+    font-size: 21px; /* Match the existing compact form hierarchy. */
+    font-weight: 600; /* Keep the heading professional and balanced. */
+    line-height: 1.35; /* Give wrapped titles comfortable spacing. */
+}
+
+/* Keep the form's introductory sentence short and readable. */
+.aiq-location-fields .aiq-location-banner p {
+    margin: 0; /* Remove default paragraph gaps. */
+    color: #655C79; /* Use the supporting text color. */
+    font-size: 12px; /* Keep the introduction compact. */
+    line-height: 1.6; /* Give wrapped text breathing room. */
+}
+
+/* Display the real generated ID without creating a second identity field. */
+.aiq-location-fields .aiq-location-identity {
+    display: inline-block; /* Keep the identity notice compact. */
+    margin-top: 9px; /* Separate the ID from the introductory sentence. */
+    padding: 3px 8px; /* Add a small inset around the notice. */
+    border: 1px solid #E4DEF1; /* Match the shared fine outline. */
+    border-radius: 6px; /* Keep the notice softly rounded. */
+    color: #655C79; /* Keep the ID supporting rather than dominant. */
+    font-size: 11px; /* Fit longer generated IDs without a large panel. */
+    overflow-wrap: anywhere; /* Wrap long IDs safely. */
+}
+
+/* Give Geography and Address & Notes separate compact white cards. */
+.aiq-location-fields .form-section {
+    padding: 14px 16px; /* Keep controls comfortably inside each card. */
+    margin-bottom: 14px; /* Leave visible separation between native sections. */
+    background-color: #FFFFFF; /* Keep field surfaces clean. */
+    border: 1px solid #E4DEF1; /* Match the banner outline. */
+    border-radius: 12px; /* Match the rest of the form. */
+}
+
+/* Refine native section headings without replacing them. */
+.aiq-location-fields .form-section .section-head {
+    padding: 0 0 10px; /* Keep headings close to their fields. */
+    border-bottom: 1px solid #EEE8FA; /* Separate each heading subtly. */
+    color: #251C42; /* Use the shared heading color. */
+    font-size: 13px; /* Keep section labels compact. */
+    font-weight: 600; /* Make headings easy to scan. */
+}
+
+/* Avoid duplicate top padding under section headings. */
+.aiq-location-fields .form-section .section-body {
+    padding-top: 12px; /* Leave a single comfortable gap before fields. */
+}
+
+/* Let native columns control field width consistently. */
+.aiq-location-fields .form-column > form > .input-max-width {
+    max-width: 100%; /* Avoid half-width fields inside an already narrow column. */
+    padding-right: 0; /* Keep input edges aligned. */
+}
+
+/* Keep labels clear without competing with section headings. */
+.aiq-location-fields .control-label {
+    color: #251C42; /* Use readable dark violet. */
+    font-size: 12px; /* Match existing AssetsIQ labels. */
+    font-weight: 600; /* Distinguish labels from helper text. */
+}
+
+/* Give editable controls a consistent Executive appearance. */
+.aiq-location-fields :is(input, textarea).form-control:not([readonly]):not(:disabled) {
+    background-color: #FBFAFE; /* Use a subtle violet field surface. */
+    border: 1px solid #E4DEF1; /* Outline each editable control. */
+    border-radius: 8px; /* Match list and popup fields. */
+    color: #251C42; /* Keep values readable. */
+    transition: border-color 160ms ease, box-shadow 160ms ease; /* Smooth focus feedback without moving fields. */
+}
+
+/* Make native Link inputs comfortable to select. */
+.aiq-location-fields input.form-control {
+    min-height: 36px; /* Match the app's compact input height. */
+}
+
+/* Keep address and notes compact while allowing longer content. */
+.aiq-location-fields textarea.form-control {
+    min-height: 92px; /* Provide space for short address details. */
+    resize: vertical; /* Allow manual expansion without horizontal overflow. */
+}
+
+/* Signal editable controls when hovered. */
+.aiq-location-fields :is(input, textarea).form-control:not([readonly]):not(:disabled):hover {
+    border-color: #B6A0F0; /* Use a slightly stronger violet outline. */
+}
+
+/* Preserve clear keyboard and pointer focus. */
+.aiq-location-fields :is(input, textarea).form-control:not([readonly]):not(:disabled):focus {
+    background-color: #FFFFFF; /* Keep the active typing area white. */
+    border-color: #5B2CE8; /* Use primary violet for the active control. */
+    box-shadow: 0 0 0 3px rgb(91 44 232 / 10%); /* Supply a visible focus ring. */
+}
+
+/* Make helper instructions readable below native fields. */
+.aiq-location-fields .frappe-control .help-box {
+    margin-top: 5px; /* Separate the explanation from the control. */
+    color: #655C79; /* Use the supporting text color. */
+    font-size: 11px; /* Keep help text secondary to labels. */
+    line-height: 1.5; /* Allow comfortable wrapping. */
+}
+
+/* Reserve outline space for all geography Link options. */
+:is(.aiq-location-fields, .aiq-location-list) .awesomplete [role="option"] {
+    border: 1px solid transparent; /* Prevent option resizing during hover. */
+    border-radius: 7px; /* Match the other app dropdowns. */
+    transition: background-color 160ms ease, border-color 160ms ease; /* Smooth the option feedback. */
+}
+
+/* Match hovered and keyboard-selected Link choices to the palette. */
+:is(.aiq-location-fields, .aiq-location-list) .awesomplete [role="option"]:hover,
+:is(.aiq-location-fields, .aiq-location-list) .awesomplete [role="option"][aria-selected="true"] {
+    background-color: #F0EBFF; /* Replace default grey with lavender. */
+    border-color: #C4B5FD; /* Add a matching violet outline. */
+    color: #4820BF; /* Keep the highlighted value readable. */
+}
+
+/* Create a readable guidance card with its own visual boundary. */
+.aiq-location-fields .aiq-location-guide {
+    padding: 16px; /* Keep the guide compact. */
+    min-width: 0; /* Let translated text wrap within the column. */
+    background: linear-gradient(145deg, #FFFFFF, #FBFAFE); /* Add a gentle surface variation. */
+    border: 1px solid #E4DEF1; /* Match the native section cards. */
+    border-radius: 12px; /* Use the shared card shape. */
+}
+
+/* Align the lightbulb icon and guidance heading. */
+.aiq-location-fields .aiq-location-guide__heading {
+    display: flex; /* Place the icon beside the heading. */
+    align-items: flex-start; /* Align the icon with the top line. */
+    gap: 10px; /* Separate the symbol from its text. */
+    margin-bottom: 14px; /* Leave space before the instruction cards. */
+}
+
+/* Keep the supporting guidance heading compact. */
+.aiq-location-fields .aiq-location-guide h2 {
+    margin: 4px 0 0; /* Separate the title from its eyebrow. */
+    color: #251C42; /* Use the common heading color. */
+    font-size: 16px; /* Keep the guide secondary to the main form title. */
+    line-height: 1.4; /* Allow a comfortable two-line title. */
+    font-weight: 600; /* Match the Executive title weight. */
+}
+
+/* Give decorative guidance icons a matching tile. */
+.aiq-location-fields :is(.aiq-location-guide__symbol, .aiq-location-guide__step-icon) {
+    display: grid; /* Center the SVG inside its tile. */
+    place-items: center; /* Align the symbol vertically and horizontally. */
+    flex: 0 0 30px; /* Keep the tile from shrinking beside text. */
+    height: 30px; /* Keep the tile square. */
+    border-radius: 8px; /* Soften the icon tile. */
+    background-color: #F0EBFF; /* Match the shared lavender accent. */
+    color: #5B2CE8; /* Use primary violet for the SVG strokes. */
+}
+
+/* Use consistent icon sizes throughout the guide. */
+.aiq-location-fields .aiq-location-guide svg {
+    width: 18px; /* Keep symbols compact. */
+    height: 18px; /* Preserve their square proportions. */
+}
+
+/* Arrange the instruction cards with even separation. */
+.aiq-location-fields .aiq-location-guide ol {
+    display: grid; /* Give each instruction a separate row. */
+    gap: 8px; /* Keep clear gaps between instructions. */
+    padding: 0; /* Remove native list indentation. */
+    margin: 0; /* Avoid extra outer list spacing. */
+    list-style: none; /* Use icons as visual markers. */
+}
+
+/* Keep individual instructions structured and easy to scan. */
+.aiq-location-fields .aiq-location-guide li {
+    display: flex; /* Align the instruction symbol and explanation. */
+    gap: 9px; /* Separate the symbol from its text. */
+    padding: 10px; /* Keep each instruction compact. */
+    background-color: #FFFFFF; /* Give every instruction a distinct surface. */
+    border: 1px solid #EEE8FA; /* Add a quiet card outline. */
+    border-radius: 9px; /* Match the app's smaller cards. */
+    transition: border-color 160ms ease, background-color 160ms ease; /* Smooth optional hover feedback. */
+}
+
+/* Acknowledge the instruction under the pointer without moving it. */
+.aiq-location-fields .aiq-location-guide li:hover {
+    background-color: #FBFAFE; /* Add a very light violet tint. */
+    border-color: #C4B5FD; /* Strengthen the outline slightly. */
+}
+
+/* Keep instruction titles clear and compact. */
+.aiq-location-fields .aiq-location-guide strong {
+    display: block; /* Place the explanation below its title. */
+    color: #251C42; /* Use the common dark text color. */
+    font-size: 12px; /* Match the guide's compact proportions. */
+    font-weight: 600; /* Give titles moderate emphasis. */
+}
+
+/* Style instruction text and the dependency reminder consistently. */
+.aiq-location-fields .aiq-location-guide p {
+    margin: 4px 0 0; /* Keep explanations close to their titles. */
+    color: #655C79; /* Use the supporting text color. */
+    font-size: 12px; /* Keep the guide readable and compact. */
+    line-height: 1.5; /* Give wrapped text breathing room. */
+}
+
+/* Separate the parent-change reminder from the instruction cards. */
+.aiq-location-fields .aiq-location-guide .aiq-location-guide__note {
+    margin-top: 12px; /* Leave a small gap above the reminder. */
+    padding-top: 12px; /* Give the reminder room after the divider. */
+    border-top: 1px solid #EEE8FA; /* Separate the behavior note subtly. */
+}
+
+/* Put guidance on the right only when the actual form has room. */
+@container aiq-asset-location (min-width: 1120px) {
+    .aiq-location-fields .aiq-location-guided-layout {
+        grid-template-columns: minmax(0, 1fr) 300px; /* Keep the guide readable beside the flexible form. */
+    }
+}
+
+/* Add the matching compact introduction to the native list. */
+.aiq-location-list .aiq-location-list-intro {
+    margin: 12px 14px 16px; /* Match the spacing on Category and State lists. */
+    padding: 12px 16px; /* Keep the list introduction compact. */
+    background-color: #F0EBFF; /* Use the shared lavender panel. */
+    border: 1px solid #E4DEF1; /* Match the app's soft outlines. */
+    border-radius: 10px; /* Match the list filter card. */
+}
+
+/* Give the list heading the same hierarchy as the other lists. */
+.aiq-location-list .aiq-location-list-intro h2 {
+    margin: 4px 0; /* Balance the spacing around the title. */
+    color: #251C42; /* Use the dark violet heading color. */
+    font-size: 20px; /* Match the existing compact list titles. */
+    font-weight: 600; /* Keep the heading moderately bold. */
+    line-height: 1.3; /* Allow clean wrapping on small screens. */
+}
+
+/* Keep the list's introductory description secondary. */
+.aiq-location-list .aiq-location-list-intro p {
+    margin: 0; /* Remove excess paragraph space. */
+    color: #655C79; /* Use the supporting text color. */
+    font-size: 12px; /* Keep the introduction compact. */
+    line-height: 1.5; /* Preserve readable wrapping. */
+}
+
+/* Keep native Location ID and geography filters aligned horizontally. */
+.aiq-location-list .page-form {
+    display: flex; /* Place standard filters beside the action groups. */
+    flex-wrap: wrap; /* Allow complete groups to wrap rather than squeeze. */
+    align-items: center; /* Align native controls vertically. */
+    gap: 10px; /* Leave even gaps between groups. */
+    margin: 0 14px 14px; /* Align the toolbar with the list introduction. */
+    padding: 10px 14px; /* Keep the toolbar compact. */
+    background-color: #FFFFFF; /* Give filters a clean white surface. */
+    border: 1px solid #E4DEF1; /* Match the shared card outlines. */
+    border-radius: 10px; /* Match the app's native-control cards. */
+    box-shadow: 0 3px 12px rgb(37 28 66 / 3%); /* Add restrained depth. */
+}
+
+/* Override only Frappe's important column utility on this list toolbar. */
+.aiq-location-list .page-form.flex-column {
+    flex-direction: row !important; /* Keep the toolbar horizontal when space allows. */
+}
+
+/* Make four native standard filters fit comfortably before wrapping. */
+.aiq-location-list .standard-filter-section .form-group {
+    flex-basis: 150px; /* Use a compact starting width for ID and geography filters. */
+    max-width: 210px; /* Avoid any one filter consuming the toolbar. */
+}
+
+/* Keep native Filter, clear and sort actions together. */
+.aiq-location-list .filter-section {
+    display: flex; /* Arrange native action groups in a row. */
+    flex-wrap: wrap; /* Allow actions to wrap on smaller screens. */
+    align-items: center; /* Align the actions with the inputs. */
+    gap: 6px; /* Match the shared action spacing. */
+    margin: 0 0 0 auto; /* Place actions on the right when space permits. */
+    padding: 0; /* Avoid extra toolbar height. */
+}
+
+/* Keep the native list edges aligned with its toolbar. */
+.aiq-location-list .frappe-list {
+    margin: 0 14px 14px; /* Use the same horizontal page margins. */
+}
+
+/* Give sticky native column headings a stable background. */
+.aiq-location-list .list-row-container:has(> .list-row-head) {
+    background-color: #F5F3FB; /* Prevent scrolling rows from showing through. */
+    margin-bottom: 8px; /* Separate headings from the first record. */
+}
+
+/* Refine native list headings while retaining their sort handlers. */
+.aiq-location-list .list-row-head {
+    min-height: 38px; /* Keep headings compact. */
+    padding: 8px 12px; /* Align labels with the row cards. */
+    background-color: #FBFAFE; /* Distinguish headings from white records. */
+    border: 1px solid #E4DEF1; /* Outline the heading softly. */
+    border-radius: 10px; /* Match the row corners. */
+    color: #655C79; /* Keep headings quieter than record links. */
+    font-size: 11px; /* Match the other AssetsIQ lists. */
+}
+
+/* Present native Location records as separate Soft Rows cards. */
+.aiq-location-list .list-row-container:has(> .list-row) {
+    margin-bottom: 8px; /* Leave a clear gap between locations. */
+    padding: 0 12px; /* Keep content away from the card edges. */
+    background-color: #FFFFFF; /* Give records clean white surfaces. */
+    border: 1px solid #E4DEF1; /* Define each location independently. */
+    border-radius: 10px; /* Use the chosen Soft Rows shape. */
+    transition: background-color 160ms ease, border-color 160ms ease; /* Smooth hover without moving content. */
+}
+
+/* Allow room for an optional address summary beneath the real ID. */
+.aiq-location-list .list-row {
+    min-height: 54px; /* Fit a location ID and one short address line. */
+    height: auto; /* Let native content determine additional required space. */
+    border-bottom: 0; /* Use the card outline instead of a flat separator. */
+    background-color: transparent; /* Let the card show hover/selection surfaces. */
+}
+
+/* Highlight hovered or natively selected records. */
+.aiq-location-list .list-row-container:has(> .list-row):hover,
+.aiq-location-list .list-row-container:has(.list-row-checkbox:checked) {
+    background-color: #F5F0FF; /* Use a pale lavender highlight. */
+    border-color: #C4B5FD; /* Strengthen the outline subtly. */
+}
+
+/* Avoid a separate grey rectangle inside the rounded card. */
+.aiq-location-list .list-row-container .list-row:hover,
+.aiq-location-list .list-row-container:hover .level-right,
+.aiq-location-list .list-row-container:focus-visible .list-row {
+    background-color: transparent; /* Keep the inner native row on the same surface. */
+}
+
+/* Preserve clear keyboard focus on the native record containers. */
+.aiq-location-list .list-row-container:has(> .list-row):focus-visible {
+    outline: 2px solid #5B2CE8; /* Identify the row reached by keyboard navigation. */
+    outline-offset: 2px; /* Separate the focus indicator from the card border. */
+}
+
+/* Keep Location IDs and address summaries inside their native links. */
+.aiq-location-list .list-subject a[data-name] {
+    position: relative; /* Anchor the decorative pin to its native link. */
+    display: block; /* Allow an address summary below the ID. */
+    max-width: 100%; /* Respect the native column width. */
+    padding-left: 25px; /* Reserve space for the pin. */
+    color: #251C42; /* Use the readable heading color. */
+    font-weight: 600; /* Give the primary ID moderate emphasis. */
+}
+
+/* Reuse the local location-pin icon beside each record. */
+.aiq-location-list .list-subject a[data-name]::before {
+    content: ""; /* Create a decorative symbol without changing link text. */
+    position: absolute; /* Keep the icon in its reserved left space. */
+    left: 0; /* Align the icon with the start of the native link. */
+    top: 2px; /* Align the pin with the ID's first line. */
+    width: 17px; /* Keep the pin compact. */
+    height: 17px; /* Preserve its square proportions. */
+    background: url("/assets/assetsiq/images/location-pin.svg") center / contain no-repeat; /* Load the existing local SVG. */
+}
+
+/* Supplement IDs with real address or description text when available. */
+.aiq-location-list .list-subject a[data-aiq-location-summary]:not([data-aiq-location-summary=""])::after {
+    content: attr(data-aiq-location-summary); /* Show the safely assigned plain-text summary. */
+    display: block; /* Place the summary beneath the ID. */
+    overflow: hidden; /* Keep long addresses within the native column. */
+    white-space: nowrap; /* Keep each address preview to one compact line. */
+    text-overflow: ellipsis; /* Mark truncated address text clearly. */
+    color: #655C79; /* Keep the summary secondary to the ID. */
+    font-size: 11px; /* Match the compact list metadata. */
+    font-weight: 400; /* Keep supporting text lighter than the identity. */
+    line-height: 1.5; /* Leave comfortable space within a two-line row. */
+}
+
+/* Make geography values readable while retaining native filtering links. */
+.aiq-location-list .list-row-col[data-fieldname="country"] a.filterable {
+    display: inline-block; /* Let padding create a compact country label. */
+    max-width: 100%; /* Respect the native column width. */
+    padding: 3px 8px; /* Give the country value a small internal inset. */
+    background-color: #F0EBFF; /* Match the State list's country labels. */
+    border: 1px solid #E4DEF1; /* Outline the label softly. */
+    border-radius: 6px; /* Match the smaller control corners. */
+    color: #655C79; /* Keep Country secondary to the ID. */
+    font-size: 11px; /* Keep labels compact. */
+}
+
+/* Make clickable country labels respond consistently. */
+.aiq-location-list .list-row-col[data-fieldname="country"] a.filterable:hover {
+    background-color: #E9E0FF; /* Deepen the label's lavender slightly. */
+    border-color: #C4B5FD; /* Match the row hover outline. */
+    color: #4820BF; /* Emphasize the active country value. */
+}
+
+/* Give the native empty state a deliberate, clean appearance. */
+.aiq-location-list .no-result {
+    padding: 28px 20px; /* Leave comfortable space around native empty-state guidance. */
+    background-color: #FFFFFF; /* Use a quiet white surface. */
+    border: 1px dashed #D8CEF1; /* Distinguish the empty state without inventing records. */
+    border-radius: 12px; /* Match the app's card shapes. */
+}
+
+/* Stack native Geography and Address columns on narrow phone screens. */
+@media (max-width: 600px) {
+    .aiq-location-fields .form-section .form-column {
+        flex: 0 0 100%; /* Give each control group a complete row. */
+        max-width: 100%; /* Avoid narrow native multi-column controls. */
+    }
+    .aiq-location-fields .aiq-location-guided-layout {
+        padding: 10px; /* Preserve usable form width on phones. */
+        gap: 14px; /* Keep cards separated without a large gutter. */
+    }
+    .aiq-location-list .standard-filter-section .form-group {
+        max-width: none; /* Let visible mobile filters use available space. */
+    }
+}
+
+/* Remove optional motion when the user requests reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+    .aiq-location-fields :is(input, textarea).form-control,
+    .aiq-location-fields .aiq-location-guide li,
+    :is(.aiq-location-fields, .aiq-location-list) .awesomplete [role="option"],
+    .aiq-location-list .list-row-container {
+        transition: none; /* Apply focus and hover feedback immediately. */
+    }
+}

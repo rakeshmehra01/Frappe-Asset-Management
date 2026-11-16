@@ -1,0 +1,42 @@
+{
+ "app": "assetsiq",
+ "charts": [],
+ "content": "[{\"id\":\"56qIOyqcS_\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"common Dashboard\",\"col\":12}}]",
+ "creation": "2026-10-26 15:11:15.509125",
+ "custom_blocks": [
+  {
+   "custom_block_name": "common Dashboard",
+   "label": "common Dashboard"
+  }
+ ],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "hide_custom": 0,
+ "icon": "grid",
+ "idx": 0,
+ "indicator_color": "cyan",
+ "is_hidden": 0,
+ "label": "AssetsIQ \u2014 IT Operations",
+ "link_type": "DocType",
+ "links": [],
+ "modified": "2026-11-05 11:39:14.802090",
+ "modified_by": "Administrator",
+ "module": "AssetsIQ",
+ "name": "AssetsIQ \u2014 IT Operations",
+ "number_cards": [],
+ "owner": "Administrator",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [
+  {
+   "role": "AssetsIQ IT"
+  },
+  {
+   "role": "System Manager"
+  }
+ ],
+ "sequence_id": 0.0,
+ "shortcuts": [],
+ "title": "AssetsIQ \u2014 IT Operations",
+ "type": "Workspace"
+}

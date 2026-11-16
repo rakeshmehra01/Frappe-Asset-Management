@@ -1,0 +1,225 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 0,
+ "allow_rename": 0,
+ "creation": "2026-11-06 11:25:35.163005",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "request_details",
+  "asset_name",
+  "asset_title",
+  "issue_title",
+  "issue_description",
+  "request_column",
+  "priority",
+  "requested_by",
+  "requested_on",
+  "repair_details",
+  "status",
+  "handled_by",
+  "scheduled_date",
+  "repair_column",
+  "started_on",
+  "completed_on",
+  "resolution_section",
+  "resolution_notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "request_details",
+   "fieldtype": "Section Break",
+   "label": "Maintenance request"
+  },
+  {
+   "fieldname": "asset_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Asset Name",
+   "options": "Asset",
+   "reqd": 1,
+   "description": "Select the equipment that needs maintenance."
+  },
+  {
+   "fieldname": "asset_title",
+   "fieldtype": "Data",
+   "label": "Asset Display Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "issue_title",
+   "fieldtype": "Data",
+   "label": "Issue Title",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "issue_description",
+   "fieldtype": "Small Text",
+   "label": "Issue Description",
+   "reqd": 1,
+   "description": "Describe the problem, symptoms and when it started."
+  },
+  {
+   "fieldname": "request_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "label": "Priority",
+   "options": "Low\nMedium\nHigh\nCritical",
+   "default": "Medium",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "requested_by",
+   "fieldtype": "Link",
+   "label": "Requested By",
+   "options": "User",
+   "default": "__user",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "requested_on",
+   "fieldtype": "Datetime",
+   "label": "Requested On",
+   "default": "Now",
+   "read_only": 1
+  },
+  {
+   "fieldname": "repair_details",
+   "fieldtype": "Section Break",
+   "label": "IT review and repair"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Requested\nIn Progress\nCompleted\nRejected\nCancelled",
+   "default": "Requested",
+   "reqd": 1,
+   "permlevel": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "Managed by the IT team. Completed requests remain in your maintenance history."
+  },
+  {
+   "fieldname": "handled_by",
+   "fieldtype": "Link",
+   "label": "Handled By",
+   "options": "User",
+   "permlevel": 1,
+   "mandatory_depends_on": "eval:['In Progress','Completed'].includes(doc.status)",
+   "description": "Choose an enabled AssetsIQ IT or System Manager user."
+  },
+  {
+   "fieldname": "scheduled_date",
+   "fieldtype": "Date",
+   "label": "Scheduled Date",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "repair_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "started_on",
+   "fieldtype": "Datetime",
+   "label": "Started On",
+   "permlevel": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "completed_on",
+   "fieldtype": "Datetime",
+   "label": "Completed On",
+   "permlevel": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "resolution_section",
+   "fieldtype": "Section Break",
+   "label": "Resolution"
+  },
+  {
+   "fieldname": "resolution_notes",
+   "fieldtype": "Small Text",
+   "label": "Resolution / Decision Notes",
+   "permlevel": 1,
+   "mandatory_depends_on": "eval:['Completed','Rejected'].includes(doc.status)",
+   "description": "Record the repair performed, or the reason the request was rejected. Visible to the requester."
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-11-06 11:29:25.920419",
+ "modified_by": "Administrator",
+ "module": "AssetsIQ",
+ "name": "Asset Maintenance",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "permlevel": 0,
+   "create": 1,
+   "read": 1,
+   "write": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "delete": 1
+  },
+  {
+   "role": "System Manager",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "AssetsIQ IT",
+   "permlevel": 0,
+   "create": 1,
+   "read": 1,
+   "write": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  },
+  {
+   "role": "AssetsIQ IT",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "AssetsIQ Employee",
+   "permlevel": 0,
+   "create": 1,
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "AssetsIQ Employee",
+   "permlevel": 1,
+   "read": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "autoname": "AMT-.#####",
+ "naming_rule": "Expression",
+ "title_field": "issue_title",
+ "show_title_field_in_link": 1,
+ "search_fields": "issue_title,asset_name,requested_by",
+ "track_changes": 1
+}

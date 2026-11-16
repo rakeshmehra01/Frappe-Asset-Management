@@ -1,0 +1,142 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "autoincrement",
+ "creation": "2026-11-03 15:35:51.026233",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "location_details_section",
+  "location_name",
+  "naming_series",
+  "country",
+  "state_column_break",
+  "state",
+  "district_column_break",
+  "district",
+  "address_notes_section",
+  "address",
+  "column_break_czre",
+  "description"
+ ],
+ "fields": [
+  {
+   "fieldname": "location_details_section",
+   "fieldtype": "Section Break",
+   "label": "Geography"
+  },
+  {
+   "description": "Use a clear name such as Delhi Office or Main Warehouse. If empty, a name is suggested from the address or geography.",
+   "fieldname": "location_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Location Name"
+  },
+  {
+   "description": "Legacy selector retained; the actual Location ID is generated automatically when saved.",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Location ID"
+  },
+  {
+   "description": "Select the country first.",
+   "fieldname": "country",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Country",
+   "options": "Country"
+  },
+  {
+   "fieldname": "state_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Select a state belonging to the chosen country.",
+   "fieldname": "state",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "State",
+   "options": "Location State"
+  },
+  {
+   "fieldname": "district_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Select a district belonging to the chosen state.",
+   "fieldname": "district",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "District",
+   "options": "Location District"
+  },
+  {
+   "fieldname": "address_notes_section",
+   "fieldtype": "Section Break",
+   "label": "Address & Notes"
+  },
+  {
+   "description": "Building, floor, room or storage area, followed by the street address where applicable.",
+   "fieldname": "address",
+   "fieldtype": "Small Text",
+   "label": "Address"
+  },
+  {
+   "fieldname": "column_break_czre",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Optional context to help the IT team identify and use this location.",
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-11-03 18:24:35.637308",
+ "modified_by": "Administrator",
+ "module": "AssetsIQ",
+ "name": "Asset Location",
+ "naming_rule": "Autoincrement",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "read": 1,
+   "role": "AssetsIQ IT",
+   "write": 1
+  },
+  {
+   "role": "AssetsIQ Employee",
+   "read": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "search_fields": "location_name,address,country",
+ "show_title_field_in_link": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "location_name"
+}

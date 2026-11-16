@@ -1,0 +1,207 @@
+/* Asset Option B: native tabs and controls, with a consistent restrained skin. */
+.aiq-asset-form {
+    --asset-ink: #243148;
+    --asset-muted: #657188;
+    --asset-border: #e4e7ef;
+    --asset-violet: #6b49b1;
+    --asset-focus: #805dbb;
+    --asset-radius: 10px;
+}
+.aiq-asset-form .layout-main-section {
+    background: #fff;
+    border: 1px solid var(--asset-border);
+    border-radius: 16px;
+    box-shadow: 0 4px 22px rgb(30 40 65 / 3%);
+    overflow: visible;
+}
+.aiq-asset-form .aiq-asset-intro { padding: 0; margin: 0; border: 0; }
+.aiq-asset-form .aiq-asset-intro > .section-body { padding: 0; }
+.aiq-asset-form .aiq-asset-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 26px 28px 24px;
+    max-width: 1120px;
+    width: 100%;
+    margin-inline: auto;
+    background: linear-gradient(110deg, #fff 55%, #fbf9ff);
+    border-radius: 16px 16px 0 0;
+}
+.aiq-asset-form .aiq-asset-identity { display: flex; align-items: center; gap: 16px; min-width: 0; }
+.aiq-asset-form .aiq-asset-emblem {
+    display: grid; place-items: center; flex: 0 0 48px; width: 48px; height: 48px;
+    border: 1px solid #e5dcf4; border-radius: 13px; background: #f5f0fc; color: #805dbb;
+}
+.aiq-asset-form .aiq-asset-emblem svg { width: 24px; height: 24px; }
+.aiq-asset-form .aiq-asset-heading { min-width: 0; }
+.aiq-asset-form .aiq-asset-reference { color: #69758b; font: 500 10px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: .5px; }
+.aiq-asset-form .aiq-asset-heading h2 { margin: 5px 0 6px; color: #223047; font-size: 24px; font-weight: 600; line-height: 1.3; letter-spacing: -.4px; overflow-wrap: anywhere; }
+.aiq-asset-form .aiq-asset-heading p { display: flex; flex-wrap: wrap; gap: 9px; margin: 0; color: #69758b; font-size: 11px; line-height: 1.6; }
+.aiq-asset-form .aiq-asset-meta-separator { color: #acb2c0; }
+.aiq-asset-form .aiq-asset-status { display: inline-flex; align-items: center; gap: 7px; flex-shrink: 0; padding: 6px 11px; border: 1px solid transparent; border-radius: 20px; font-size: 11px; font-weight: 500; white-space: nowrap; }
+.aiq-asset-form .aiq-asset-status > span { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+.aiq-asset-form .aiq-asset-status--available,
+.aiq-asset-form .aiq-asset-status--assigned { color: #306d51; background: #edf7f1; border-color: #dbeddf; }
+.aiq-asset-form .aiq-asset-status--requested { color: #7c5b17; background: #fff7e2; border-color: #f1e5c3; }
+.aiq-asset-form .aiq-asset-status--maintenance { color: #694a99; background: #f3edfb; border-color: #e5dbf3; }
+.aiq-asset-form .aiq-asset-status--retired { color: #5e6b80; background: #f1f3f7; border-color: #e4e8ef; }
+.aiq-asset-form .form-tabs-list { padding: 0 28px; background: #fff; border-top: 1px solid #f0edf6; border-bottom: 1px solid #e8e5ef; }
+.aiq-asset-form .form-tabs-list .form-tabs { gap: 20px; border: 0; max-width: 1064px; margin-inline: auto; }
+.aiq-asset-form .form-tabs-list .nav-link {
+    display: inline-flex; align-items: center; gap: 8px; padding: 14px 2px;
+    color: var(--asset-muted); font-size: 12px; font-weight: 500;
+    border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent;
+}
+.aiq-asset-form .form-tabs-list .nav-link::before { content: ""; display: block; width: 15px; height: 15px; background: currentColor; mask: var(--asset-tab-icon) center / contain no-repeat; -webkit-mask: var(--asset-tab-icon) center / contain no-repeat; }
+.aiq-asset-form .form-tabs-list .nav-link:hover { color: #60418f; background: transparent; }
+.aiq-asset-form .form-tabs-list .nav-link.active { color: var(--asset-violet); font-weight: 600; border-bottom-color: var(--asset-violet); }
+.aiq-asset-form .form-tabs-list .nav-link:focus-visible { outline: 2px solid var(--asset-focus); outline-offset: 3px; border-radius: 3px; }
+.aiq-asset-form .form-tab-content { max-width: 1120px; margin-inline: auto; padding: 24px 28px 28px; }
+.aiq-asset-form .form-tab-content .form-section { padding: 0; margin: 0; border: 0; box-shadow: none; }
+.aiq-asset-form .form-tab-content .section-head { margin: 0 0 20px; padding: 0; color: #34445c; font-size: 13px; font-weight: 600; }
+.aiq-asset-form .form-tab-content [data-fieldname="asset_overview_section"] > .section-body,
+.aiq-asset-form .form-tab-content [data-fieldname="asset_identification_section"] > .section-body { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 28px; margin: 0; }
+.aiq-asset-form .form-tab-content .form-column { min-width: 0; padding-inline: 0; }
+.aiq-asset-form :is([data-fieldname="asset_overview_section"], [data-fieldname="asset_identification_section"]) > .section-body > .form-column { width: auto; max-width: none; }
+.aiq-asset-form .frappe-control[data-fieldtype]:not([data-fieldtype="HTML"]) { margin-bottom: 20px; }
+.aiq-asset-form .frappe-control .control-label { margin-bottom: 8px; color: var(--asset-muted); font-size: 12px; font-weight: 500; }
+.aiq-asset-form .frappe-control :is(input.form-control, select.form-control, textarea.form-control) {
+    min-height: 40px; padding: 9px 12px; border: 1px solid #dce2ed; border-radius: 8px;
+    background: #fcfdff; color: #34445c; font-size: 13px; box-shadow: none;
+}
+.aiq-asset-form .frappe-control .form-control:not(:disabled):not([readonly]):hover { border-color: #c4b8d9; }
+.aiq-asset-form .frappe-control .form-control:focus { background: #fff; border-color: var(--asset-focus); box-shadow: 0 0 0 3px rgb(107 73 177 / 9%); }
+.aiq-asset-form .frappe-control .control-value { min-height: 40px; padding: 9px 12px; color: #46536a; border: 1px solid #e7eaf1; border-radius: 8px; background: #f8f9fc; font-size: 13px; overflow-wrap: anywhere; }
+.aiq-asset-form .frappe-control .help-box { margin-top: 7px; color: #6f7a8e; font-size: 11px; line-height: 1.6; }
+.aiq-asset-form .frappe-control textarea.form-control { line-height: 1.8; resize: vertical; }
+.aiq-asset-form .aiq-asset-overview { padding: 0; }
+.aiq-asset-form .aiq-asset-summary { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; padding: 18px 20px; margin: 0 0 18px; border: 1px solid #e9edf4; border-radius: var(--asset-radius); background: #f9fafc; }
+.aiq-asset-form .aiq-asset-summary > div { min-width: 0; }
+.aiq-asset-form .aiq-asset-summary > div + div { border-left: 1px solid #e4e8f0; padding-left: 24px; }
+.aiq-asset-form .aiq-asset-summary dt { margin: 0 0 7px; color: #6d798e; font-size: 11px; font-weight: 400; }
+.aiq-asset-form .aiq-asset-summary dd { margin: 0; color: #3c4b64; font-size: 12px; font-weight: 600; line-height: 1.6; overflow-wrap: anywhere; }
+.aiq-asset-form .aiq-asset-summary .aiq-asset-serial { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: .2px; }
+.aiq-asset-form .aiq-asset-summary .is-empty { color: #68758a; font-weight: 400; }
+.aiq-asset-form .aiq-asset-notice { display: flex; align-items: flex-start; gap: 12px; margin: 0; padding: 17px 18px; border: 1px solid #e7dff3; border-radius: var(--asset-radius); background: #f7f3fc; color: #684b90; }
+.aiq-asset-form .aiq-asset-notice-icon { flex: 0 0 20px; padding-top: 1px; }
+.aiq-asset-form .aiq-asset-notice-icon svg { display: block; width: 19px; height: 19px; }
+.aiq-asset-form .aiq-asset-notice h3 { margin: 0 0 5px; color: inherit; font-size: 12px; font-weight: 600; line-height: 1.5; }
+.aiq-asset-form .aiq-asset-notice p { max-width: 68ch; margin: 0; color: #68587f; font-size: 12px; line-height: 1.75; }
+.aiq-asset-form .aiq-asset-notice--requested { background: #fffbef; border-color: #eee4c9; color: #7a5d24; }
+.aiq-asset-form .aiq-asset-notice--requested p { color: #77633d; }
+.aiq-asset-form .aiq-asset-notice--assigned { background: #f3f9f5; border-color: #dcecdf; color: #376c4e; }
+.aiq-asset-form .aiq-asset-notice--assigned p { color: #526b5b; }
+.aiq-asset-form .aiq-asset-notice--retired { background: #f7f8fa; border-color: #e3e7ed; color: #5f6d81; }
+.aiq-asset-form .aiq-asset-notice--retired p { color: #647185; }
+.aiq-asset-form .aiq-asset-workflow-note { display: flex; align-items: flex-start; gap: 7px; margin: 22px 0 0; padding-top: 16px; border-top: 1px solid #edf0f5; color: #6d798c; font-size: 11px; line-height: 1.6; }
+.aiq-asset-form .aiq-asset-workflow-note svg { flex: 0 0 14px; width: 14px; height: 14px; margin-top: 1px; }
+.aiq-asset-form :is(.page-head, .inner-toolbar) .btn { min-height: 34px; border-radius: 8px; font-size: 12px; }
+.aiq-asset-form .inner-toolbar .btn:not(.btn-primary) { color: #46536a; border: 1px solid #dce1eb; background: #fff; }
+.aiq-asset-form .inner-toolbar .btn:not(.btn-primary):not(:disabled):hover { color: #5a427f; border-color: #d7cbe9; background: #f6f3fb; }
+.aiq-asset-form :is(.page-head, .inner-toolbar) .btn-primary { background: var(--asset-violet); border-color: var(--asset-violet); color: #fff; --icon-stroke: #fff; box-shadow: 0 2px 6px rgb(89 58 145 / 9%); }
+.aiq-asset-form :is(.page-head, .inner-toolbar) .btn-primary:not(:disabled):is(:hover, :focus-visible, :active) { background: #583797; border-color: #583797; color: #fff; --icon-stroke: #fff; }
+.aiq-asset-form :is(.page-head, .inner-toolbar) .btn:focus-visible { outline: 2px solid var(--asset-focus); outline-offset: 3px; }
+@media (max-width: 767px) {
+    .aiq-asset-form .aiq-asset-header { padding: 20px 18px; flex-wrap: wrap; gap: 16px; }
+    .aiq-asset-form .aiq-asset-identity { gap: 12px; }
+    .aiq-asset-form .aiq-asset-emblem { flex-basis: 42px; width: 42px; height: 42px; border-radius: 11px; }
+    .aiq-asset-form .aiq-asset-heading h2 { font-size: 21px; }
+    .aiq-asset-form .form-tabs-list { padding: 0 18px; overflow-x: auto; }
+    .aiq-asset-form .form-tabs-list .form-tabs { gap: 20px; flex-wrap: nowrap; }
+    .aiq-asset-form .form-tabs-list .nav-link { white-space: nowrap; }
+    .aiq-asset-form .form-tab-content { padding: 22px 18px; }
+    .aiq-asset-form .form-tab-content [data-fieldname="asset_overview_section"] > .section-body,
+    .aiq-asset-form .form-tab-content [data-fieldname="asset_identification_section"] > .section-body { grid-template-columns: 1fr; }
+    .aiq-asset-form .aiq-asset-summary { grid-template-columns: 1fr; gap: 14px; padding: 16px; }
+    .aiq-asset-form .aiq-asset-summary > div + div { border: 0; border-top: 1px solid #e4e8f0; padding-left: 0; padding-top: 14px; }
+}
+@media (prefers-reduced-motion: reduce) { .aiq-asset-form .form-control, .aiq-asset-form .btn, .aiq-asset-form .nav-link { transition: none; } }
+
+.aiq-asset-form .nav-link[data-fieldname="asset_overview_tab"] { --asset-tab-icon: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%223%22%20y%3D%223%22%20width%3D%227%22%20height%3D%227%22%20rx%3D%221%22%2F%3E%3Crect%20x%3D%2214%22%20y%3D%223%22%20width%3D%227%22%20height%3D%227%22%20rx%3D%221%22%2F%3E%3Crect%20x%3D%223%22%20y%3D%2214%22%20width%3D%227%22%20height%3D%227%22%20rx%3D%221%22%2F%3E%3Crect%20x%3D%2214%22%20y%3D%2214%22%20width%3D%227%22%20height%3D%227%22%20rx%3D%221%22%2F%3E%3C%2Fsvg%3E"); }
+
+.aiq-asset-form .nav-link[data-fieldname="asset_identification_tab"] { --asset-tab-icon: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%223%22%20y%3D%225%22%20width%3D%2218%22%20height%3D%2214%22%20rx%3D%222%22%2F%3E%3Cpath%20d%3D%22M7%209h4m-4%204h2m5-4h3m-3%204h3%22%2F%3E%3C%2Fsvg%3E"); }
+
+.aiq-asset-form .nav-link[data-fieldname="asset_notes_tab"] { --asset-tab-icon: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M6%203h9l4%204v14H5V3Z%22%2F%3E%3Cpath%20d%3D%22M14%203v5h5M8%2012h8M8%2016h6%22%2F%3E%3C%2Fsvg%3E"); }
+
+/* Contextual help beside each native tab, shared by both workspaces. */
+.aiq-asset-fields { container-name: asset-form; container-type: inline-size; }
+.aiq-asset-form .form-tab-content.aiq-has-asset-guide {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(400px, 38%, 460px);
+    gap: 24px;
+    align-items: start;
+    max-width: 1440px;
+    width: 100%;
+}
+.aiq-asset-form .form-tab-content.aiq-has-asset-guide > .tab-pane { grid-column: 1; grid-row: 1; min-width: 0; }
+.aiq-asset-form .aiq-has-asset-guide .aiq-asset-overview .aiq-asset-notice { display: none; }
+.aiq-asset-form .aiq-asset-guide {
+    grid-column: 2;
+    grid-row: 1;
+    position: sticky;
+    top: 96px;
+    min-width: 0;
+    padding: 20px;
+    border: 1px solid #e2dced;
+    border-radius: 16px;
+    background: linear-gradient(160deg, #f8f5fd, #fbfcfe 70%);
+    box-shadow: 0 4px 18px rgb(60 43 90 / 4%);
+    /* Keep the complete guide visible; avoid a separate scrolling panel. */
+    height: auto;
+    max-height: none;
+    overflow: visible;
+}
+.aiq-asset-form .aiq-asset-guide::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 4px;
+    border-radius: 16px 16px 0 0;
+    background: linear-gradient(90deg, #9d80c8, #d5c6e9);
+}
+.aiq-asset-form .aiq-asset-guide-heading { display: flex; align-items: center; gap: 12px; }
+.aiq-asset-form .aiq-asset-guide-heading > span { display: grid; place-items: center; flex: 0 0 42px; height: 42px; border: 1px solid #e4d8f3; border-radius: 12px; background: #eee7f8; color: #7956a8; }
+.aiq-asset-form .aiq-asset-guide-heading svg { width: 22px; height: 22px; }
+.aiq-asset-form .aiq-asset-guide-heading small { display: block; margin-bottom: 4px; color: #7c6896; font-size: 11px; font-weight: 500; letter-spacing: .2px; }
+.aiq-asset-form .aiq-asset-guide-heading h3 { margin: 0; color: #34425b; font-size: 18px; font-weight: 600; line-height: 1.35; letter-spacing: -.2px; }
+.aiq-asset-form .aiq-asset-guide-description { margin: 12px 0 10px; color: #606d84; font-size: 13px; line-height: 1.6; }
+.aiq-asset-form .aiq-asset-guide-context { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; padding-bottom: 12px; margin-bottom: 12px; border-bottom: 1px solid #e6e1ee; }
+.aiq-asset-form .aiq-asset-guide-status { display: inline-flex; align-items: center; gap: 6px; padding: 5px 9px; border: 1px solid #e4dcef; border-radius: 7px; color: #735393; background: #f1eaf8; font-size: 11px; font-weight: 500; line-height: 1.5; overflow-wrap: anywhere; }
+.aiq-asset-form .aiq-asset-guide-status::before { content: ""; flex: 0 0 5px; width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+.aiq-asset-form .aiq-asset-guide-status--available,
+.aiq-asset-form .aiq-asset-guide-status--assigned { color: #397253; background: #edf7f0; border-color: #dcecdf; }
+.aiq-asset-form .aiq-asset-guide-status--requested { color: #8c691f; background: #fff6e2; border-color: #f0e3bf; }
+.aiq-asset-form .aiq-asset-guide-status--retired { color: #657287; background: #f0f3f7; border-color: #dfe5ed; }
+.aiq-asset-form .aiq-asset-guide-audience { color: #7c7290; font-size: 11px; line-height: 1.5; }
+.aiq-asset-form .aiq-asset-guide-checklist-title { margin: 0 0 8px; color: #6d5d82; font-size: 11px; font-weight: 600; line-height: 1.5; letter-spacing: .3px; }
+.aiq-asset-form .aiq-asset-guide-steps { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.aiq-asset-form .aiq-asset-guide-steps li { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; border: 1px solid #e8e3f0; border-radius: 10px; background: #fff; }
+.aiq-asset-form .aiq-asset-guide-step { display: grid; place-items: center; flex: 0 0 26px; height: 26px; border: 1px solid #e5dbf0; border-radius: 8px; color: #795c9d; background: #f5f0fb; font-size: 11px; font-weight: 600; }
+.aiq-asset-form .aiq-asset-guide-step-copy { min-width: 0; }
+.aiq-asset-form .aiq-asset-guide-steps h4 { margin: 1px 0 4px; color: #43516a; font-size: 13px; font-weight: 600; line-height: 1.45; }
+.aiq-asset-form .aiq-asset-guide-steps p { margin: 0; color: #626f85; font-size: 13px; line-height: 1.55; overflow-wrap: anywhere; }
+.aiq-asset-form .aiq-asset-guide-next { margin-top: 12px; padding: 12px 14px; border: 1px solid #e2d8ee; border-left: 3px solid #b49acb; border-radius: 10px; background: #f0eaf8; color: #665080; }
+.aiq-asset-form .aiq-asset-guide-next-heading { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.aiq-asset-form .aiq-asset-guide-next-icon { display: grid; place-items: center; flex: 0 0 30px; height: 30px; border: 1px solid rgb(102 80 128 / 12%); border-radius: 8px; background: rgb(255 255 255 / 65%); }
+.aiq-asset-form .aiq-asset-guide-next-icon svg { width: 17px; height: 17px; }
+.aiq-asset-form .aiq-asset-guide-next small { display: block; margin-bottom: 3px; color: inherit; font-size: 11px; }
+.aiq-asset-form .aiq-asset-guide-next h4 { margin: 0; color: inherit; font-size: 15px; font-weight: 600; line-height: 1.5; }
+.aiq-asset-form .aiq-asset-guide-next p { margin: 0; color: inherit; font-size: 13px; line-height: 1.6; overflow-wrap: anywhere; }
+.aiq-asset-form .aiq-asset-guide-next--requested { border-color: #ecdfba; border-left-color: #cfad62; background: #fff9e9; color: #7c6129; }
+.aiq-asset-form .aiq-asset-guide-next--assigned { border-color: #d8e9dc; border-left-color: #82b396; background: #eff7f1; color: #466c52; }
+.aiq-asset-form .aiq-asset-guide-next--retired { border-color: #dfe5ee; border-left-color: #a7b3c6; background: #f2f5f9; color: #5e6c81; }
+@container asset-form (max-width: 940px) {
+    .aiq-asset-form .form-tab-content.aiq-has-asset-guide { grid-template-columns: 1fr; gap: 24px; }
+    .aiq-asset-form .aiq-asset-guide { grid-column: 1; grid-row: auto; position: static; }
+    .aiq-asset-form .aiq-asset-guide-steps { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+}
+@media (max-width: 1100px) {
+    .aiq-asset-form .form-tab-content.aiq-has-asset-guide { grid-template-columns: 1fr; gap: 24px; }
+    .aiq-asset-form .aiq-asset-guide { grid-column: 1; grid-row: auto; position: static; }
+}
+@media (max-width: 600px) {
+    .aiq-asset-form .aiq-asset-guide { padding: 20px 18px; }
+    .aiq-asset-form .aiq-asset-guide-steps { grid-template-columns: 1fr; }
+}
+@media (max-height: 800px) { .aiq-asset-form .aiq-asset-guide { position: static; } }

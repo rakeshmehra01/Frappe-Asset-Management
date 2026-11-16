@@ -1,0 +1,29 @@
+{
+ "app": "assetsiq",
+ "creation": "2026-10-26 15:11:15.566949",
+ "docstatus": 0,
+ "doctype": "Workspace Sidebar",
+ "header_icon": "grid",
+ "idx": 0,
+ "items": [
+  {
+   "child": 0,
+   "collapsible": 1,
+   "icon": "grid",
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Home",
+   "link_to": "AssetsIQ \u2014 IT Operations",
+   "link_type": "Workspace",
+   "show_arrow": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-10-26 21:58:58.857442",
+ "modified_by": "Administrator",
+ "module": "AssetsIQ",
+ "name": "AssetsIQ \u2014 IT Operations",
+ "owner": "Administrator",
+ "standard": 1,
+ "title": "AssetsIQ \u2014 IT Operations"
+}

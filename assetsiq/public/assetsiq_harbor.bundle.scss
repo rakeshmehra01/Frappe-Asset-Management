@@ -1,0 +1,23 @@
+/* Compile the shared stylesheet into Frappe's content-hashed CSS bundle. */
+@import "./css/harbor_desk";
+/* Include the Executive styles for Location State. */
+@import "./css/location_state";
+/* Include the Location State list styles. */
+@import "./css/location_state_list";
+/* Share native action-bar and input styling across both AssetsIQ lists. */
+@import "./css/executive_list";
+/* Add the Category introduction and align its requirement toggles. */
+@import "./css/asset_category_list";
+/* Style Asset Location's native form, guidance and Soft Rows list. */
+@import "./css/asset_location";
+
+/* Location District form styling. */
+@import "./css/location_district";
+
+@import "./css/workspace_navigation";
+
+/* Compact Asset form with native tabs. */
+@import "./css/asset_form";
+
+/* Asset Soft Rows list. */
+@import "./css/asset_list";

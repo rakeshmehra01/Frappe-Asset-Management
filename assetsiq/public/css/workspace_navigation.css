@@ -1,0 +1,45 @@
+/* One quiet Home entry, a clear section divider, and native workspace links. */
+body.aiq-assetsiq-shell .aiq-navigation-divider {
+    height: 1px;
+    margin: 12px 14px;
+    background: var(--aiq-sidebar-border, #493566);
+}
+.aiq-home-page { background: #f8f9fc; border-radius: 16px; }
+.aiq-home-content { max-width: 1000px; margin: 0 auto; padding: 48px 36px; }
+.aiq-home-eyebrow { color: #6846c7; font-size: 12px; font-weight: 600; }
+.aiq-home-content h1 { color: #202c40; font-size: 28px; font-weight: 600; margin: 10px 0; }
+.aiq-home-content header > p { color: #6a7385; font-size: 14px; margin-bottom: 32px; }
+.aiq-workspace-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 20px; }
+.aiq-workspace-card {
+    display: flex; flex-direction: column; align-items: flex-start;
+    padding: 28px; border: 1px solid #e4e7ee; border-radius: 16px;
+    background: #fff; color: #202c40; text-decoration: none;
+    box-shadow: 0 4px 16px rgb(20 35 60 / 3%);
+}
+.aiq-workspace-card:hover { border-color: #b9a6ed; text-decoration: none; box-shadow: 0 6px 20px rgb(78 50 130 / 8%); }
+.aiq-workspace-card:focus-visible { outline: 3px solid #a48add; outline-offset: 3px; }
+.aiq-workspace-card-icon { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 12px; background: #f1edfc; color: #6846c7; }
+.aiq-workspace-card h2 { margin: 24px 0 10px; font-size: 18px; font-weight: 600; color: #202c40; }
+.aiq-workspace-card p { margin: 0 0 28px; color: #6a7385; font-size: 13px; line-height: 1.6; }
+.aiq-workspace-card-open { margin-top: auto; color: #6846c7; font-size: 13px; font-weight: 600; }
+.aiq-navigation-children {padding-left: 20px;
+}
+@media (max-width: 600px) { .aiq-home-content { padding: 28px 18px; } .aiq-workspace-card { padding: 22px; } }
+
+/* Native details/summary provides mouse and keyboard group toggling. */
+body.aiq-assetsiq-shell .aiq-navigation-group > summary { list-style: none; cursor: pointer; }
+body.aiq-assetsiq-shell .aiq-navigation-group > summary::-webkit-details-marker { display: none; }
+body.aiq-assetsiq-shell .aiq-navigation-group > summary .item-anchor { display: flex; align-items: center; width: 100%; }
+body.aiq-assetsiq-shell .aiq-navigation-group > summary:focus-visible { outline: 2px solid #c4b5fd; outline-offset: -2px; border-radius: 8px; }
+body.aiq-assetsiq-shell .aiq-group-arrow { margin-inline-start: auto; display: inline-flex; }
+body.aiq-assetsiq-shell .aiq-navigation-group[open] > summary .aiq-group-arrow { transform: rotate(90deg); }
+body.aiq-assetsiq-shell .body-sidebar-container:not(.expanded) .aiq-navigation-children { padding-left: 0; }
+body.aiq-assetsiq-shell .body-sidebar-container:not(.expanded) .aiq-group-arrow,
+body.aiq-assetsiq-shell .body-sidebar-container:not(.expanded) .aiq-navigation-group > summary .sidebar-item-label { display: none; }
+
+/* Hide secondary details in State and District dropdowns. */
+body.aiq-assetsiq-shell
+:is([data-fieldname="state"], [data-fieldname="district"])
+.awesomplete [role="option"] > :is(br, span.small) {
+    display: none;
+}

@@ -1,0 +1,33 @@
+{
+ "app": "assetsiq",
+ "bg_color": "blue",
+ "creation": "2026-11-03 12:16:10.964731",
+ "docstatus": 0,
+ "doctype": "Desktop Icon",
+ "hidden": 0,
+ "icon": "home",
+ "icon_type": "App",
+ "idx": 0,
+ "label": "AssetsIQ Home",
+ "link": "/desk/assetsiq-home",
+ "link_type": "External",
+ "logo_url": "/assets/assetsiq/images/assetsiq-mark.svg",
+ "modified": "2026-11-03 12:20:33.643921",
+ "modified_by": "Administrator",
+ "name": "AssetsIQ Home",
+ "owner": "Administrator",
+ "restrict_removal": 0,
+ "roles": [
+  {
+   "role": "AssetsIQ IT"
+  },
+  {
+   "role": "AssetsIQ Employee"
+  },
+  {
+   "role": "System Manager"
+  }
+ ],
+ "sidebar": "AssetsIQ Home",
+ "standard": 1
+}

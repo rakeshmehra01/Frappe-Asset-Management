@@ -1,0 +1,422 @@
+/* AssetsIQ IT Operations and My workspce dashboard — layout and visual styles */
+
+/* Dashboard layout shared by our workspace dashboards */
+/* Shared dashboard appearance */
+
+.aiq-dashboard {
+    --aiq-primary: #6b49b1;
+    --aiq-text: #243148;
+    --aiq-muted: #68758b;
+    --aiq-border: #e4e7ef;
+    --aiq-background: #f8f9fc;
+
+    padding: 24px;
+    border-radius: 16px;
+    background: var(--aiq-background);
+    color: var(--aiq-text);
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.aiq-dashboard *,
+.aiq-dashboard *::before,
+.aiq-dashboard *::after {
+    box-sizing: border-box;
+}
+
+.aiq-dashboard .aiq-card {
+    min-width: 0;
+    padding: 20px;
+    border: 1px solid var(--aiq-border);
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgb(36 49 72 / 3%);
+}
+
+.aiq-dashboard .aiq-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 40px;
+    padding: 9px 16px;
+    border: 1px solid var(--aiq-border);
+    border-radius: 8px;
+    background: #ffffff;
+    color: var(--aiq-text);
+    font: inherit;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.aiq-dashboard .aiq-button-primary {
+    background: var(--aiq-primary);
+    border-color: var(--aiq-primary);
+    color: #ffffff;
+}
+
+.aiq-dashboard .aiq-button:not(:disabled):hover {
+    border-color: #bba7d5;
+    background: #f3eef9;
+    color: #583797;
+}
+
+.aiq-dashboard .aiq-button-primary:not(:disabled):hover {
+    background: #583797;
+    border-color: #583797;
+    color: #ffffff;
+}
+
+.aiq-dashboard .aiq-button:focus-visible {
+    outline: 3px solid #bba7d5;
+    outline-offset: 3px;
+}
+
+.aiq-dashboard .aiq-button:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+@media (max-width: 600px) {
+    .aiq-dashboard {
+        padding: 16px;
+    }
+}
+
+.aiq-dashboard {
+    container-name: aiq-dashboard;
+    container-type: inline-size;
+}
+
+.aiq-dashboard [hidden] {
+    display: none !important;
+}
+
+.aiq-dashboard h1 {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.aiq-dashboard h2 {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.aiq-dashboard p {
+    margin: 6px 0 0;
+    color: var(--aiq-muted);
+    font-size: 13px;
+}
+
+/* Heading and main action buttons */
+
+.aiq-dashboard .ops-header,
+.aiq-dashboard .ops-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.aiq-dashboard .ops-header {
+    margin-bottom: 24px;
+}
+
+.aiq-dashboard .ops-header-actions {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+/* Five inventory summary cards */
+
+.aiq-dashboard .ops-kpis {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.aiq-dashboard .ops-kpis .aiq-card {
+    padding: 16px;
+    border-top: 3px solid #b59bd8;
+}
+
+.aiq-dashboard .ops-kpis .aiq-card:nth-child(2) {
+    border-top-color: #85b69b;
+}
+
+.aiq-dashboard .ops-kpis .aiq-card:nth-child(3) {
+    border-top-color: #8caee0;
+}
+
+.aiq-dashboard .ops-kpis .aiq-card:nth-child(4) {
+    border-top-color: #d9b56b;
+}
+
+.aiq-dashboard .ops-kpis span {
+    display: block;
+    color: var(--aiq-muted);
+    font-size: 12px;
+}
+
+.aiq-dashboard .ops-kpis strong {
+    display: block;
+    margin-top: 8px;
+    color: var(--aiq-text);
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+/* Work queue on the left; tools on the right */
+
+.aiq-dashboard .ops-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 2.2fr) minmax(250px, 1fr);
+    grid-template-areas:
+        "work side"
+        "recent side";
+    gap: 20px;
+    align-items: start;
+}
+
+.aiq-dashboard .ops-work {
+    grid-area: work;
+}
+
+.aiq-dashboard .ops-side {
+    grid-area: side;
+    display: grid;
+    gap: 20px;
+    min-width: 0;
+}
+
+.aiq-dashboard .ops-recent {
+    grid-area: recent;
+}
+
+/* Search bar */
+
+.aiq-dashboard .ops-search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 20px 0 16px;
+    padding: 0 12px;
+    border: 1px solid var(--aiq-border);
+    border-radius: 8px;
+    background: #fcfdff;
+}
+
+.aiq-dashboard .ops-search:focus-within {
+    border-color: #a68acb;
+    box-shadow: 0 0 0 3px rgb(107 73 177 / 8%);
+}
+
+.aiq-dashboard .ops-search input {
+    width: 100%;
+    min-width: 0;
+    height: 44px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--aiq-text);
+    font: inherit;
+    font-size: 13px;
+}
+
+.aiq-dashboard .ops-search-clear {
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--aiq-muted);
+    font-size: 22px;
+    cursor: pointer;
+}
+
+/* Queue placeholder and quick actions */
+
+.aiq-dashboard [data-region="queue"] {
+    min-height: 160px;
+}
+
+.aiq-dashboard [data-region="queue"] > p {
+    padding: 30px 12px;
+    text-align: center;
+}
+
+.aiq-dashboard .ops-quick-links {
+    display: grid;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.aiq-dashboard .ops-quick-links .aiq-button {
+    width: 100%;
+    justify-content: flex-start;
+}
+
+/* Dashboard footer */
+
+.aiq-dashboard .ops-footer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+    color: var(--aiq-muted);
+    font-size: 11px;
+}
+
+/* Adjust to the available dashboard width */
+
+@container aiq-dashboard (max-width: 900px) {
+    .aiq-dashboard .ops-kpis {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .aiq-dashboard .ops-grid {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "work"
+            "side"
+            "recent";
+    }
+
+    .aiq-dashboard .ops-side {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@container aiq-dashboard (max-width: 600px) {
+    .aiq-dashboard .ops-header,
+    .aiq-dashboard .ops-card-header {
+        flex-wrap: wrap;
+    }
+
+    .aiq-dashboard .ops-kpis {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .aiq-dashboard .ops-side {
+        grid-template-columns: 1fr;
+    }
+}
+/* Dashboard work queue table */
+
+.aiq-dashboard .ops-table-scroll {
+    overflow-x: auto;
+}
+
+.aiq-dashboard .ops-table {
+    width: 100%;
+    min-width: 620px;
+    table-layout: fixed;
+    font-size: 12px;
+}
+
+.aiq-dashboard .ops-table th,
+.aiq-dashboard .ops-table td {
+    padding: 12px 8px;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--aiq-border);
+}
+
+.aiq-dashboard .ops-table th:first-child {
+    width: 23%;
+}
+
+.aiq-dashboard .ops-table th:last-child {
+    width: 90px;
+}
+
+.aiq-dashboard .ops-table-cell {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.aiq-dashboard .ops-table small {
+    color: var(--aiq-muted);
+    font-size: 10px;
+}
+
+.aiq-dashboard .ops-table .aiq-button {
+    min-height: 32px;
+    padding: 6px 10px;
+    font-size: 11px;
+}
+
+.aiq-dashboard [data-region="pagination"] {
+    margin-top: 12px;
+    color: var(--aiq-muted);
+    font-size: 11px;
+}
+
+/* Work queue status filters */
+.aiq-dashboard .ops-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.aiq-dashboard .ops-tabs .aiq-button {
+    min-height: 36px;
+    padding: 7px 12px;
+    font-size: 12px;
+}
+
+.aiq-dashboard .ops-tabs .aiq-button[aria-pressed="true"] {
+    background: var(--aiq-primary);
+    border-color: var(--aiq-primary);
+    color: #ffffff;
+}
+
+/* Shared dashboard detail components; employee view uses the same stylesheet. */
+.aiq-dashboard button.aiq-card { text-align: left; cursor: pointer; }
+.aiq-dashboard button.aiq-card:hover { box-shadow: 0 4px 14px rgb(70 45 110 / 8%); }
+.aiq-dashboard button.aiq-card:focus-visible { outline: 3px solid #bba7d5; outline-offset: 3px; }
+.aiq-dashboard .ops-status { display: inline-block; padding: 4px 7px; border-radius: 6px; font-size: 11px; line-height: 1.5; overflow-wrap: anywhere; }
+.aiq-dashboard .ops-status-blue { color: #426aa3; background: #edf3fc; }
+.aiq-dashboard .ops-status-amber { color: #8a641f; background: #fff5e1; }
+.aiq-dashboard .ops-status-violet { color: #73529e; background: #f1eafa; }
+.aiq-dashboard .ops-status-slate { color: #5f6d82; background: #f1f3f7; }
+.aiq-dashboard .ops-dashboard-message { padding: 12px 16px; margin-bottom: 16px; border: 1px solid #e9d8b9; border-radius: 8px; background: #fff9ed; color: #7a612b; }
+.aiq-dashboard .ops-pagination { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+.aiq-dashboard .ops-pagination-actions { display: flex; gap: 6px; }
+.aiq-dashboard .ops-pagination-actions .aiq-button { min-height: 32px; padding: 5px 10px; }
+.aiq-dashboard .ops-category-bars { padding: 0; margin: 16px 0 0; list-style: none; }
+.aiq-dashboard .ops-category-bars li { display: grid; grid-template-columns: minmax(0, 1fr) minmax(45px, .7fr) 26px; align-items: center; gap: 10px; padding: 11px 0; color: var(--aiq-muted); font-size: 12px; }
+.aiq-dashboard .ops-category-bars li + li { border-top: 1px solid var(--aiq-border); }
+.aiq-dashboard .ops-category-bars strong { text-align: right; font-size: 12px; font-weight: 600; }
+.aiq-dashboard .ops-category-track { display: block; height: 7px; background: #ececf3; border-radius: 6px; overflow: hidden; }
+.aiq-dashboard .ops-category-track > span { display: block; height: 100%; min-width: 3px; background: #a489c9; border-radius: 6px; }
+.aiq-dashboard .ops-help-list { display: grid; gap: 14px; margin: 16px 0 0; padding-left: 18px; color: #71598f; font-size: 12px; }
+.aiq-dashboard .ops-help-list strong { display: block; color: var(--aiq-text); font-weight: 600; }
+.aiq-dashboard .ops-help-list span { display: block; margin-top: 4px; color: var(--aiq-muted); line-height: 1.7; }
+.aiq-dashboard .ops-personal-updates { margin: 14px 0 0; padding: 0; list-style: none; }
+.aiq-dashboard .ops-personal-updates li + li { border-top: 1px solid var(--aiq-border); }
+.aiq-dashboard .ops-personal-updates button { display: flex; width: 100%; align-items: center; gap: 12px; padding: 13px 0; border: 0; background: transparent; text-align: left; cursor: pointer; }
+.aiq-dashboard .ops-personal-updates button:focus-visible { outline: 3px solid #bba7d5; outline-offset: 2px; border-radius: 6px; }
+.aiq-dashboard .ops-update-title { flex: 1; min-width: 0; }
+.aiq-dashboard .ops-update-title strong { display: block; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; color: var(--aiq-text); font-size: 12px; font-weight: 600; }
+.aiq-dashboard .ops-personal-updates button:hover strong { color: var(--aiq-primary); }
+.aiq-dashboard .ops-update-title small { display: block; margin-top: 3px; color: var(--aiq-muted); font-size: 10px; }
+.aiq-dashboard .ops-personal-updates time { color: var(--aiq-muted); font-size: 11px; white-space: nowrap; }
+.aiq-dashboard .ops-visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; clip: rect(0, 0, 0, 0); overflow: hidden; white-space: nowrap; }
+.aiq-employee .ops-kpis .aiq-card:nth-child(2) { border-top-color: #8caee0; }
+.aiq-employee .ops-kpis .aiq-card:nth-child(3) { border-top-color: #d9b56b; }
+.aiq-employee .ops-kpis .aiq-card:nth-child(4), .aiq-employee .ops-kpis .aiq-card:nth-child(5) { border-top-color: #b59bd8; }
+@container aiq-dashboard (max-width: 600px) {
+    .aiq-dashboard .ops-personal-updates button { flex-wrap: wrap; }
+    .aiq-dashboard .ops-update-title { flex-basis: 100%; }
+    .aiq-dashboard .ops-personal-updates time { margin-left: auto; }
+}

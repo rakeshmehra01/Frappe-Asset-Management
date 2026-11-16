@@ -1,0 +1,29 @@
+{
+ "content": null,
+ "creation": "2026-11-03 12:16:10.817786",
+ "docstatus": 0,
+ "doctype": "Page",
+ "idx": 0,
+ "modified": "2026-11-03 12:16:10.817786",
+ "modified_by": "Administrator",
+ "module": "AssetsIQ",
+ "name": "assetsiq-home",
+ "owner": "Administrator",
+ "page_name": "assetsiq-home",
+ "roles": [
+  {
+   "role": "AssetsIQ IT"
+  },
+  {
+   "role": "AssetsIQ Employee"
+  },
+  {
+   "role": "System Manager"
+  }
+ ],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "system_page": 0,
+ "title": "AssetsIQ Home"
+}

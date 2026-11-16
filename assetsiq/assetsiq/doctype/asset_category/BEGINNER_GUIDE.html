@@ -1,0 +1,983 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>AssetsIQ · Beginner’s Frappe Guide</title><style>
+:root{--ink:#17243b;--muted:#54647a;--line:#dce3ee;--accent:#5145cd;--paper:#fff;--bg:#f4f6fb}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:24px}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:var(--accent)}a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:3px solid #d19512;outline-offset:4px}.skip{position:absolute;left:12px;top:-80px;background:#fff;padding:10px;z-index:10}.skip:focus{top:12px}.shell{max-width:1600px;margin:auto;display:grid;grid-template-columns:270px minmax(0,1fr);gap:30px;padding:30px}aside{position:sticky;top:24px;align-self:start;max-height:calc(100vh - 48px);overflow:auto}.brand{font-size:22px;font-weight:800}.tag{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);font-weight:750}nav{display:grid;gap:5px;margin-top:20px}nav a{font-size:14px;color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:8px;line-height:1.45}nav a:hover,nav a.active{background:#e8e5ff;color:#362b9e}.tools{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}button,.source{font:inherit;font-size:13px;padding:8px 12px;border:1px solid var(--line);background:#fff;border-radius:8px;color:var(--ink);cursor:pointer;text-decoration:none}main{min-width:0;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:clamp(20px,4vw,60px);box-shadow:0 10px 45px #26375a08}h1{font-size:clamp(30px,4vw,46px);letter-spacing:-.04em;line-height:1.15;margin:12px 0 24px;max-width:850px}h2{font-size:27px;line-height:1.3;margin:64px 0 22px;padding-top:25px;border-top:1px solid var(--line);letter-spacing:-.025em}h3{font-size:21px;margin:35px 0 14px;line-height:1.4}p{margin:15px 0}li{margin:8px 0}strong{font-weight:700}code{font: .87em/1.6 ui-monospace,SFMono-Regular,Consolas,monospace;background:#eef0f7;padding:2px 5px;border-radius:4px;overflow-wrap:anywhere}pre{background:#152238;color:#edf2ff;padding:22px;border-radius:12px;overflow:auto;font-size:14px;line-height:1.65}pre code{padding:0;background:none;color:inherit;overflow-wrap:normal;font-size:inherit}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px;margin:24px 0}table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.6}th{text-align:left;background:#eff0fa;color:#302963;font-weight:750}th,td{padding:13px 15px;vertical-align:top;border-bottom:1px solid var(--line);min-width:140px}tr:last-child td{border-bottom:0}tbody tr:nth-child(even){background:#fafbfe}.diagram{background:#f5f6ff;border:1px solid #deddf7;border-radius:16px;padding:24px;margin:28px 0}.diagram figcaption{font-weight:750;margin-bottom:22px;color:#3e358e}.lanes{display:flex;gap:16px;align-items:stretch;justify-content:center;flex-wrap:wrap;width:100%}.lanes>.lane,.lanes>.node{flex:1;min-width:170px}.lane{display:flex;flex-direction:column;align-items:center;gap:0;width:100%}.node{background:#fff;border:1px solid #cecee9;border-radius:11px;padding:15px 18px;width:100%;text-align:center;box-shadow:0 3px 6px #29305c05}.node strong{display:block;line-height:1.4}.node small{display:block;line-height:1.5;color:var(--muted);margin-top:7px;font-size:13px}.arrow{display:flex;flex-direction:column;text-align:center;font-size:25px;line-height:1.15;color:var(--accent);padding:8px}.arrow span{font:12px system-ui;color:var(--muted);margin-bottom:4px}.diagram-note{font-size:13px;color:var(--muted);margin-bottom:0}.intro{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}.pill{background:#efedff;border-radius:30px;padding:5px 12px;font-size:12px;color:#4436a4}.offline{font-size:13px;color:var(--muted)}footer{margin-top:50px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}@media(max-width:1000px){.shell{grid-template-columns:1fr;padding:15px;gap:15px}aside{position:static;max-height:none}nav{grid-template-columns:repeat(auto-fit,minmax(200px,1fr));max-height:210px;overflow:auto}main{padding:24px}h2{font-size:24px}.diagram{padding:16px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}@media print{body{background:#fff;font-size:10pt}.shell{display:block;padding:0}aside,.skip{display:none}main{border:0;box-shadow:none;padding:0}h1{font-size:28pt}h2{break-before:auto;font-size:20pt;margin-top:30px}h2,h3,figcaption{break-after:avoid}.table-wrap{overflow:visible}table{font-size:8pt}th,td{min-width:0;padding:6px;overflow-wrap:anywhere}tr,.node{break-inside:avoid}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f1f3f7;color:#17243b;font-size:8pt}.diagram{break-inside:auto}.lanes{flex-wrap:nowrap}.lanes>.lane,.lanes>.node{min-width:0}a{color:inherit;text-decoration:none}}
+</style></head><body><a class="skip" href="#content">Skip to guide</a><div class="shell"><aside><div class="tag">Your app, explained</div><div class="brand">AssetsIQ Guide</div><p class="offline">Beginner-friendly reference based on your application source. Works offline.</p><div class="tools"><button id="print" type="button">Print / Save PDF</button><a class="source" href="BEGINNER_GUIDE.md">Markdown source</a></div><nav aria-label="Guide chapters"><a href="#section-1">1. Start with the vocabulary</a><a href="#section-2">2. The file structure</a><a href="#section-3">3. How the DocTypes relate</a><a href="#section-4">4. Shared files, styles and hooks</a><a href="#section-5">5. Main DocType → file → event → result map</a><a href="#section-6">6. Practical walkthroughs from the code</a><a href="#section-7">7. Frappe API and event reference</a><a href="#section-8">8. How a VS Code edit reaches Frappe</a><a href="#section-9">9. Current implementation versus future development</a><a href="#section-10">10. A simple learning route</a></nav></aside><main id="content"><div class="intro"><span class="pill">5 current DocTypes</span><span class="pill">Source-based examples</span><span class="pill">Current vs. proposed</span></div><h1>AssetsIQ: a beginner’s guide to how your Frappe app fits together</h1>
+<p>Source snapshot: 4 November 2026. This guide describes the files in <code>/home/vin_user81/frappe-bench/apps/assetsiq</code>. It does not claim that every setup script has been run on your site. No database records or live browser screens were inspected or changed.</p>
+<p><strong>Your app currently defines five DocTypes. Assets, assignments and maintenance share the Asset record; they are not five separate transaction modules.</strong> Workflow transitions are requested from Frappe at runtime, so the complete active workflow must be checked in the site's Workflow screen.</p>
+<h2 id="section-1">1. Start with the vocabulary</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Guide reference table"><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Plain meaning</th>
+<th>AssetsIQ example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>App</td>
+<td>A package of related features</td>
+<td><code>assetsiq</code></td>
+</tr>
+<tr>
+<td>Module</td>
+<td>A grouping inside an app</td>
+<td>AssetsIQ module containing your five DocTypes</td>
+</tr>
+<tr>
+<td>DocType</td>
+<td>The blueprint for records: fields, permissions and settings</td>
+<td>Asset</td>
+</tr>
+<tr>
+<td>Document</td>
+<td>One record made from that blueprint</td>
+<td>A laptop named <code>AST-00001</code> (illustrative ID)</td>
+</tr>
+<tr>
+<td>Field</td>
+<td>One piece of information on a record</td>
+<td><code>serial_number</code></td>
+</tr>
+<tr>
+<td>Link</td>
+<td>A field pointing to another record</td>
+<td>Asset's <code>asset_category</code> points to Asset Category</td>
+</tr>
+<tr>
+<td>Controller</td>
+<td>Python class containing server rules</td>
+<td><code>class Asset(Document)</code></td>
+</tr>
+<tr>
+<td>Client</td>
+<td>The browser running JavaScript</td>
+<td>Showing a confirmation dialog</td>
+</tr>
+<tr>
+<td>Server</td>
+<td>Python and the database behind the interface</td>
+<td>Rejecting an asset without a required serial</td>
+</tr>
+<tr>
+<td>Event</td>
+<td>A moment when Frappe calls your code</td>
+<td>Form <code>refresh</code>, document <code>validate</code></td>
+</tr>
+<tr>
+<td>Hook</td>
+<td>A registration telling Frappe where to find app-wide code</td>
+<td><code>doc_events</code> in <code>hooks.py</code></td>
+</tr>
+<tr>
+<td>Desk</td>
+<td>Frappe’s logged-in working interface</td>
+<td>Lists, forms and workspaces</td>
+</tr>
+<tr>
+<td>Bundle</td>
+<td>Several source files built into a browser-loadable file</td>
+<td>Harbor CSS and JavaScript bundles</td>
+</tr>
+<tr>
+<td>Workflow</td>
+<td>Configured states and allowed actions between them</td>
+<td>Accept Assignment</td>
+</tr>
+</tbody>
+</table></div>
+<p>A DocType JSON is a <strong>blueprint</strong>, not a file holding all asset records. Records normally live in the site's database. A Link stores a record ID; the screen may display a friendlier title.</p>
+<h2 id="section-2">2. The file structure</h2>
+<p>Paths below start at <code>apps/assetsiq/</code>. The repeated <code>assetsiq</code> directories represent the repository, Python package and module; they are intentional.</p>
+<pre><code class="language-text">assetsiq/                              repository
+├── README.md                          project notes; some sections describe earlier stages
+└── assetsiq/                          app's Python package
+    ├── hooks.py                       registrations and asset bundle loading
+    ├── boot.py                        app route metadata for Desk
+    ├── asset_permissions.py           Asset and Location access rules
+    ├── geography.py                   shared State/District validation
+    ├── fixtures/role.json             exported operational roles
+    ├── setup/                         explicitly invoked setup/import helpers
+    │   ├── desk.py, home.py, launcher.py, asset_navigation.py
+    │   ├── geography.py, location_names.py
+    │   ├── import_states.py, import_districts.py
+    │   └── recipient_workflow.py
+    ├── public/
+    │   ├── assetsiq_harbor.bundle.js    JS build entry: imports shared scripts
+    │   ├── assetsiq_harbor.bundle.scss CSS build entry: imports styles
+    │   ├── js/
+    │   │   ├── harbor_desk.js
+    │   │   ├── workspace_navigation.js
+    │   │   ├── location_state_quick_entry.js
+    │   │   └── asset_form.js
+    │   ├── css/                       shared and screen-specific styles
+    │   └── dist/                      generated build output
+    ├── desktop_icon/                  exported launcher definitions
+    ├── workspace_sidebar/             exported sidebar definitions
+    ├── www/assetsiq.py + assetsiq.html retained standalone web page
+    ├── tests/                         additional verification scripts
+    └── assetsiq/                      AssetsIQ module
+        ├── doctype/
+        │   ├── asset/
+        │   ├── asset_category/         this guide is stored here
+        │   ├── asset_location/
+        │   ├── location_state/
+        │   └── location_district/
+        ├── page/assetsiq_home/         custom Desk Home page
+        └── workspace/                 exported workspace definitions
+</code></pre>
+<h3>Every current DocType and its files</h3>
+<p>Each listed directory also has <code>__init__.py</code>, which makes it an importable Python package.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Guide reference table"><table>
+<thead>
+<tr>
+<th>DocType</th>
+<th>Directory under <code>assetsiq/assetsiq/doctype/</code></th>
+<th>Actual files</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Asset</td>
+<td><code>asset/</code></td>
+<td><code>asset.json</code>, <code>asset.py</code>, <code>asset.js</code>, <code>asset_list.js</code>, <code>test_asset.py</code></td>
+</tr>
+<tr>
+<td>Asset Category</td>
+<td><code>asset_category/</code></td>
+<td><code>asset_category.json</code>, <code>asset_category.py</code>, <code>asset_category.js</code>, <code>asset_category_list.js</code>, <code>test_asset_category.py</code></td>
+</tr>
+<tr>
+<td>Asset Location</td>
+<td><code>asset_location/</code></td>
+<td><code>asset_location.json</code>, <code>asset_location.py</code>, <code>asset_location.js</code>, <code>asset_location_list.js</code>, <code>test_asset_location.py</code></td>
+</tr>
+<tr>
+<td>Location State</td>
+<td><code>location_state/</code></td>
+<td><code>location_state.json</code>, <code>location_state.py</code>, <code>location_state.js</code>, <code>location_state_list.js</code>, <code>test_location_state.py</code></td>
+</tr>
+<tr>
+<td>Location District</td>
+<td><code>location_district/</code></td>
+<td><code>location_district.json</code>, <code>location_district.py</code>, <code>location_district.js</code>, <code>location_district_list.js</code>, <code>test_location_district.py</code></td>
+</tr>
+</tbody>
+</table></div>
+<h3>What each file does, and who creates it</h3>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Guide reference table"><table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+<th>Automatic versus manual</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;name&gt;.json</code></td>
+<td>Fields, naming, form layout, permissions and other DocType settings</td>
+<td>Frappe writes/exports standard DocTypes in developer mode when configured through the DocType editor. Developers can edit tracked JSON carefully and sync it.</td>
+</tr>
+<tr>
+<td><code>&lt;name&gt;.py</code></td>
+<td>Server controller; rules apply beyond the browser too</td>
+<td>Frappe normally scaffolds the class. Developers write methods such as <code>validate</code>.</td>
+</tr>
+<tr>
+<td><code>&lt;name&gt;.js</code></td>
+<td>Browser form events and presentation</td>
+<td>Frappe normally scaffolds the event registration. Developers add the behavior.</td>
+</tr>
+<tr>
+<td><code>&lt;name&gt;_list.js</code></td>
+<td>List columns, badges, filters and list events</td>
+<td>Optional customization usually created and maintained by developers; its filename lets Frappe discover it.</td>
+</tr>
+<tr>
+<td><code>test_&lt;name&gt;.py</code></td>
+<td>Automated checks</td>
+<td>Frappe can scaffold test classes. Developers write meaningful test cases.</td>
+</tr>
+<tr>
+<td><code>__init__.py</code></td>
+<td>Python package marker</td>
+<td>Normally scaffolded; often empty.</td>
+</tr>
+<tr>
+<td><code>hooks.py</code></td>
+<td>App registrations</td>
+<td>App creation supplies a template; developers enable/edit registrations. Commented examples do nothing.</td>
+</tr>
+<tr>
+<td><code>public/js/*</code>, <code>public/css/*</code>, bundle entries</td>
+<td>Shared behavior and styling</td>
+<td>Developer-maintained source, not automatically designed by Frappe.</td>
+</tr>
+<tr>
+<td><code>public/dist/*</code></td>
+<td>Optimized, hashed browser files</td>
+<td>Build-generated. Edit the source, then rebuild.</td>
+</tr>
+<tr>
+<td>Workspace/sidebar/icon JSON and fixtures</td>
+<td>Exported site configuration</td>
+<td>Can be exported/generated by Frappe or setup code; developers maintain reproducible definitions.</td>
+</tr>
+</tbody>
+</table></div>
+<p>These are Frappe conventions, not proof of who originally typed each file. The source alone does not establish its editing history. Your category, state and district test files and Asset test file currently contain placeholder test classes; Asset Location has real integration tests.</p>
+<h2 id="section-3">3. How the DocTypes relate</h2>
+<p>Arrows mean “contains a Link to,” not “inherits from.” Many assets can use one category or location.</p>
+<figure class="diagram"><figcaption>Current DocType relationships — follow each Link</figcaption><div class="lanes"><div class="lane"><div class="node"><strong>Asset</strong><small>The equipment record</small></div><span class="arrow"><span>asset_category</span>↓</span><div class="node"><strong>Asset Category</strong><small>Registration rules</small></div></div><div class="lane"><div class="node"><strong>Asset</strong><small>The equipment record</small></div><span class="arrow"><span>asset_location</span>↓</span><div class="node"><strong>Asset Location</strong><small>Country · State · District</small></div><span class="arrow"><span>geography Links</span>↓</span><div class="node"><strong>Location District → Location State → Country</strong><small>District links to State; State links to Country</small></div></div><div class="lane"><div class="node"><strong>Asset</strong><small>The equipment record</small></div><span class="arrow"><span>assigned_to</span>↓</span><div class="node"><strong>User</strong><small>Frappe built-in user record</small></div></div></div><p class="diagram-note">Asset Location also links directly to Country and Location State. These are record links, not inheritance.</p></figure>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Guide reference table"><table>
+<thead>
+<tr>
+<th>DocType</th>
+<th>What it stores</th>
+<th>Identity and important rules</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Asset Category</td>
+<td>Category name, serial-required checkbox, computer-specifications-required checkbox, description</td>
+<td>ID comes from <code>category_name</code>; category name is unique. Python controller currently has <code>pass</code>: no custom category server method.</td>
+</tr>
+<tr>
+<td>Asset</td>
+<td>Name, category, location, assigned user, serial, status, description</td>
+<td>ID pattern <code>AST-.#####</code>. Name/category/location/status are required. Serial is marked unique; conditional requirement comes from category and is checked again on the server.</td>
+</tr>
+<tr>
+<td>Asset Location</td>
+<td>Location name, country/state/district, address, description</td>
+<td>Auto-increment ID. <code>location_name</code> is a friendly label, not the ID. Blank labels are suggested by Python. Legacy <code>naming_series</code> field is hidden by form JS.</td>
+</tr>
+<tr>
+<td>Location State</td>
+<td>State name, country, description</td>
+<td>Hash ID. Country and state name required; duplicate names blocked within the same country. Parent country cannot change after creation.</td>
+</tr>
+<tr>
+<td>Location District</td>
+<td>District name and state</td>
+<td>Hash ID. State and district name required; duplicate names blocked within the same state. Parent state cannot change after creation.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Important limits:</strong> <code>computer_specifications_required</code> exists and is shown as a badge, but the inspected Asset fields/controller do not implement a computer specification collection or enforcement process. <code>assigned_to</code> links to <strong>User</strong>, not an Employee DocType.</p>
+<h2 id="section-4">4. Shared files, styles and hooks</h2>
+<h3>The loading connection</h3>
+<figure class="diagram"><figcaption>How shared code reaches your screens</figcaption><div class="lane"><div class="node"><strong>hooks.py</strong><small>App-wide registrations</small></div><span class="arrow"><span></span>↓</span><div class="lanes"><div class="lane"><div class="node"><strong>JavaScript bundle</strong><small>harbor_desk · navigation · Quick Entry · asset_form</small></div><span class="arrow"><span></span>↓</span><div class="node"><strong>DocType form / list scripts</strong><small>Call helpers and add CSS classes</small></div></div><div class="lane"><div class="node"><strong>SCSS bundle → built CSS</strong><small>Imports screen and shared styles</small></div><span class="arrow"><span></span>↓</span><div class="node"><strong>Matching screen elements</strong><small>Classes connect the design to each form/list</small></div></div><div class="lane"><div class="node"><strong>Python hooks</strong><small>Boot metadata · permissions · before_validate</small></div><span class="arrow"><span></span>↓</span><div class="node"><strong>Server rules</strong><small>Discover app screens and enforce access</small></div></div></div></div></figure>
+<p><code>app_include_*</code> loads resources into Desk. Loading globally does not mean every style visibly applies everywhere: classes and selectors scope most AssetsIQ changes to its screens.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Guide reference table"><table>
+<thead>
+<tr>
+<th>Shared file</th>
+<th>Actual connection and visible effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hooks.py</code></td>
+<td>Loads both bundles; registers boot metadata, roles fixture, launcher, Asset/Location permission functions and Asset <code>before_validate</code>.</td>
+</tr>
+<tr>
+<td><code>boot.py</code></td>
+<td><code>extend_bootinfo</code> discovers module DocTypes, workspaces, pages and reports. Browser branding uses <code>frappe.boot.assetsiq_routes</code> to recognize app screens. This is route metadata, not a permission grant.</td>
+</tr>
+<tr>
+<td><code>public/js/harbor_desk.js</code></td>
+<td>Adds <code>aiq-assetsiq-shell</code> on app routes, sets branding and short workspace labels; restores labels outside app routes.</td>
+</tr>
+<tr>
+<td><code>public/js/workspace_navigation.js</code></td>
+<td>Builds Home/workspace navigation from its mapping and allowed workspaces; hides unreadable DocType items. My Assets route includes the current assigned user filter. Server permissions still enforce access.</td>
+</tr>
+<tr>
+<td><code>public/js/asset_form.js</code></td>
+<td>Exposes <code>frappe.assetsiq_asset_form</code>; builds Asset header, status notice, summary and tab-specific guidance. <code>asset.js</code> calls these helpers. These are app functions attached to <code>frappe</code>, not built-in Frappe APIs.</td>
+</tr>
+<tr>
+<td><code>public/js/location_state_quick_entry.js</code></td>
+<td>Extends Frappe's state Quick Entry class, calls the original dialog renderer, then adds a styling class.</td>
+</tr>
+<tr>
+<td><code>asset_permissions.py</code></td>
+<td>Filters lists, checks individual records and restricts employee changes before validation.</td>
+</tr>
+<tr>
+<td><code>geography.py</code></td>
+<td>Reused by State and District controllers to normalize labels and protect hierarchy/uniqueness.</td>
+</tr>
+<tr>
+<td><code>assetsiq/page/assetsiq_home/*</code></td>
+<td>JSON defines a Desk Page; JS creates its page and uses the shared navigation helper's workspace cards.</td>
+</tr>
+<tr>
+<td><code>www/assetsiq.py</code> and <code>.html</code></td>
+<td>Separate website route <code>/assetsiq</code>; Python redirects guests and prepares role/name context. README says these are retained from an earlier standalone experiment, not linked from the Desk workspace.</td>
+</tr>
+<tr>
+<td><code>setup/*.py</code></td>
+<td>Administrative setup, import and repair helpers. Merely existing here does not run them during every save, login or migration. No active install/migrate hook registers them in this <code>hooks.py</code>.</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Where styling belongs</h3>
+<p>The <strong>loading mechanism is shared</strong>, while styles can be shared or screen-specific. A DocType does not need its own automatically loaded CSS file.</p>
+<p>The active SCSS entry imports these CSS sources:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Guide reference table"><table>
+<thead>
+<tr>
+<th>CSS source in <code>public/css/</code></th>
+<th>Intended scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>harbor_desk.css</code></td>
+<td>Shared app Desk shell and design</td>
+</tr>
+<tr>
+<td><code>executive_list.css</code></td>
+<td>Common list action bars and inputs</td>
+</tr>
+<tr>
+<td><code>workspace_navigation.css</code></td>
+<td>Sidebar and workspace/Home presentation</td>
+</tr>
+<tr>
+<td><code>location_state.css</code>, <code>location_state_list.css</code></td>
+<td>State form/Quick Entry and list</td>
+</tr>
+<tr>
+<td><code>location_district.css</code></td>
+<td>District presentation</td>
+</tr>
+<tr>
+<td><code>asset_category_list.css</code></td>
+<td>Category presentation</td>
+</tr>
+<tr>
+<td><code>asset_location.css</code></td>
+<td>Location form and list</td>
+</tr>
+<tr>
+<td><code>asset_form.css</code>, <code>asset_list.css</code></td>
+<td>Asset form and list</td>
+</tr>
+</tbody>
+</table></div>
+<p>For example, category form JS adds <code>aiq-category-form</code>; selectors in loaded styles can target that class. State Quick Entry adds <code>aiq-location-state-dialog</code>, allowing popup-specific styling.</p>
+<p><code>harbor.css</code> and <code>mi.css</code> also exist but are not imported by this SCSS entry. A file’s presence does not establish active loading through the Desk bundle; retained pages may reference assets separately. Do not assume every CSS file affects every screen.</p>
+<p>SCSS is CSS source with extra build features. Your entry mainly assembles imports. The build produces CSS that the browser understands. Hashed filenames change when contents change, helping browsers load the new version.</p>
+<h2 id="section-5">5. Main DocType → file → event → result map</h2>
+<p>All paths here are relative to the app's Python package (<code>apps/assetsiq/assetsiq/</code>).</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Guide reference table"><table>
+<thead>
+<tr>
+<th>DocType/scope</th>
+<th>File</th>
+<th>Function or event</th>
+<th>Purpose and when it runs</th>
+<th>Visible result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Asset Category</td>
+<td><code>assetsiq/doctype/asset_category/asset_category.json</code></td>
+<td><code>autoname</code>, field metadata</td>
+<td>Defines the blueprint, synchronized into the site</td>
+<td>Category name and requirement checkboxes</td>
+</tr>
+<tr>
+<td>Asset Category</td>
+<td>same folder, <code>asset_category.js</code></td>
+<td>Form <code>refresh</code></td>
+<td>Adds banner/guide; shows category identity, makes saved name read-only; adjusts sidebar/layout</td>
+<td>Guided category form</td>
+</tr>
+<tr>
+<td>Asset Category</td>
+<td><code>asset_category_list.js</code></td>
+<td>List <code>onload</code>, <code>refresh</code>, <code>formatters</code></td>
+<td>Creates introduction, updates filters and description previews; formats checkboxes</td>
+<td>Required/Not required badges</td>
+</tr>
+<tr>
+<td>Asset Category</td>
+<td><code>asset_category.py</code></td>
+<td><code>AssetCategory(Document)</code></td>
+<td>Uses inherited behavior; no custom methods</td>
+<td>Standard save behavior</td>
+</tr>
+<tr>
+<td>Asset</td>
+<td><code>assetsiq/doctype/asset/asset.json</code></td>
+<td><code>fetch_from</code>, <code>mandatory_depends_on</code>, <code>unique</code></td>
+<td>Fetches category serial rule; marks serial mandatory conditionally and unique</td>
+<td>Serial requirement in form; duplicate nonempty serial rejected</td>
+</tr>
+<tr>
+<td>Asset</td>
+<td><code>asset.py</code></td>
+<td><code>Asset.validate</code></td>
+<td>Reads trusted category rule, checks serial/status/user; clears recipient on specified return to Available</td>
+<td>Invalid saves blocked; assignment cleared on applicable return</td>
+</tr>
+<tr>
+<td>Asset</td>
+<td><code>asset.js</code></td>
+<td>Form <code>refresh</code></td>
+<td>Filters recipient selection and retrieves permitted workflow actions</td>
+<td>Correct user choices and action buttons</td>
+</tr>
+<tr>
+<td>Asset</td>
+<td><code>asset.js</code></td>
+<td><code>asset_name</code>, <code>asset_category</code>, <code>assigned_to</code>, <code>serial_number</code>, <code>serial_number_required</code>, <code>asset_status</code>, <code>asset_location</code></td>
+<td>Field-change handlers call shared render</td>
+<td>Header/summary/guidance follow edits</td>
+</tr>
+<tr>
+<td>Asset</td>
+<td><code>asset.js</code></td>
+<td><code>on_tab_change</code></td>
+<td>Calls shared guidance renderer</td>
+<td>Guide matches active tab</td>
+</tr>
+<tr>
+<td>Asset</td>
+<td><code>asset_list.js</code></td>
+<td>List <code>onload</code>, <code>refresh</code>, formatter, button action</td>
+<td>Builds status tabs, fetches permission-filtered counts, decorates rows</td>
+<td>My Assets/inventory headings, status counts, recipient display</td>
+</tr>
+<tr>
+<td>Asset Location</td>
+<td><code>assetsiq/doctype/asset_location/asset_location.js</code></td>
+<td>Form <code>setup</code></td>
+<td>Registers state/district Link filters</td>
+<td>Matching geography choices</td>
+</tr>
+<tr>
+<td>Asset Location</td>
+<td><code>asset_location.js</code></td>
+<td><code>refresh</code>, <code>country</code>, <code>state</code></td>
+<td>Refresh enables fields and renders design; parent edits clear children</td>
+<td>No stale child selection after country/state edit</td>
+</tr>
+<tr>
+<td>Asset Location</td>
+<td><code>asset_location.py</code></td>
+<td><code>validate</code>, <code>suggest_location_name</code></td>
+<td>Normalizes/suggests name and checks parent relationships</td>
+<td>Consistent name; mismatched geography rejected</td>
+</tr>
+<tr>
+<td>Asset Location</td>
+<td><code>asset_location_list.js</code></td>
+<td>List <code>onload</code>, <code>refresh</code></td>
+<td>Adds intro, search hints and address/description previews</td>
+<td>Easier location browsing</td>
+</tr>
+<tr>
+<td>Location State</td>
+<td><code>assetsiq/doctype/location_state/location_state.py</code></td>
+<td><code>validate</code>, <code>on_doctype_update</code></td>
+<td>Uses shared geography rules; adds compound unique constraint during schema update</td>
+<td>No duplicate state within country; parent protected</td>
+</tr>
+<tr>
+<td>Location State</td>
+<td><code>location_state.js</code>, <code>location_state_list.js</code></td>
+<td>Form <code>refresh</code>, list <code>onload</code></td>
+<td>Adds guide/classes, introduction and search hints</td>
+<td>Styled state form/list</td>
+</tr>
+<tr>
+<td>Location District</td>
+<td><code>assetsiq/doctype/location_district/location_district.py</code></td>
+<td><code>validate</code>, <code>on_doctype_update</code></td>
+<td>Same shared rules, uniqueness within state</td>
+<td>No duplicate district within state; parent protected</td>
+</tr>
+<tr>
+<td>Location District</td>
+<td><code>location_district.js</code>, <code>location_district_list.js</code></td>
+<td>Form <code>refresh</code>; list <code>onload</code>, <code>refresh</code></td>
+<td>Adds banner, classes and filter hints</td>
+<td>Styled district form/list</td>
+</tr>
+<tr>
+<td>Asset/Location security</td>
+<td><code>asset_permissions.py</code> via <code>hooks.py</code></td>
+<td>Query conditions, permission checks, <code>before_validate</code></td>
+<td>Checks reads/writes and employee transitions on the server</td>
+<td>Employees see/act only on permitted own records</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>refresh</code> may run repeatedly. Most rendering helpers remove or check for their own previous markup to avoid duplicate banners. <code>setup</code> establishes form queries early. Field-name events run when that field changes, not just because a similarly named file exists.</p>
+<h2 id="section-6">6. Practical walkthroughs from the code</h2>
+<h3>A. Register a laptop: category → serial rule → server validation</h3>
+<p>Illustrative data: category <strong>Laptop</strong>, serial-required checked; an Asset named <strong>Office Laptop</strong>.</p>
+<p>Actual JSON on Asset contains the equivalent metadata:</p>
+<pre><code class="language-json">{&quot;fieldname&quot;: &quot;serial_number_required&quot;, &quot;fetch_from&quot;: &quot;asset_category.serial_required&quot;}
+</code></pre>
+<p>The serial field uses <code>mandatory_depends_on: &quot;eval:doc.serial_number_required == 1&quot;</code>. This is a metadata expression, not a Python function.</p>
+<p>Actual server logic from <code>asset.py</code>:</p>
+<pre><code class="language-python">serial_required = frappe.db.get_value(
+    &quot;Asset Category&quot;, self.asset_category, &quot;serial_required&quot;,
+)
+self.serial_number_required = int(serial_required or 0)
+serial = (self.serial_number or &quot;&quot;).strip()
+if serial == &quot;0&quot;:
+    frappe.throw(_(&quot;Serial Number cannot be 0.&quot;))
+</code></pre>
+<ol>
+<li>The category Link identifies the category record.</li>
+<li>Frappe fetches its checkbox for the form's conditional requirement.</li>
+<li>Saving invokes <code>Asset.validate</code> on the server.</li>
+<li><code>frappe.db.get_value</code> reads the category's current saved rule again. The server does not trust a browser-edited checkbox.</li>
+<li><code>int(... or 0)</code> turns an empty/false rule into zero.</li>
+<li><code>strip()</code> ignores surrounding spaces for these checks; this snippet does not itself rewrite the stored serial.</li>
+<li><code>frappe.throw</code> stops the save if the serial is <code>0</code>. The following actual branch also stops saving a missing required serial.</li>
+<li><code>_()</code> marks the message for translation. JSON's unique setting separately protects serial uniqueness through Frappe/database validation.</li>
+</ol>
+<p>Visible result: a Laptop category requiring a serial cannot be saved as an Asset with a blank serial, including when a save arrives through an import or API.</p>
+<h3>B. Choose an office: country → state → district</h3>
+<p>Actual form code from <code>asset_location.js</code>:</p>
+<pre><code class="language-javascript">setup(frm) {
+    frm.set_query(&quot;state&quot;, () =&gt; ({
+        filters: { country: frm.doc.country || &quot;&quot; }
+    }));
+    frm.set_query(&quot;district&quot;, () =&gt; ({
+        filters: { state: frm.doc.state || &quot;&quot; }
+    }));
+},
+async country(frm) {
+    await frm.set_value({ state: null, district: null });
+    update_location_geography_controls(frm);
+}
+</code></pre>
+<ol>
+<li><code>frappe.ui.form.on(&quot;Asset Location&quot;, {...})</code> registers these handlers.</li>
+<li><code>frm</code> is the current form; <code>frm.doc</code> holds the record values in the browser.</li>
+<li><code>set_query</code> supplies search filters when a Link dropdown is used. The callback reads the current parent, rather than an old copied value.</li>
+<li>Selecting a different country triggers <code>country(frm)</code>.</li>
+<li><code>set_value</code> clears both children; <code>await</code> waits for that update before adjusting controls.</li>
+<li>The helper uses <code>toggle_enable</code>: State needs Country; District needs both Country and State.</li>
+<li>Python's <code>AssetLocation.validate</code> checks the actual state country and district state again using <code>db.get_value</code> and <code>throw</code>.</li>
+</ol>
+<p>Visible result: selecting India limits states to those belonging to India; changing country clears the selected state/district. Country-only locations remain allowed. A bypassed browser filter still cannot save inconsistent geography.</p>
+<h3>C. Allocation and employee acceptance: one Asset, not a separate allocation record</h3>
+<p>Current presentation guides IT to choose an enabled System User, save the Available Asset, then use Request Assignment. The browser retrieves actual authorized transitions:</p>
+<pre><code class="language-javascript">const transitions = await frappe.xcall(
+    &quot;frappe.model.workflow.get_transitions&quot;, {doc: frm.doc}
+);
+</code></pre>
+<p>When an action button is confirmed, the actual code calls:</p>
+<pre><code class="language-javascript">const doc = await frappe.xcall(&quot;frappe.model.workflow.apply_workflow&quot;, {
+    doc: frm.doc, action,
+});
+frappe.model.sync(doc);
+await frm.reload_doc();
+</code></pre>
+<ol>
+<li><code>refresh</code> avoids action generation for new/unsaved edits using <code>is_new()</code> and <code>is_dirty()</code>.</li>
+<li><code>xcall</code> calls a server method and returns its result asynchronously.</li>
+<li><code>get_transitions</code> asks the configured workflow which actions are currently allowed.</li>
+<li>Extra client checks restrict recipient actions to the selected user and respect self-approval settings.</li>
+<li><code>add_custom_button</code> displays those actions. <code>confirm</code> asks the user before applying one.</li>
+<li><code>apply_workflow</code> requests the server-side transition; a button does not itself grant authorization.</li>
+<li><code>model.sync</code> updates browser document data; <code>reload_doc</code> fetches the saved record and redraws it.</li>
+<li><code>show_alert</code> reports success. Decline Assignment instead routes to the Asset list because the employee may lose access after declining.</li>
+</ol>
+<p>The employee guard explicitly permits these old/new status pairs:</p>
+<pre><code class="language-text">Assignment Requested → Assigned                accept
+Assignment Requested → Available               decline
+Assigned             → Maintenance Requested   request maintenance
+</code></pre>
+<p>It compares <code>get_doc_before_save()</code> with current values and blocks changes to other metadata fields, excluding <code>asset_status</code> and the recalculated <code>serial_number_required</code>. Link values are normalized with <code>frappe.utils.cstr</code> before comparison.</p>
+<p><code>Asset.validate</code> clears <code>assigned_to</code> when a previously Assignment Requested or Assigned record becomes Available. The hook guard runs <strong>before</strong> that controller validation, so it can verify the original employee assignment before it is cleared.</p>
+<p>These code rules exist. Whether the site currently offers every expected transition also depends on its active Workflow and permissions.</p>
+<h3>D. Maintenance: state changes on the same Asset</h3>
+<p>The code supports the recipient action <strong>Request Maintenance</strong>, and recognizes statuses Maintenance Requested and Under Maintenance. <code>asset.js</code> also prioritizes labels Approve Maintenance and Complete Maintenance if returned by the workflow.</p>
+<ol>
+<li>An assigned employee opens their Asset.</li>
+<li>The server provides allowed transitions.</li>
+<li>Request Maintenance submits <code>apply_workflow</code>.</li>
+<li>The employee guard accepts Assigned → Maintenance Requested if other asset details were not edited.</li>
+<li>The shared renderer changes the notice to say IT will review the request.</li>
+<li>An IT user sees further actions only when allowed by the active workflow.</li>
+</ol>
+<p>There is no inspected Maintenance DocType storing technician, repair cost, service dates or repair line items. Approval/completion destinations cannot be established from button labels alone.</p>
+<h3>E. Transfers: what exists and what you could add</h3>
+<p><strong>Current:</strong> an Asset has <code>asset_location</code> and <code>assigned_to</code> Links. Authorized IT changes can update record data subject to workflow and permissions. Employees cannot use their workflow save to change those details. No transfer document/controller was found.</p>
+<p><strong>Proposed:</strong> add Asset Transfer with Asset, old/new location, old/new recipient, reason, requested-by and approval state. On authorized approval, a server method could update the Asset and retain a transfer history. This is a design suggestion, not current code; do not assume transfers already have approvals or history records.</p>
+<h3>F. Why two states with the same name can be valid</h3>
+<p>Actual shared rule in <code>geography.py</code> normalizes whitespace, checks parent changes and searches for duplicates. The State controller calls:</p>
+<pre><code class="language-python">def validate(self):
+    validate_reference(self, &quot;state_name&quot;, &quot;country&quot;)
+
+def on_doctype_update():
+    frappe.db.add_unique(
+        &quot;Location State&quot;, [&quot;country&quot;, &quot;state_name&quot;], &quot;unique_state_country&quot;
+    )
+</code></pre>
+<ol>
+<li>Saving a State invokes <code>validate_reference</code> with its label field and parent field.</li>
+<li><code>doc.get</code> reads the label; <code>doc.set</code> stores the normalized label.</li>
+<li><code>doc.has_value_changed</code> blocks changing Country on an existing record.</li>
+<li><code>db.exists</code> looks for another record with the same normalized label and country, excluding this record's own ID.</li>
+<li><code>throw(..., frappe.DuplicateEntryError)</code> provides a helpful duplicate error.</li>
+<li>During DocType schema update, <code>db.add_unique</code> also enforces the pair at database level, including competing simultaneous inserts.</li>
+</ol>
+<p>District follows the same pattern with State as its parent. <code>on_doctype_update</code> is a schema-update callback, not an event on every State/District record save.</p>
+<h2 id="section-7">7. Frappe API and event reference</h2>
+<p>This reference groups calls doing the same job. Locations refer to the files above. Small examples are explanatory snippets; full production handlers remain in the source. Properties such as <code>frappe.session.user</code>, <code>frappe.boot</code> and <code>frm.doc</code> are data, not functions. <code>$()</code>, <code>.addClass()</code>, <code>.find()</code>, <code>.append()</code>, <code>.prop()</code> and <code>.html()</code> are jQuery/DOM operations, not Frappe APIs.</p>
+<h3>Browser APIs</h3>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Guide reference table"><table>
+<thead>
+<tr>
+<th>Function/event</th>
+<th>Where and when</th>
+<th>Plain purpose; step-by-step example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>frappe.ui.form.on</code></td>
+<td>All five form JS files; script registration, then matching events</td>
+<td>Registers handlers. Example: register Asset Location → change Country → its <code>country</code> handler clears children (walkthrough B).</td>
+</tr>
+<tr>
+<td><code>setup</code>, <code>refresh</code>, field events, <code>on_tab_change</code></td>
+<td>Location setup; all forms refresh; Asset/Location field changes; Asset tabs</td>
+<td>Setup establishes queries; refresh redraws; field/tab handlers react to edits/navigation. Example: change Asset name → <code>asset_name</code> → shared <code>render</code> → header changes.</td>
+</tr>
+<tr>
+<td><code>frm.set_query</code></td>
+<td>Asset refresh; Location setup</td>
+<td>Filters Link choices. Example: assigned-to dropdown → filters enabled System Users → excludes Guest/Administrator. Server validation repeats this rule.</td>
+</tr>
+<tr>
+<td><code>frm.set_value</code>, <code>toggle_enable</code></td>
+<td>Location parent-change handlers and helper</td>
+<td>Change values and enable controls. Example: change State → clear District → enable District when parent exists.</td>
+</tr>
+<tr>
+<td><code>frm.toggle_display</code>, <code>set_df_property</code>, <code>layout.refresh_sections</code></td>
+<td>Category refresh; Location hides naming series</td>
+<td>Adjust visible/editable form fields. Example: saved category → set category name read-only → refresh layout. Native Rename is the intended ID-change route.</td>
+</tr>
+<tr>
+<td><code>frm.is_new</code>, <code>is_dirty</code></td>
+<td>Asset workflow and presentation; other form presentation</td>
+<td>Test unsaved identity/edits. Example: edit an Asset → dirty check prevents action → save/reload before workflow.</td>
+</tr>
+<tr>
+<td><code>frm.dashboard.add_section</code>, <code>show</code></td>
+<td>All form presentations, including shared Asset renderer</td>
+<td>Add/show custom dashboard content. Example: refresh → remove old custom intro → add banner → show dashboard.</td>
+</tr>
+<tr>
+<td><code>frm.get_active_tab</code></td>
+<td>Shared Asset guidance, optional call</td>
+<td>Read selected tab. Example: open Identification → get tab fieldname → display serial guidance.</td>
+</tr>
+<tr>
+<td><code>frm.add_custom_button</code>, <code>remove_custom_button</code></td>
+<td>Asset refresh</td>
+<td>Maintain workflow buttons. Example: clear previous labels → retrieve transitions → add each allowed action once.</td>
+</tr>
+<tr>
+<td><code>frappe.xcall</code></td>
+<td>Asset form/list</td>
+<td>Call server asynchronously. Example: list sends grouped <code>frappe.client.get_list</code> request → receives counts → updates tab badges. Form usage is in C.</td>
+</tr>
+<tr>
+<td><code>frappe.model.workflow.get_transitions</code>, <code>apply_workflow</code></td>
+<td>Server endpoints called by Asset JS</td>
+<td>Return allowed actions/apply selected action. Example: retrieve Accept Assignment → confirm → apply → reload (C).</td>
+</tr>
+<tr>
+<td><code>frappe.client.get_list</code></td>
+<td>Asset list via <code>xcall</code></td>
+<td>Permission-aware query. Example: preserve non-status filters → group by <code>asset_status</code> → show counts for the permitted scope.</td>
+</tr>
+<tr>
+<td><code>frappe.confirm</code>, <code>msgprint</code>, <code>show_alert</code></td>
+<td>Asset action handlers</td>
+<td>Confirm choice, explain blocked dirty action, show outcome. Example: click action → confirm → server saves → green success alert.</td>
+</tr>
+<tr>
+<td><code>frappe.model.sync</code>, <code>frm.reload_doc</code></td>
+<td>Asset workflow success</td>
+<td>Refresh browser data from the result/server. Example: workflow returns Assigned document → sync → reload → new status appears.</td>
+</tr>
+<tr>
+<td><code>frappe.listview_settings</code></td>
+<td>All five <code>_list.js</code> files</td>
+<td>Configuration registry, not a function. Example: category config requests rule fields → formatter builds Required badges.</td>
+</tr>
+<tr>
+<td>List <code>onload</code>, <code>refresh</code>, <code>formatters</code>, <code>button.action</code></td>
+<td>List settings; State currently only customizes onload</td>
+<td>Initialize list, update decorations, display values and open record. Example: Asset Open asset button → <code>set_route(&quot;Form&quot;, &quot;Asset&quot;, doc.name)</code>.</td>
+</tr>
+<tr>
+<td><code>listview.filter_area.get</code>, <code>clear</code>, <code>set</code>; <code>listview.refresh</code></td>
+<td>Asset list status tabs</td>
+<td>Read/replace filters and reload results. Example: click Maintenance → retain recipient filter → add maintenance statuses → refresh.</td>
+</tr>
+<tr>
+<td><code>frappe.set_route</code>, <code>get_route</code>, <code>router.on(&quot;change&quot;)</code>, <code>router.slug</code></td>
+<td>Asset navigation and shared navigation/branding</td>
+<td>Navigate/read routes, react to navigation, convert names to URL-friendly strings. Example: route changes → recognize app → apply sidebar branding.</td>
+</tr>
+<tr>
+<td><code>frappe.after_ajax</code></td>
+<td>Shared navigation/branding initialization</td>
+<td>Schedule work after pending requests finish. Example: boot requests finish → observe sidebar → schedule render. It is not a scheduled background job.</td>
+</tr>
+<tr>
+<td><code>frappe.model.can_read</code></td>
+<td>Shared navigation</td>
+<td>Client metadata check for menu visibility. Example: user cannot read DocType → remove its navigation item. Server remains authority.</td>
+</tr>
+<tr>
+<td><code>frappe.utils.generate_route</code>, <code>icon</code></td>
+<td>Workspace navigation</td>
+<td>Build list URLs and icon markup. Example: My Assets → route with assigned-user filter → render link with list icon.</td>
+</tr>
+<tr>
+<td><code>frappe.utils.escape_html</code>, <code>get_link_title</code></td>
+<td>Lists/shared Asset presentation; latter optional</td>
+<td>Safely display text; resolve friendly Link title. Example: recipient ID → friendly title if cached → HTML-escape → render label.</td>
+</tr>
+<tr>
+<td><code>frappe.utils.is_xs</code>, <code>is_sm</code></td>
+<td>Category refresh</td>
+<td>Detect small screen layout. Example: mobile → preserve sidebar overlay parent → desktop → initially hide record-tools sidebar.</td>
+</tr>
+<tr>
+<td><code>frappe.ui.form.QuickEntryForm</code>, <code>render_dialog</code>, <code>super.render_dialog</code></td>
+<td>State Quick Entry subclass</td>
+<td>Extend popup while preserving native behavior. Example: Frappe selects named State subclass → original dialog renders → custom CSS class added.</td>
+</tr>
+<tr>
+<td><code>frappe.pages[&quot;assetsiq-home&quot;].on_page_load</code>, <code>frappe.ui.make_app_page</code></td>
+<td>Home Page JS</td>
+<td>Create custom Desk page. Example: open Home → make single-column page → insert shared workspace cards; wrapper <code>show</code> refreshes cards.</td>
+</tr>
+<tr>
+<td><code>__()</code></td>
+<td>Browser files</td>
+<td>Translation helper. Example: <code>__(&quot;Required&quot;)</code> → translated label → escaped badge text.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Shared scripts also listen for document events <code>page-change</code>, <code>app_ready</code>, <code>sidebar_setup</code>, and <code>sidebar-expand</code> with app-specific namespaces. They schedule branding/navigation updates. Browser <code>MutationObserver</code> watches sidebar changes; <code>requestAnimationFrame</code> batches repaint work. Those two are browser APIs, not Frappe methods. The Home wrapper's <code>show</code> event is a UI event, distinct from document validation.</p>
+<h3>Server APIs and document methods</h3>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Guide reference table"><table>
+<thead>
+<tr>
+<th>Function/method</th>
+<th>Actual locations and timing</th>
+<th>Plain purpose; example steps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Document</code>, <code>validate</code></td>
+<td>Five controller classes; four custom validators</td>
+<td>Standard record behavior plus app rules before saving. Example: Asset save → read category → reject missing serial (A). Category inherits standard behavior without a custom validator.</td>
+</tr>
+<tr>
+<td><code>frappe.db.get_value</code></td>
+<td>Asset/Location controllers, permissions, setup, test verification</td>
+<td>Read selected field(s). Example: assigned user ID → read enabled/type → reject invalid recipient.</td>
+</tr>
+<tr>
+<td><code>frappe.throw</code>, <code>_</code></td>
+<td>Controllers, geography, permissions, website/setup</td>
+<td>Raise error, optionally translated. Example: district belongs to another state → translated message → save stops.</td>
+</tr>
+<tr>
+<td><code>get_doc_before_save</code>, <code>has_value_changed</code>, <code>is_new</code></td>
+<td>Asset controller, employee guard, geography/permissions</td>
+<td>Inspect old record/change status. Example: existing State changes country → detect change → block reparenting.</td>
+</tr>
+<tr>
+<td><code>doc.get</code>, <code>set</code>, <code>meta.get_label</code>, <code>as_dict</code></td>
+<td>Geography, suggested names, guard/setup</td>
+<td>Read/write document values, get readable field labels, expose values as a dictionary. Example: normalize state label → compare other saved records → use readable label in error.</td>
+</tr>
+<tr>
+<td><code>frappe.db.exists</code>, <code>add_unique</code></td>
+<td>Geography, Location permission; State/District schema callbacks</td>
+<td>Check for records and enforce uniqueness. Example: same state/country pair → exists detects duplicate; database constraint also protects it (F).</td>
+</tr>
+<tr>
+<td><code>frappe.get_roles</code>, <code>frappe.session.user</code></td>
+<td>Permissions, launcher and website</td>
+<td>Roles API plus current-user data. Example: IT role → broad scripted access; employee → own-recipient condition. Other DocType permissions/workflow settings also apply.</td>
+</tr>
+<tr>
+<td><code>frappe.db.escape</code>, <code>frappe.utils.cstr</code></td>
+<td><code>asset_permissions.py</code></td>
+<td>Quote user value for SQL; normalize text values for comparison. Example: current email → escaped SQL literal → safe query restriction.</td>
+</tr>
+<tr>
+<td>Permission hook functions</td>
+<td>Asset/Location via <code>hooks.py</code></td>
+<td>Query functions restrict list rows; <code>has_permission</code> functions check individual documents. Example: employee asset list → assigned-to/status condition → only matching assets returned. Location access requires use by a visible own asset.</td>
+</tr>
+<tr>
+<td><code>before_validate</code></td>
+<td>Asset <code>doc_events</code> hook</td>
+<td>Run employee guard before controller validation. Example: decline → verify original recipient/unchanged details → controller can then clear recipient (C).</td>
+</tr>
+<tr>
+<td><code>frappe.get_all</code></td>
+<td>Boot metadata, setup imports, tests</td>
+<td>Fetch records without standard per-record permission filtering. Example: server boot helper queries module-owned screen names → sends route metadata. Do not copy this into a user-facing asset query as an access filter.</td>
+</tr>
+<tr>
+<td><code>frappe.get_doc</code>, <code>new_doc</code>; document <code>insert</code>, <code>save</code>, <code>reload</code>, <code>append</code></td>
+<td>Setup helpers and real Location tests</td>
+<td>Load/create/change documents, append child rows, persist or reread. Example: recipient setup loads Workflow → appends missing IT transition → saves. Insert/save normally invoke document validation.</td>
+</tr>
+<tr>
+<td><code>frappe.only_for</code></td>
+<td>Setup helpers</td>
+<td>Require an administrative role before a setup task. Example: helper starts → System Manager check → permitted setup continues.</td>
+</tr>
+<tr>
+<td><code>frappe.clear_cache</code>, <code>reload_doc</code></td>
+<td>Setup helpers</td>
+<td>Invalidate metadata/cache; reload a DocType definition from app files. Example: setup syncs definition → clears metadata → subsequent loads see configuration. Python <code>frappe.reload_doc</code> differs from browser <code>frm.reload_doc</code>.</td>
+</tr>
+<tr>
+<td><code>frappe.db.commit</code>, <code>rollback</code>, <code>set_value</code>, <code>count</code></td>
+<td>Administrative setup/import helpers</td>
+<td>Finalize/undo transactions, update directly, count records. Example: import batch → create validated documents → commit; caught error → rollback where coded. Direct <code>db.set_value</code> does not run a normal controller save lifecycle.</td>
+</tr>
+<tr>
+<td><code>frappe.rename_doc</code>, <code>scrub</code>, <code>as_json</code>, <code>get_meta</code>, <code>_dict</code></td>
+<td>Setup helpers</td>
+<td>Rename linked records through framework; normalize names; serialize backups; read schema; create attribute-access dictionary. Example: backup document → <code>as_json</code> → write backup before setup edits.</td>
+</tr>
+<tr>
+<td><code>extend_bootinfo</code></td>
+<td>Hook → <code>boot.py</code> during Desk boot</td>
+<td>Add custom boot metadata. Example: load module screens → assign <code>bootinfo.assetsiq_routes</code> → browser can identify app routes.</td>
+</tr>
+<tr>
+<td><code>get_context</code>, <code>frappe.Redirect</code>, <code>get_cached_value</code></td>
+<td><code>www/assetsiq.py</code> when website route is requested</td>
+<td>Prepare template data, redirect guests, fetch display name efficiently. Example: guest visits → redirect to login; allowed user → roles determine workspace label → name enters context.</td>
+</tr>
+<tr>
+<td><code>IntegrationTestCase</code>, <code>setUp</code>, <code>frappe.set_user</code>, <code>generate_hash</code>, <code>has_permission</code>, <code>search_link</code></td>
+<td>Real Asset Location tests</td>
+<td>Test lifecycle, identity setup, unique test labels, authorization and native Link filtering. Example: create two countries' test states → impersonate employee → assert read/select allowed but create/write denied → restore Administrator. <code>search_link</code> is imported from <code>frappe.desk.search</code>.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Test assertions such as <code>assertEqual</code>, <code>assertFalse</code> and <code>assertRaises</code> come from the testing framework. Tests run only when invoked, not when an employee opens a form. Existing Location tests cover mismatched hierarchy, duplicate scope, immutable parents, Link queries and role permissions. Placeholder test classes are not evidence those features passed tests.</p>
+<p><code>frappe.assetsiq_asset_form.*</code>, <code>frappe.assetsiq_asset_list.*</code> and <code>frappe.assetsiq_navigation.*</code> are your app's own helper namespaces. Examples: <code>render</code> updates the Asset display; <code>apply_tab</code> changes status filters; <code>home_markup</code> produces workspace-card HTML. Assigning them under <code>frappe</code> makes them accessible to other browser files; it does not make them framework-provided methods.</p>
+<h2 id="section-8">8. How a VS Code edit reaches Frappe</h2>
+<figure class="diagram"><figcaption>From a VS Code change to a working Frappe screen</figcaption><div class="lane"><div class="node"><strong>1 · Edit and save in VS Code</strong><small>Choose the relevant source file</small></div><span class="arrow"><span></span>↓</span><div class="lanes"><div class="node"><strong>DocType JSON</strong><small>Sync schema / metadata with migrate</small></div><div class="node"><strong>Bundle JS / CSS / SCSS</strong><small>bench build --app assetsiq</small></div><div class="node"><strong>Form/list JS · Python · hooks</strong><small>Reload relevant scripts/processes and clear caches as needed</small></div></div><span class="arrow"><span></span>↓</span><div class="node"><strong>2 · Refresh browser and open the screen</strong><small>Form setup / refresh / field events run</small></div><span class="arrow"><span></span>↓</span><div class="node"><strong>3 · Save or use a workflow action</strong><small>Browser sends a request</small></div><span class="arrow"><span></span>↓</span><div class="node"><strong>4 · Server checks and validates</strong><small>Permissions → employee guard → controller and standard validation</small></div><span class="arrow"><span></span>↓</span><div class="node"><strong>5 · Database save → interface update</strong><small>A failed rule stops the save</small></div></div></figure>
+<p>The save path is simplified: Frappe also performs standard link checks, metadata validation and workflow checks. A failed rule stops the save; client-only HTML changes do not save records.</p>
+<p><strong>Reference commands, not executed for this guide:</strong> run from <code>/home/vin_user81/frappe-bench</code>, replacing <code>&lt;site&gt;</code> with your actual site.</p>
+<pre><code class="language-bash"># After changing bundle sources or imported CSS/JS:
+bench build --app assetsiq
+bench --site &lt;site&gt; clear-cache
+
+# After deliberate DocType schema/metadata changes:
+bench --site &lt;site&gt; migrate
+</code></pre>
+<p>Then hard-refresh the browser and reopen the affected screen. Python changes may need a server process restart in a production deployment; a development server may reload them. Hook/boot changes can require a fresh Desk boot. Migration changes the database schema: use the correct site and your normal backup/deployment process. You do not need to migrate for every text/color change.</p>
+<p>Example: to change the Asset header color, edit <code>public/css/asset_form.css</code> → its existing SCSS import includes it → build bundle → clear cache/reload → open an Asset → <code>asset.js</code> calls shared renderer → matching CSS styles the header.</p>
+<p>Example: to change an assignment rule, edit the relevant Python guard/controller and review the active Workflow. Changing a visible button label alone does not change server authorization.</p>
+<h2 id="section-9">9. Current implementation versus future development</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Guide reference table"><table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Present in inspected source</th>
+<th>Proposed or needs separate verification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Asset inventory</td>
+<td>Asset DocType, category/location links, serial validation, list tabs/count requests</td>
+<td>Verify live records, deployed assets and site configuration</td>
+</tr>
+<tr>
+<td>Allocation</td>
+<td><code>assigned_to</code> User Link, assignment statuses, workflow API calls and employee guard</td>
+<td>Separate allocation document, dates and issue/return receipts would be new features</td>
+</tr>
+<tr>
+<td>Employee requests</td>
+<td>Recipient accepts/declines an assignment and requests maintenance on their own Asset</td>
+<td>General request catalog, request for an unassigned asset, and separate request DocType are not present</td>
+</tr>
+<tr>
+<td>Maintenance</td>
+<td>Statuses, request action support, status notices and workflow-driven buttons</td>
+<td>Repair log, technician/cost tracking and separate Maintenance DocType are not present</td>
+</tr>
+<tr>
+<td>Transfers</td>
+<td>Current Asset location/recipient fields</td>
+<td>Dedicated transfer approvals/history are proposed</td>
+</tr>
+<tr>
+<td>Computer specifications</td>
+<td>Category checkbox and list badge</td>
+<td>Asset specification fields/enforcement are not implemented in the inspected controller/schema</td>
+</tr>
+<tr>
+<td>Geography</td>
+<td>Hierarchical Links, client filters, server checks, duplicate constraints and real tests</td>
+<td>Actual imported countries/states/districts and completed setup require site inspection</td>
+</tr>
+<tr>
+<td>Roles and navigation</td>
+<td>Two operational role fixtures; workspace/sidebar/icon definitions; shared Home page/navigation</td>
+<td>Actual user role assignments and whether all setup helpers ran require database verification</td>
+</tr>
+<tr>
+<td>Workflow</td>
+<td>Calls to native workflow APIs, recognized labels/statuses, transition guard, recipient setup helper</td>
+<td>Complete active Workflow definition is not exported in the inspected fixtures; inspect it in Desk before asserting all transitions</td>
+</tr>
+<tr>
+<td>Automation</td>
+<td>No active scheduler or install/migration hooks in this <code>hooks.py</code></td>
+<td>Scheduled maintenance reminders or automatically running setup would need explicit implementation</td>
+</tr>
+</tbody>
+</table></div>
+<p>The README includes older development-stage statements. For this guide, active source definitions take priority over those historical statements. Exported workspace files can also differ from live database customizations.</p>
+<h2 id="section-10">10. A simple learning route</h2>
+<ol>
+<li>Open <code>asset_category.json</code> and locate <code>serial_required</code>; compare it with the checkbox on the category form.</li>
+<li>Read <code>asset_category.js</code> → <code>refresh</code>: notice how it changes presentation without a custom category Python validator.</li>
+<li>Follow Asset's category Link and <code>fetch_from</code> in <code>asset.json</code>.</li>
+<li>Read <code>Asset.validate</code> to see why a browser cannot bypass the serial rule.</li>
+<li>Follow Location's <code>setup</code>, <code>country</code>, and <code>state</code> handlers, then its Python validator.</li>
+<li>Read the active entries at the top and bottom of <code>hooks.py</code>; ignore commented sample registrations.</li>
+<li>Follow the SCSS imports and JS bundle imports to their shared files.</li>
+<li>Inspect the site's Workflow for Asset to connect its actual states/actions with <code>get_transitions</code>, <code>apply_workflow</code> and the employee guard.</li>
+</ol>
+<p>The core connection to remember is: <strong>JSON defines the record; form/list JavaScript shapes browser interaction; Python enforces server rules; hooks connect shared services; bundles deliver shared presentation; the database stores documents and site configuration.</strong></p>
+<footer>Standalone HTML edition of BEGINNER_GUIDE.md. Source snapshot: 4 November 2026. HTML edition: 5 November 2026. No external scripts, fonts or diagram services required.</footer></main></div><script>const links=[...document.querySelectorAll('nav a')];const observer=new IntersectionObserver(entries=>{for(const e of entries){if(e.isIntersecting){links.forEach(a=>a.classList.toggle('active',a.hash==='#'+e.target.id));}}},{rootMargin:'0px 0px -65% 0px'});document.querySelectorAll('main h2').forEach(h=>observer.observe(h));document.getElementById('print').addEventListener('click',()=>window.print());</script></body></html>
